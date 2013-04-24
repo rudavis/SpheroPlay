@@ -1,0 +1,387 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C72CA9A1171F0E2C00CE605A /* ValidateSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */; };
+		C73D7CA017186F8400C2A741 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D7C9F17186F8400C2A741 /* UIKit.framework */; };
+		C73D7CA217186F8400C2A741 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D7CA117186F8400C2A741 /* Foundation.framework */; };
+		C73D7CA417186F8400C2A741 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D7CA317186F8400C2A741 /* CoreGraphics.framework */; };
+		C73D7CAA17186F8400C2A741 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CA817186F8400C2A741 /* InfoPlist.strings */; };
+		C73D7CAC17186F8400C2A741 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C73D7CAB17186F8400C2A741 /* main.m */; };
+		C73D7CB017186F8400C2A741 /* SpheroPlayAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C73D7CAF17186F8400C2A741 /* SpheroPlayAppDelegate.m */; };
+		C73D7CB217186F8400C2A741 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CB117186F8400C2A741 /* Default.png */; };
+		C73D7CB417186F8400C2A741 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CB317186F8400C2A741 /* Default@2x.png */; };
+		C73D7CB617186F8400C2A741 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CB517186F8400C2A741 /* Default-568h@2x.png */; };
+		C73D7CB917186F8400C2A741 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CB717186F8400C2A741 /* MainStoryboard.storyboard */; };
+		C73D7CC31718704B00C2A741 /* piggy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CC21718704B00C2A741 /* piggy.jpg */; };
+		C73D7CC5171870B200C2A741 /* dollar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CC4171870B200C2A741 /* dollar.jpg */; };
+		C747CC26171E13E20034FD8F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C747CC25171E13E20034FD8F /* QuartzCore.framework */; };
+		C74B7C25171EB1B000E19FCD /* ForSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C74B7C24171EB1B000E19FCD /* ForSlidingViewController.m */; };
+		C74B7C28171EB96D00E19FCD /* red_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = C74B7C26171EB96D00E19FCD /* red_slider.png */; };
+		C74B7C29171EB96D00E19FCD /* blue_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = C74B7C27171EB96D00E19FCD /* blue_slider.png */; };
+		C74B7C2B171EBB7800E19FCD /* dollar_sign.gif in Resources */ = {isa = PBXBuildFile; fileRef = C74B7C2A171EBB7800E19FCD /* dollar_sign.gif */; };
+		C777BC081720465B0055D442 /* container-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C777BC071720465B0055D442 /* container-background.png */; };
+		C793AE73172709CA00B9AAED /* green_check.png in Resources */ = {isa = PBXBuildFile; fileRef = C793AE72172709CA00B9AAED /* green_check.png */; };
+		C79DC0DF1727151E00EB5EFE /* ConfirmationSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */; };
+		C7D12CDA1719C5C800C9E920 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */; };
+		C7F7DDCF171DF01A00BD4A77 /* colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7F7DDCE171DF01A00BD4A77 /* colors.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C72CA99F171F0E2C00CE605A /* ValidateSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateSlidingViewController.h; sourceTree = "<group>"; };
+		C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateSlidingViewController.m; sourceTree = "<group>"; };
+		C73D7C9C17186F8400C2A741 /* SpheroPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpheroPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C73D7C9F17186F8400C2A741 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C73D7CA117186F8400C2A741 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C73D7CA317186F8400C2A741 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C73D7CA717186F8400C2A741 /* SpheroPlay-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SpheroPlay-Info.plist"; sourceTree = "<group>"; };
+		C73D7CA917186F8400C2A741 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C73D7CAB17186F8400C2A741 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C73D7CAD17186F8400C2A741 /* SpheroPlay-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SpheroPlay-Prefix.pch"; sourceTree = "<group>"; };
+		C73D7CAE17186F8400C2A741 /* SpheroPlayAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpheroPlayAppDelegate.h; sourceTree = "<group>"; };
+		C73D7CAF17186F8400C2A741 /* SpheroPlayAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpheroPlayAppDelegate.m; sourceTree = "<group>"; };
+		C73D7CB117186F8400C2A741 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		C73D7CB317186F8400C2A741 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		C73D7CB517186F8400C2A741 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C73D7CB817186F8400C2A741 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		C73D7CC21718704B00C2A741 /* piggy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = piggy.jpg; sourceTree = "<group>"; };
+		C73D7CC4171870B200C2A741 /* dollar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dollar.jpg; sourceTree = "<group>"; };
+		C747CC25171E13E20034FD8F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C74B7C23171EB1B000E19FCD /* ForSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForSlidingViewController.h; sourceTree = "<group>"; };
+		C74B7C24171EB1B000E19FCD /* ForSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForSlidingViewController.m; sourceTree = "<group>"; };
+		C74B7C26171EB96D00E19FCD /* red_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_slider.png; sourceTree = "<group>"; };
+		C74B7C27171EB96D00E19FCD /* blue_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_slider.png; sourceTree = "<group>"; };
+		C74B7C2A171EBB7800E19FCD /* dollar_sign.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dollar_sign.gif; sourceTree = "<group>"; };
+		C777BC071720465B0055D442 /* container-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "container-background.png"; sourceTree = "<group>"; };
+		C793AE72172709CA00B9AAED /* green_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_check.png; sourceTree = "<group>"; };
+		C79DC0DD1727151E00EB5EFE /* ConfirmationSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationSlideViewController.h; sourceTree = "<group>"; };
+		C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationSlideViewController.m; sourceTree = "<group>"; };
+		C7D12CD81719C5C800C9E920 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
+		C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		C7F7DDCE171DF01A00BD4A77 /* colors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = colors.txt; path = SpheroPlay/colors.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C73D7C9917186F8400C2A741 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C747CC26171E13E20034FD8F /* QuartzCore.framework in Frameworks */,
+				C73D7CA017186F8400C2A741 /* UIKit.framework in Frameworks */,
+				C73D7CA217186F8400C2A741 /* Foundation.framework in Frameworks */,
+				C73D7CA417186F8400C2A741 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C73D7C9317186F8400C2A741 = {
+			isa = PBXGroup;
+			children = (
+				C73D7CA517186F8400C2A741 /* SpheroPlay */,
+				C73D7C9E17186F8400C2A741 /* Frameworks */,
+				C73D7C9D17186F8400C2A741 /* Products */,
+				C7F7DDCE171DF01A00BD4A77 /* colors.txt */,
+			);
+			sourceTree = "<group>";
+		};
+		C73D7C9D17186F8400C2A741 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C73D7C9C17186F8400C2A741 /* SpheroPlay.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C73D7C9E17186F8400C2A741 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C747CC25171E13E20034FD8F /* QuartzCore.framework */,
+				C73D7C9F17186F8400C2A741 /* UIKit.framework */,
+				C73D7CA117186F8400C2A741 /* Foundation.framework */,
+				C73D7CA317186F8400C2A741 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C73D7CA517186F8400C2A741 /* SpheroPlay */ = {
+			isa = PBXGroup;
+			children = (
+				C73D7CB717186F8400C2A741 /* MainStoryboard.storyboard */,
+				C73D7CAE17186F8400C2A741 /* SpheroPlayAppDelegate.h */,
+				C73D7CAF17186F8400C2A741 /* SpheroPlayAppDelegate.m */,
+				C73D7CCD1718760300C2A741 /* Models */,
+				C73D7CC91718733400C2A741 /* Controllers */,
+				C73D7CA617186F8400C2A741 /* Supporting Files */,
+			);
+			path = SpheroPlay;
+			sourceTree = "<group>";
+		};
+		C73D7CA617186F8400C2A741 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C73D7CCE1718763400C2A741 /* Images */,
+				C73D7CA717186F8400C2A741 /* SpheroPlay-Info.plist */,
+				C73D7CA817186F8400C2A741 /* InfoPlist.strings */,
+				C73D7CAB17186F8400C2A741 /* main.m */,
+				C73D7CAD17186F8400C2A741 /* SpheroPlay-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C73D7CC91718733400C2A741 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C79DC0DD1727151E00EB5EFE /* ConfirmationSlideViewController.h */,
+				C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */,
+				C72CA99F171F0E2C00CE605A /* ValidateSlidingViewController.h */,
+				C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */,
+				C74B7C23171EB1B000E19FCD /* ForSlidingViewController.h */,
+				C74B7C24171EB1B000E19FCD /* ForSlidingViewController.m */,
+				C7D12CD81719C5C800C9E920 /* HomeTableViewController.h */,
+				C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C73D7CCD1718760300C2A741 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		C73D7CCE1718763400C2A741 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C793AE72172709CA00B9AAED /* green_check.png */,
+				C777BC071720465B0055D442 /* container-background.png */,
+				C74B7C2A171EBB7800E19FCD /* dollar_sign.gif */,
+				C74B7C26171EB96D00E19FCD /* red_slider.png */,
+				C74B7C27171EB96D00E19FCD /* blue_slider.png */,
+				C73D7CB117186F8400C2A741 /* Default.png */,
+				C73D7CB317186F8400C2A741 /* Default@2x.png */,
+				C73D7CB517186F8400C2A741 /* Default-568h@2x.png */,
+				C73D7CC21718704B00C2A741 /* piggy.jpg */,
+				C73D7CC4171870B200C2A741 /* dollar.jpg */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C73D7C9B17186F8400C2A741 /* SpheroPlay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C73D7CBF17186F8400C2A741 /* Build configuration list for PBXNativeTarget "SpheroPlay" */;
+			buildPhases = (
+				C73D7C9817186F8400C2A741 /* Sources */,
+				C73D7C9917186F8400C2A741 /* Frameworks */,
+				C73D7C9A17186F8400C2A741 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpheroPlay;
+			productName = SpheroPlay;
+			productReference = C73D7C9C17186F8400C2A741 /* SpheroPlay.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C73D7C9417186F8400C2A741 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = SpheroPlay;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = RTB;
+			};
+			buildConfigurationList = C73D7C9717186F8400C2A741 /* Build configuration list for PBXProject "SpheroPlay" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C73D7C9317186F8400C2A741;
+			productRefGroup = C73D7C9D17186F8400C2A741 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C73D7C9B17186F8400C2A741 /* SpheroPlay */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C73D7C9A17186F8400C2A741 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C73D7CAA17186F8400C2A741 /* InfoPlist.strings in Resources */,
+				C73D7CB217186F8400C2A741 /* Default.png in Resources */,
+				C73D7CB417186F8400C2A741 /* Default@2x.png in Resources */,
+				C73D7CB617186F8400C2A741 /* Default-568h@2x.png in Resources */,
+				C73D7CB917186F8400C2A741 /* MainStoryboard.storyboard in Resources */,
+				C73D7CC31718704B00C2A741 /* piggy.jpg in Resources */,
+				C73D7CC5171870B200C2A741 /* dollar.jpg in Resources */,
+				C7F7DDCF171DF01A00BD4A77 /* colors.txt in Resources */,
+				C74B7C28171EB96D00E19FCD /* red_slider.png in Resources */,
+				C74B7C29171EB96D00E19FCD /* blue_slider.png in Resources */,
+				C74B7C2B171EBB7800E19FCD /* dollar_sign.gif in Resources */,
+				C777BC081720465B0055D442 /* container-background.png in Resources */,
+				C793AE73172709CA00B9AAED /* green_check.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C73D7C9817186F8400C2A741 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C73D7CAC17186F8400C2A741 /* main.m in Sources */,
+				C73D7CB017186F8400C2A741 /* SpheroPlayAppDelegate.m in Sources */,
+				C7D12CDA1719C5C800C9E920 /* HomeTableViewController.m in Sources */,
+				C74B7C25171EB1B000E19FCD /* ForSlidingViewController.m in Sources */,
+				C72CA9A1171F0E2C00CE605A /* ValidateSlidingViewController.m in Sources */,
+				C79DC0DF1727151E00EB5EFE /* ConfirmationSlideViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C73D7CA817186F8400C2A741 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C73D7CA917186F8400C2A741 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C73D7CB717186F8400C2A741 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C73D7CB817186F8400C2A741 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C73D7CBD17186F8400C2A741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C73D7CBE17186F8400C2A741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = "";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C73D7CC017186F8400C2A741 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpheroPlay/SpheroPlay-Prefix.pch";
+				INFOPLIST_FILE = "SpheroPlay/SpheroPlay-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C73D7CC117186F8400C2A741 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SpheroPlay/SpheroPlay-Prefix.pch";
+				INFOPLIST_FILE = "SpheroPlay/SpheroPlay-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C73D7C9717186F8400C2A741 /* Build configuration list for PBXProject "SpheroPlay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C73D7CBD17186F8400C2A741 /* Debug */,
+				C73D7CBE17186F8400C2A741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C73D7CBF17186F8400C2A741 /* Build configuration list for PBXNativeTarget "SpheroPlay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C73D7CC017186F8400C2A741 /* Debug */,
+				C73D7CC117186F8400C2A741 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C73D7C9417186F8400C2A741 /* Project object */;
+}
