@@ -64,22 +64,22 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <segue destination="6ym-C0-1bE" kind="push" id="haj-20-orI"/>
+                                            <segue destination="6ym-C0-1bE" kind="push" id="MEL-kG-wVs"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="Q55-6X-X8B">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="wGK-tH-hdS" imageView="Y8L-QA-Jcn" rowHeight="98" style="IBUITableViewCellStyleDefault" id="5MX-mF-uXz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="wGK-tH-hdS" imageView="Y8L-QA-Jcn" rowHeight="98" style="IBUITableViewCellStyleDefault" id="5MX-mF-uXz">
                                         <rect key="frame" x="0.0" y="250" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="300" height="97"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="For Fun" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wGK-tH-hdS">
-                                                    <rect key="frame" x="102" y="0.0" width="188" height="97"/>
+                                                    <rect key="frame" x="102" y="0.0" width="168" height="97"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -92,6 +92,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="I10-mO-b8M" kind="push" id="kOV-6a-dbC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -101,28 +104,161 @@
                             <outlet property="delegate" destination="Wok-I5-V71" id="kej-3Y-bAp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Ksu-6q-ejL">
-                        <barButtonItem key="rightBarButtonItem" title="?" id="6KK-Zt-ibA"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Ksu-6q-ejL"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wea-Af-gPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1213" y="31"/>
         </scene>
-        <!--View Controller - Dummy-->
+        <!--For Spending View Controller - For Spending-->
         <scene sceneID="Es5-2J-chu">
             <objects>
-                <viewController id="6ym-C0-1bE" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="jwV-DK-3Wx">
+                <viewController id="6ym-C0-1bE" customClass="ForSpendingViewController" sceneMemberID="viewController">
+                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2UZ-Ed-yft">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pu7-jP-dCy" userLabel="View">
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.40000000596046448" contentMode="scaleToFill" image="JoystickBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="ftQ-4u-tLs"/>
+                                    <view opaque="NO" autoresizesSubviews="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uH9-Ny-Dqs" customClass="CircularUIView">
+                                        <subviews>
+                                            <imageView alpha="0.69999998807907104" contentMode="scaleToFill" image="JoystickPuck.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Sv-uK-iT1" userLabel="Stick View">
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="90" id="HFb-yo-Inx"/>
+                                                    <constraint firstAttribute="height" constant="90" id="TPv-iD-nC4"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="0Sv-uK-iT1" firstAttribute="top" secondItem="uH9-Ny-Dqs" secondAttribute="top" constant="81" id="TdR-Ok-EJK"/>
+                                            <constraint firstItem="0Sv-uK-iT1" firstAttribute="centerX" secondItem="uH9-Ny-Dqs" secondAttribute="centerX" type="default" id="c6v-PQ-bEq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ftQ-4u-tLs" firstAttribute="trailing" secondItem="Pu7-jP-dCy" secondAttribute="trailing" type="default" id="4N0-hD-T2q"/>
+                                    <constraint firstItem="ftQ-4u-tLs" firstAttribute="leading" secondItem="Pu7-jP-dCy" secondAttribute="leading" type="default" id="77J-El-2Iq"/>
+                                    <constraint firstItem="uH9-Ny-Dqs" firstAttribute="leading" secondItem="Pu7-jP-dCy" secondAttribute="leading" type="default" id="Iwc-yh-51d"/>
+                                    <constraint firstItem="uH9-Ny-Dqs" firstAttribute="trailing" secondItem="Pu7-jP-dCy" secondAttribute="trailing" type="default" id="OkF-p9-b8z"/>
+                                    <constraint firstItem="ftQ-4u-tLs" firstAttribute="top" secondItem="Pu7-jP-dCy" secondAttribute="top" type="default" id="WaO-6i-HZW"/>
+                                    <constraint firstItem="ftQ-4u-tLs" firstAttribute="bottom" secondItem="Pu7-jP-dCy" secondAttribute="bottom" type="default" id="hAf-Fe-ERO"/>
+                                    <constraint firstItem="uH9-Ny-Dqs" firstAttribute="bottom" secondItem="Pu7-jP-dCy" secondAttribute="bottom" type="default" id="qDc-b9-6jW"/>
+                                    <constraint firstItem="uH9-Ny-Dqs" firstAttribute="top" secondItem="Pu7-jP-dCy" secondAttribute="top" type="default" id="xpp-vh-BEP"/>
+                                </constraints>
+                                <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wQT-Gu-MgK">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="89" id="eKd-wg-hrz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Pass">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="passButtonPressed:" destination="6ym-C0-1bE" eventType="touchUpInside" id="iPE-Ht-wh3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vo8-jg-cah">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="92" id="YGO-Ln-2mB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Pay">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="payButtonPressed:" destination="6ym-C0-1bE" eventType="touchUpInside" id="Rv5-28-u0j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHs-eo-mgh">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="aBX-fX-jtL"/>
+                                    <constraint firstAttribute="width" constant="40" id="fuv-ex-u8y"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <color key="tintColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <state key="normal">
+                                    <color key="titleColor" red="0.1960784314" green="0.30980392159999998" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="wQT-Gu-MgK" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="0DN-dq-xg4"/>
+                            <constraint firstItem="Vo8-jg-cah" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="20" symbolic="YES" type="default" id="D6u-vt-fg7"/>
+                            <constraint firstItem="wQT-Gu-MgK" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="20" symbolic="YES" type="default" id="RlE-XE-RHR"/>
+                            <constraint firstAttribute="bottom" secondItem="Pu7-jP-dCy" secondAttribute="bottom" constant="133" id="UxG-uN-uYC"/>
+                            <constraint firstItem="Pu7-jP-dCy" firstAttribute="centerX" secondItem="GHs-eo-mgh" secondAttribute="centerX" type="default" id="XbV-39-zTd"/>
+                            <constraint firstItem="Pu7-jP-dCy" firstAttribute="leading" secondItem="2UZ-Ed-yft" secondAttribute="leading" constant="35" id="acO-v7-2fn"/>
+                            <constraint firstItem="Vo8-jg-cah" firstAttribute="leading" secondItem="2UZ-Ed-yft" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bVs-Ha-8Sf"/>
+                            <constraint firstItem="GHs-eo-mgh" firstAttribute="centerX" secondItem="2UZ-Ed-yft" secondAttribute="centerX" type="default" id="hFv-ha-wgo"/>
+                            <constraint firstAttribute="bottom" secondItem="GHs-eo-mgh" secondAttribute="bottom" constant="64" id="pNv-VJ-RhO"/>
+                            <constraint firstItem="Pu7-jP-dCy" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="121" id="utx-mI-cwh"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dummy" id="86B-6y-dAj"/>
+                    <navigationItem key="navigationItem" title="For Spending" id="86B-6y-dAj"/>
+                    <connections>
+                        <outlet property="calibrateAboveButton" destination="GHs-eo-mgh" id="U0M-np-ZJ3"/>
+                        <outlet property="circularView" destination="uH9-Ny-Dqs" id="VVt-Xl-6XX"/>
+                        <outlet property="drivePuck" destination="0Sv-uK-iT1" id="45x-xo-ubC"/>
+                        <outlet property="driveWheel" destination="Pu7-jP-dCy" id="Ntb-Fh-uBE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmx-P0-Bcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1655" y="398"/>
+        </scene>
+        <!--For Fun View Controller - For Fun-->
+        <scene sceneID="CYM-z8-lpo">
+            <objects>
+                <viewController title="For Fun" id="I10-mO-b8M" customClass="ForFunViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kuz-No-Nsl">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7P-6W-Z5O">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Color Macro">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="colorMacroButtonPressed:" destination="I10-mO-b8M" eventType="touchUpInside" id="mIL-Dj-dOn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="9qN-dF-Dwt"/>
+                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="teP-2L-4ov"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="For Fun" id="O1W-Xd-NYb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uby-Qx-uQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1655" y="1080"/>
         </scene>
         <!--Validate Sliding View Controller - Validate-->
         <scene sceneID="Tam-mh-jhq">
@@ -435,15 +571,26 @@
         </scene>
     </scenes>
     <resources>
+        <image name="JoystickBG.png" width="346" height="346"/>
+        <image name="JoystickPuck.png" width="147" height="147"/>
         <image name="dollar.jpg" width="253" height="350"/>
         <image name="green_check.png" width="256" height="256"/>
         <image name="piggy.jpg" width="400" height="420"/>
     </resources>
     <classes>
+        <class className="CircularUIView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CircularUIView.h"/>
+        </class>
         <class className="ConfirmationSlideViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmationSlideViewController.h"/>
             <relationships>
                 <relationship kind="action" name="homeButtonPressed:"/>
+            </relationships>
+        </class>
+        <class className="ForFunViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForFunViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="colorMacroButtonPressed:"/>
             </relationships>
         </class>
         <class className="ForSlidingViewController" superclassName="UIViewController">
@@ -455,6 +602,17 @@
                 <relationship kind="outlet" name="checkingAmounLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="savingsAmountLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="totalAmountLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ForSpendingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForSpendingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="passButtonPressed:"/>
+                <relationship kind="action" name="payButtonPressed:"/>
+                <relationship kind="outlet" name="calibrateAboveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="circularView" candidateClass="CircularUIView"/>
+                <relationship kind="outlet" name="drivePuck" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="driveWheel" candidateClass="UIView"/>
             </relationships>
         </class>
         <class className="HomeTableViewController" superclassName="UITableViewController">

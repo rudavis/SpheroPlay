@@ -25,6 +25,11 @@
 		C74B7C28171EB96D00E19FCD /* red_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = C74B7C26171EB96D00E19FCD /* red_slider.png */; };
 		C74B7C29171EB96D00E19FCD /* blue_slider.png in Resources */ = {isa = PBXBuildFile; fileRef = C74B7C27171EB96D00E19FCD /* blue_slider.png */; };
 		C74B7C2B171EBB7800E19FCD /* dollar_sign.gif in Resources */ = {isa = PBXBuildFile; fileRef = C74B7C2A171EBB7800E19FCD /* dollar_sign.gif */; };
+		C766752B17275FDD00D4D528 /* JoystickPuck.png in Resources */ = {isa = PBXBuildFile; fileRef = C766752917275FDD00D4D528 /* JoystickPuck.png */; };
+		C766752C17275FDD00D4D528 /* JoystickBG.png in Resources */ = {isa = PBXBuildFile; fileRef = C766752A17275FDD00D4D528 /* JoystickBG.png */; };
+		C76675361727625100D4D528 /* CircularUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = C76675351727624A00D4D528 /* CircularUIView.m */; };
+		C7667539172767D300D4D528 /* ForSpendingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7667538172767D300D4D528 /* ForSpendingViewController.m */; };
+		C766753D17276CB500D4D528 /* ForFunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C766753C17276CB500D4D528 /* ForFunViewController.m */; };
 		C777BC081720465B0055D442 /* container-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C777BC071720465B0055D442 /* container-background.png */; };
 		C793AE73172709CA00B9AAED /* green_check.png in Resources */ = {isa = PBXBuildFile; fileRef = C793AE72172709CA00B9AAED /* green_check.png */; };
 		C79DC0DF1727151E00EB5EFE /* ConfirmationSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */; };
@@ -57,6 +62,14 @@
 		C74B7C26171EB96D00E19FCD /* red_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_slider.png; sourceTree = "<group>"; };
 		C74B7C27171EB96D00E19FCD /* blue_slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_slider.png; sourceTree = "<group>"; };
 		C74B7C2A171EBB7800E19FCD /* dollar_sign.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dollar_sign.gif; sourceTree = "<group>"; };
+		C766752917275FDD00D4D528 /* JoystickPuck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoystickPuck.png; sourceTree = "<group>"; };
+		C766752A17275FDD00D4D528 /* JoystickBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoystickBG.png; sourceTree = "<group>"; };
+		C76675341727624A00D4D528 /* CircularUIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircularUIView.h; sourceTree = "<group>"; };
+		C76675351727624A00D4D528 /* CircularUIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircularUIView.m; sourceTree = "<group>"; };
+		C7667537172767D300D4D528 /* ForSpendingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForSpendingViewController.h; sourceTree = "<group>"; };
+		C7667538172767D300D4D528 /* ForSpendingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForSpendingViewController.m; sourceTree = "<group>"; };
+		C766753B17276CB500D4D528 /* ForFunViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForFunViewController.h; sourceTree = "<group>"; };
+		C766753C17276CB500D4D528 /* ForFunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForFunViewController.m; sourceTree = "<group>"; };
 		C777BC071720465B0055D442 /* container-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "container-background.png"; sourceTree = "<group>"; };
 		C793AE72172709CA00B9AAED /* green_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_check.png; sourceTree = "<group>"; };
 		C79DC0DD1727151E00EB5EFE /* ConfirmationSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationSlideViewController.h; sourceTree = "<group>"; };
@@ -116,7 +129,7 @@
 				C73D7CB717186F8400C2A741 /* MainStoryboard.storyboard */,
 				C73D7CAE17186F8400C2A741 /* SpheroPlayAppDelegate.h */,
 				C73D7CAF17186F8400C2A741 /* SpheroPlayAppDelegate.m */,
-				C73D7CCD1718760300C2A741 /* Models */,
+				C73D7CCD1718760300C2A741 /* SpheroClasses */,
 				C73D7CC91718733400C2A741 /* Controllers */,
 				C73D7CA617186F8400C2A741 /* Supporting Files */,
 			);
@@ -138,28 +151,29 @@
 		C73D7CC91718733400C2A741 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C79DC0DD1727151E00EB5EFE /* ConfirmationSlideViewController.h */,
-				C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */,
-				C72CA99F171F0E2C00CE605A /* ValidateSlidingViewController.h */,
-				C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */,
-				C74B7C23171EB1B000E19FCD /* ForSlidingViewController.h */,
-				C74B7C24171EB1B000E19FCD /* ForSlidingViewController.m */,
+				C766752D1727601900D4D528 /* ForSaving */,
+				C766752E1727602B00D4D528 /* ForSpending */,
+				C766753A17276CA100D4D528 /* ForFun */,
 				C7D12CD81719C5C800C9E920 /* HomeTableViewController.h */,
 				C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		C73D7CCD1718760300C2A741 /* Models */ = {
+		C73D7CCD1718760300C2A741 /* SpheroClasses */ = {
 			isa = PBXGroup;
 			children = (
+				C76675341727624A00D4D528 /* CircularUIView.h */,
+				C76675351727624A00D4D528 /* CircularUIView.m */,
 			);
-			name = Models;
+			name = SpheroClasses;
 			sourceTree = "<group>";
 		};
 		C73D7CCE1718763400C2A741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C766752917275FDD00D4D528 /* JoystickPuck.png */,
+				C766752A17275FDD00D4D528 /* JoystickBG.png */,
 				C793AE72172709CA00B9AAED /* green_check.png */,
 				C777BC071720465B0055D442 /* container-background.png */,
 				C74B7C2A171EBB7800E19FCD /* dollar_sign.gif */,
@@ -172,6 +186,37 @@
 				C73D7CC4171870B200C2A741 /* dollar.jpg */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		C766752D1727601900D4D528 /* ForSaving */ = {
+			isa = PBXGroup;
+			children = (
+				C79DC0DD1727151E00EB5EFE /* ConfirmationSlideViewController.h */,
+				C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */,
+				C72CA99F171F0E2C00CE605A /* ValidateSlidingViewController.h */,
+				C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */,
+				C74B7C23171EB1B000E19FCD /* ForSlidingViewController.h */,
+				C74B7C24171EB1B000E19FCD /* ForSlidingViewController.m */,
+			);
+			name = ForSaving;
+			sourceTree = "<group>";
+		};
+		C766752E1727602B00D4D528 /* ForSpending */ = {
+			isa = PBXGroup;
+			children = (
+				C7667537172767D300D4D528 /* ForSpendingViewController.h */,
+				C7667538172767D300D4D528 /* ForSpendingViewController.m */,
+			);
+			name = ForSpending;
+			sourceTree = "<group>";
+		};
+		C766753A17276CA100D4D528 /* ForFun */ = {
+			isa = PBXGroup;
+			children = (
+				C766753B17276CB500D4D528 /* ForFunViewController.h */,
+				C766753C17276CB500D4D528 /* ForFunViewController.m */,
+			);
+			name = ForFun;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +284,8 @@
 				C74B7C2B171EBB7800E19FCD /* dollar_sign.gif in Resources */,
 				C777BC081720465B0055D442 /* container-background.png in Resources */,
 				C793AE73172709CA00B9AAED /* green_check.png in Resources */,
+				C766752B17275FDD00D4D528 /* JoystickPuck.png in Resources */,
+				C766752C17275FDD00D4D528 /* JoystickBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +302,9 @@
 				C74B7C25171EB1B000E19FCD /* ForSlidingViewController.m in Sources */,
 				C72CA9A1171F0E2C00CE605A /* ValidateSlidingViewController.m in Sources */,
 				C79DC0DF1727151E00EB5EFE /* ConfirmationSlideViewController.m in Sources */,
+				C76675361727625100D4D528 /* CircularUIView.m in Sources */,
+				C7667539172767D300D4D528 /* ForSpendingViewController.m in Sources */,
+				C766753D17276CB500D4D528 /* ForFunViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
