@@ -33,6 +33,10 @@
 		C777BC081720465B0055D442 /* container-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C777BC071720465B0055D442 /* container-background.png */; };
 		C793AE73172709CA00B9AAED /* green_check.png in Resources */ = {isa = PBXBuildFile; fileRef = C793AE72172709CA00B9AAED /* green_check.png */; };
 		C79DC0DF1727151E00EB5EFE /* ConfirmationSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */; };
+		C7BF3D8B17283D4C00B49BA7 /* dark_wook_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7BF3D8817283D4C00B49BA7 /* dark_wook_bg.jpg */; };
+		C7BF3D8C17283D4C00B49BA7 /* gray_texture_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7BF3D8917283D4C00B49BA7 /* gray_texture_bg.jpg */; };
+		C7BF3D8D17283D4C00B49BA7 /* light_wood_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7BF3D8A17283D4C00B49BA7 /* light_wood_bg.jpg */; };
+		C7BF3D8F1728402000B49BA7 /* light_gray_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BF3D8E1728402000B49BA7 /* light_gray_bg.png */; };
 		C7D12CDA1719C5C800C9E920 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */; };
 		C7F332001727815C00416759 /* RobotUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7F331FF1727815C00416759 /* RobotUIKit.bundle */; };
 		C7F332091727820900416759 /* RobotKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F332071727820900416759 /* RobotKit.framework */; };
@@ -81,6 +85,10 @@
 		C793AE72172709CA00B9AAED /* green_check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_check.png; sourceTree = "<group>"; };
 		C79DC0DD1727151E00EB5EFE /* ConfirmationSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationSlideViewController.h; sourceTree = "<group>"; };
 		C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationSlideViewController.m; sourceTree = "<group>"; };
+		C7BF3D8817283D4C00B49BA7 /* dark_wook_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dark_wook_bg.jpg; sourceTree = "<group>"; };
+		C7BF3D8917283D4C00B49BA7 /* gray_texture_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gray_texture_bg.jpg; sourceTree = "<group>"; };
+		C7BF3D8A17283D4C00B49BA7 /* light_wood_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = light_wood_bg.jpg; sourceTree = "<group>"; };
+		C7BF3D8E1728402000B49BA7 /* light_gray_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_gray_bg.png; sourceTree = "<group>"; };
 		C7D12CD81719C5C800C9E920 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
 		C7F331FF1727815C00416759 /* RobotUIKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RobotUIKit.bundle; sourceTree = "<group>"; };
@@ -198,6 +206,10 @@
 		C73D7CCE1718763400C2A741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C7BF3D8E1728402000B49BA7 /* light_gray_bg.png */,
+				C7BF3D8817283D4C00B49BA7 /* dark_wook_bg.jpg */,
+				C7BF3D8917283D4C00B49BA7 /* gray_texture_bg.jpg */,
+				C7BF3D8A17283D4C00B49BA7 /* light_wood_bg.jpg */,
 				C766752917275FDD00D4D528 /* JoystickPuck.png */,
 				C766752A17275FDD00D4D528 /* JoystickBG.png */,
 				C793AE72172709CA00B9AAED /* green_check.png */,
@@ -314,6 +326,10 @@
 				C766752C17275FDD00D4D528 /* JoystickBG.png in Resources */,
 				C7F332001727815C00416759 /* RobotUIKit.bundle in Resources */,
 				C7F332141727895600416759 /* RobotUIKit.bundle in Resources */,
+				C7BF3D8B17283D4C00B49BA7 /* dark_wook_bg.jpg in Resources */,
+				C7BF3D8C17283D4C00B49BA7 /* gray_texture_bg.jpg in Resources */,
+				C7BF3D8D17283D4C00B49BA7 /* light_wood_bg.jpg in Resources */,
+				C7BF3D8F1728402000B49BA7 /* light_gray_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

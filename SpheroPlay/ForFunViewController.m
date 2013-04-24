@@ -171,18 +171,9 @@
     NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
     
     NSString* nibName;
-    // Set up for iPhone/ipod
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        // Change if your app is portrait
-        nibName = @"RUINoSpheroConnectedViewController_Portrait";
-        //nibName = @"RUINoSpheroConnectedViewController_Landscape";
-    }
-    // Set up for iPad
-    else {
-        // Change if your app is portrait
-        nibName = @"RUINoSpheroConnectedViewController_iPad_Portrait";
-        // nibName = @"RUINoSpheroConnectedViewController_iPad_Landscape";
-    }
+    // Change if your app is portrait
+    //nibName = @"RUINoSpheroConnectedViewController_Portrait";
+    nibName = @"RUINoSpheroConnectedViewController_Landscape";
     
     noSpheroView = [[RUINoSpheroConnectedViewController alloc]
                     initWithNibName:nibName

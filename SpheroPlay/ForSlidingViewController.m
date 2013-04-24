@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     //Set initial Amounts
     combinedAmount = 1000.0;
     initialCheckingAmount = 550.00;

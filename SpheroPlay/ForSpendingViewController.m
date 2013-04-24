@@ -44,10 +44,10 @@
     calibrateAboveHandler = [[RUICalibrateButtonGestureHandler alloc]
                              initWithView:self.view
                              button:calibrateAboveButton];
-    calibrateAboveHandler.calibrationRadius = 200;
+    calibrateAboveHandler.calibrationRadius = 120;
     
     // Open the circle widget above the button, can switch to pop out and cardinal direction
-    calibrateAboveHandler.calibrationCircleLocation = RUICalibrationCircleLocationAbove;
+    calibrateAboveHandler.calibrationCircleLocation = RUICalibrationCircleLocationBelow;
     // Change color of the button
     [calibrateAboveHandler setBackgroundWithColor:[UIColor colorWithRed:0.1 green:0.5 blue:1 alpha:1]];
     [calibrateAboveHandler setForegroundWithColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];

@@ -28,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     if (self.newSavingsAmount > self.initialSavingsAmount) {
         //They transfered money into savings.
         

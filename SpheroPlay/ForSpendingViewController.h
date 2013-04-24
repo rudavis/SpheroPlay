@@ -31,7 +31,6 @@
     
     // Buttons from NIB that link to a calibration gesture handler
     IBOutlet UIButton *calibrateAboveButton;
-    IBOutlet UIView *myCalibrationView;
 }
 
 -(void)setupRobotConnection;
