@@ -34,6 +34,13 @@
 		C793AE73172709CA00B9AAED /* green_check.png in Resources */ = {isa = PBXBuildFile; fileRef = C793AE72172709CA00B9AAED /* green_check.png */; };
 		C79DC0DF1727151E00EB5EFE /* ConfirmationSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */; };
 		C7D12CDA1719C5C800C9E920 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */; };
+		C7F332001727815C00416759 /* RobotUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7F331FF1727815C00416759 /* RobotUIKit.bundle */; };
+		C7F332091727820900416759 /* RobotKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F332071727820900416759 /* RobotKit.framework */; };
+		C7F3320A1727820900416759 /* RobotUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F332081727820900416759 /* RobotUIKit.framework */; };
+		C7F3320C1727822000416759 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F3320B1727822000416759 /* CoreMotion.framework */; };
+		C7F3320E1727822A00416759 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F3320D1727822A00416759 /* GameKit.framework */; };
+		C7F332101727823700416759 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F3320F1727823700416759 /* ExternalAccessory.framework */; };
+		C7F332141727895600416759 /* RobotUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7F332131727895600416759 /* RobotUIKit.bundle */; };
 		C7F7DDCF171DF01A00BD4A77 /* colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7F7DDCE171DF01A00BD4A77 /* colors.txt */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +83,13 @@
 		C79DC0DE1727151E00EB5EFE /* ConfirmationSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationSlideViewController.m; sourceTree = "<group>"; };
 		C7D12CD81719C5C800C9E920 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
+		C7F331FF1727815C00416759 /* RobotUIKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RobotUIKit.bundle; sourceTree = "<group>"; };
+		C7F332071727820900416759 /* RobotKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RobotKit.framework; path = "../Sphero-iOS-SDK/frameworks/RobotKit.framework"; sourceTree = "<group>"; };
+		C7F332081727820900416759 /* RobotUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RobotUIKit.framework; path = "../Sphero-iOS-SDK/frameworks/RobotUIKit.framework"; sourceTree = "<group>"; };
+		C7F3320B1727822000416759 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		C7F3320D1727822A00416759 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		C7F3320F1727823700416759 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		C7F332131727895600416759 /* RobotUIKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RobotUIKit.bundle; path = SpheroPlay/RobotUIKit.bundle; sourceTree = "<group>"; };
 		C7F7DDCE171DF01A00BD4A77 /* colors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = colors.txt; path = SpheroPlay/colors.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,6 +98,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F332091727820900416759 /* RobotKit.framework in Frameworks */,
+				C7F3320A1727820900416759 /* RobotUIKit.framework in Frameworks */,
+				C7F3320C1727822000416759 /* CoreMotion.framework in Frameworks */,
+				C7F3320E1727822A00416759 /* GameKit.framework in Frameworks */,
+				C7F332101727823700416759 /* ExternalAccessory.framework in Frameworks */,
 				C747CC26171E13E20034FD8F /* QuartzCore.framework in Frameworks */,
 				C73D7CA017186F8400C2A741 /* UIKit.framework in Frameworks */,
 				C73D7CA217186F8400C2A741 /* Foundation.framework in Frameworks */,
@@ -115,6 +134,12 @@
 		C73D7C9E17186F8400C2A741 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7F332131727895600416759 /* RobotUIKit.bundle */,
+				C7F3320F1727823700416759 /* ExternalAccessory.framework */,
+				C7F3320D1727822A00416759 /* GameKit.framework */,
+				C7F3320B1727822000416759 /* CoreMotion.framework */,
+				C7F332071727820900416759 /* RobotKit.framework */,
+				C7F332081727820900416759 /* RobotUIKit.framework */,
 				C747CC25171E13E20034FD8F /* QuartzCore.framework */,
 				C73D7C9F17186F8400C2A741 /* UIKit.framework */,
 				C73D7CA117186F8400C2A741 /* Foundation.framework */,
@@ -163,6 +188,7 @@
 		C73D7CCD1718760300C2A741 /* SpheroClasses */ = {
 			isa = PBXGroup;
 			children = (
+				C7F331FF1727815C00416759 /* RobotUIKit.bundle */,
 				C76675341727624A00D4D528 /* CircularUIView.h */,
 				C76675351727624A00D4D528 /* CircularUIView.m */,
 			);
@@ -286,6 +312,8 @@
 				C793AE73172709CA00B9AAED /* green_check.png in Resources */,
 				C766752B17275FDD00D4D528 /* JoystickPuck.png in Resources */,
 				C766752C17275FDD00D4D528 /* JoystickBG.png in Resources */,
+				C7F332001727815C00416759 /* RobotUIKit.bundle in Resources */,
+				C7F332141727895600416759 /* RobotUIKit.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,9 +419,19 @@
 		C73D7CC017186F8400C2A741 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Sphero-iOS-SDK/frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpheroPlay/SpheroPlay-Prefix.pch";
 				INFOPLIST_FILE = "SpheroPlay/SpheroPlay-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lstdc++",
+					"-all_load",
+					"-lsqlite3",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -402,9 +440,19 @@
 		C73D7CC117186F8400C2A741 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../Sphero-iOS-SDK/frameworks\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SpheroPlay/SpheroPlay-Prefix.pch";
 				INFOPLIST_FILE = "SpheroPlay/SpheroPlay-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-lstdc++",
+					"-all_load",
+					"-lsqlite3",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
