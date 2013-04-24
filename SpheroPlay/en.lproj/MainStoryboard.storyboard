@@ -197,28 +197,39 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9f1-dd-uek">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.75" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="wQT-Gu-MgK" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="0DN-dq-xg4"/>
+                            <constraint firstItem="9f1-dd-uek" firstAttribute="trailing" secondItem="Pu7-jP-dCy" secondAttribute="trailing" type="default" id="17v-rd-Haw"/>
+                            <constraint firstItem="9f1-dd-uek" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="228" id="1aK-xu-59W"/>
                             <constraint firstItem="Vo8-jg-cah" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="20" symbolic="YES" type="default" id="D6u-vt-fg7"/>
+                            <constraint firstItem="9f1-dd-uek" firstAttribute="leading" secondItem="Pu7-jP-dCy" secondAttribute="leading" type="default" id="KRs-En-ag3"/>
                             <constraint firstItem="wQT-Gu-MgK" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="20" symbolic="YES" type="default" id="RlE-XE-RHR"/>
+                            <constraint firstAttribute="bottom" secondItem="9f1-dd-uek" secondAttribute="bottom" constant="26" id="Srp-Z8-jLq"/>
                             <constraint firstAttribute="bottom" secondItem="Pu7-jP-dCy" secondAttribute="bottom" constant="133" id="UxG-uN-uYC"/>
-                            <constraint firstItem="Pu7-jP-dCy" firstAttribute="centerX" secondItem="GHs-eo-mgh" secondAttribute="centerX" type="default" id="XbV-39-zTd"/>
                             <constraint firstItem="Pu7-jP-dCy" firstAttribute="leading" secondItem="2UZ-Ed-yft" secondAttribute="leading" constant="35" id="acO-v7-2fn"/>
                             <constraint firstItem="Vo8-jg-cah" firstAttribute="leading" secondItem="2UZ-Ed-yft" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bVs-Ha-8Sf"/>
-                            <constraint firstItem="GHs-eo-mgh" firstAttribute="centerX" secondItem="2UZ-Ed-yft" secondAttribute="centerX" type="default" id="hFv-ha-wgo"/>
+                            <constraint firstItem="9f1-dd-uek" firstAttribute="centerX" secondItem="GHs-eo-mgh" secondAttribute="centerX" type="default" id="cug-IO-TI7"/>
                             <constraint firstAttribute="bottom" secondItem="GHs-eo-mgh" secondAttribute="bottom" constant="64" id="pNv-VJ-RhO"/>
                             <constraint firstItem="Pu7-jP-dCy" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="121" id="utx-mI-cwh"/>
+                            <constraint firstItem="9f1-dd-uek" firstAttribute="centerX" secondItem="2UZ-Ed-yft" secondAttribute="centerX" type="default" id="vrM-Ho-kgQ"/>
                         </constraints>
                         <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     </view>
                     <navigationItem key="navigationItem" title="For Spending" id="86B-6y-dAj"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="calibrateAboveButton" destination="GHs-eo-mgh" id="U0M-np-ZJ3"/>
                         <outlet property="circularView" destination="uH9-Ny-Dqs" id="VVt-Xl-6XX"/>
                         <outlet property="drivePuck" destination="0Sv-uK-iT1" id="45x-xo-ubC"/>
                         <outlet property="driveWheel" destination="Pu7-jP-dCy" id="Ntb-Fh-uBE"/>
+                        <outlet property="myCalibrationView" destination="9f1-dd-uek" id="TP4-ep-b4x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmx-P0-Bcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -246,14 +257,25 @@
                                     <action selector="colorMacroButtonPressed:" destination="I10-mO-b8M" eventType="touchUpInside" id="mIL-Dj-dOn"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Connecting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a83-w2-fEp">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="9qN-dF-Dwt"/>
-                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="teP-2L-4ov"/>
+                            <constraint firstItem="a83-w2-fEp" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="K9s-wS-Eyd"/>
+                            <constraint firstItem="a83-w2-fEp" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Wc7-b2-xb9"/>
+                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xax-vB-8mE"/>
+                            <constraint firstAttribute="trailing" secondItem="a83-w2-fEp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="eWj-6V-Sx2"/>
+                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="56" id="nqK-GQ-I1k"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="For Fun" id="O1W-Xd-NYb"/>
+                    <connections>
+                        <outlet property="connectionLabel" destination="a83-w2-fEp" id="GyR-Gm-i7I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uby-Qx-uQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -590,6 +612,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ForFunViewController.h"/>
             <relationships>
                 <relationship kind="action" name="colorMacroButtonPressed:"/>
+                <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="ForSlidingViewController" superclassName="UIViewController">

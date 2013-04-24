@@ -7,14 +7,24 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <RobotUIKit/RobotUIKit.h>
 
 @interface ForFunViewController : UIViewController {
+    BOOL ledON;
     BOOL robotOnline;
+    BOOL robotInitialized;
+    BOOL noSpheroViewShowing;
+    float robotDelay;
+    UILabel *connetionLabel;
+    
+    RUINoSpheroConnectedViewController* noSpheroView;
 }
-
-- (IBAction)colorMacroButtonPressed:(id)sender;
+@property (nonatomic, retain) IBOutlet UILabel* connectionLabel;
 
 -(void)setupRobotConnection;
 -(void)handleRobotOnline;
+-(void)toggleLED;
+
+- (IBAction)colorMacroButtonPressed:(id)sender;
 
 @end

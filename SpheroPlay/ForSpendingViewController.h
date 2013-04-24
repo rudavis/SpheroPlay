@@ -8,22 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "CircularUIView.h"
-//#import <RobotUIKit/RobotUIKit.h>
-//#import <RobotKit/RobotKit.h>
+#import <RobotUIKit/RobotUIKit.h>
+#import <RobotKit/RobotKit.h>
 
-@interface ForSpendingViewController : UIViewController
+@interface ForSpendingViewController : UIViewController <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol>
 {
-    //Need to use <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol>
     // Sphero state variables
     BOOL robotOnline;
     BOOL ballMoving;
     BOOL allowCalibrating;
     
     // Controls calibration gestures
-//    RUICalibrateButtonGestureHandler *calibrateAboveHandler;
+    RUICalibrateButtonGestureHandler *calibrateAboveHandler;
     
     // Controls two finger calibration gestures
-//    RUICalibrateGestureHandler *calibrateTwoFingerHandler;
+    RUICalibrateGestureHandler *calibrateTwoFingerHandler;
     
     //Views that make up the drive joystick
     IBOutlet UIView *driveWheel;
@@ -32,14 +31,15 @@
     
     // Buttons from NIB that link to a calibration gesture handler
     IBOutlet UIButton *calibrateAboveButton;
+    IBOutlet UIView *myCalibrationView;
 }
 
-//-(void)setupRobotConnection;
-//-(void)handleRobotOnline;
+-(void)setupRobotConnection;
+-(void)handleRobotOnline;
 
 //Joystick drive related methods
 -(float)clampWithValue:(float)value min:(float)min max:(float)max;
-//-(void)updateMotionIndicator:(RKDriveAlgorithm*)driveAlgorithm;
+-(void)updateMotionIndicator:(RKDriveAlgorithm*)driveAlgorithm;
 -(void)handleJoystickMotion:(id)sender;
 
 
