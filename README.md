@@ -1,5 +1,3 @@
-# Intro #
-
 Building an app for our Sphero codefest, a sprint team challenge to engineer the coolest Sphero innovation.
 
 **Due May 10**
