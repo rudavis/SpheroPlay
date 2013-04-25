@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <RobotUIKit/RobotUIKit.h>
+#import "OrentationHelpViewController.h"
 
-@interface ForFunViewController : UIViewController {
+@interface ForFunViewController : UIViewController <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol, OrentationHelpViewControllerDelegate> {
     BOOL ledON;
     BOOL robotOnline;
     BOOL robotInitialized;
@@ -26,5 +27,7 @@
 -(void)toggleLED;
 
 - (IBAction)colorMacroButtonPressed:(id)sender;
+- (IBAction)colorButtonPressed:(id)sender;
+
 
 @end

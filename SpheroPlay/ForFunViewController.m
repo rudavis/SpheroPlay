@@ -9,6 +9,7 @@
 #import "ForFunViewController.h"
 #import "RobotKit/RobotKit.h"
 #import "RobotUIKit/RobotUIKit.h"
+#include "OrentationHelpViewController.h"
 
 @implementation ForFunViewController
 @synthesize connectionLabel;
@@ -68,12 +69,15 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    return NO;
+/*
     // Return YES for supported orientations
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     } else {
         return YES;
     }
+*/
 }
 
 -(void)appWillResignActive:(NSNotification*)notification {
@@ -165,21 +169,24 @@
 
 -(void)showNoSpheroConnectedView {
     if( robotOnline ) return;
-    //RobotUIKit resources like images and nib files stored in an external bundle and the path must be specified
+
+    //Don't know why this doesn't show in Portriate mode.
+/*
     NSString* rootpath = [[NSBundle mainBundle] bundlePath];
     NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
     NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
     
     NSString* nibName;
     // Change if your app is portrait
-    //nibName = @"RUINoSpheroConnectedViewController_Portrait";
-    nibName = @"RUINoSpheroConnectedViewController_Landscape";
+    nibName = @"RUINoSpheroConnectedViewController_Portrait";
+    //nibName = @"RUINoSpheroConnectedViewController_Landscape";
     
     noSpheroView = [[RUINoSpheroConnectedViewController alloc]
                     initWithNibName:nibName
                     bundle:ruiBundle];
     [self presentModalLayerViewController:noSpheroView animated:YES];
     noSpheroViewShowing = YES;
+*/
 }
 
 //Create a macro that changes the ball colors from:
@@ -235,4 +242,40 @@
         [macro playMacro];
         //Release Macro
 }
+
+- (IBAction)colorButtonPressed:(id)sender {
+    //Pull color picker nib from RobotUIKit Bundle
+    NSString* rootpath = [[NSBundle mainBundle] bundlePath];
+    NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
+    NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
+    
+    //Present the color picker and set the starting color to white
+    RUIColorPickerViewController *colorPicker = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:ruiBundle];
+
+    [colorPicker setCurrentRed:1.0 green:1.0 blue:1.0];
+    colorPicker.delegate = self;
+    
+    [self presentModalLayerViewController:colorPicker animated:YES];
+}
+//Color Picker Delegates
+//Color picker delegate callbacks
+-(void) colorPickerDidChange:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
+    //Send the color to Sphero when the user picks a new color in the picker
+    [RKRGBLEDOutputCommand sendCommandWithRed:r green:g blue:b];
+}
+
+
+-(void) colorPickerDidFinish:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
+    //Use this callback to dismiss the color picker, since we are presenting it as a modalLayerViewController it will dismiss itself
+}
+
+
+//Open the Orentation Help view as a modal.  
+-(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"OrentationHelpSegue"]) {
+        OrentationHelpViewController *destViewController = segue.destinationViewController;
+        destViewController.delegate = self;
+    }
+}
+
 @end
