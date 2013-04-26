@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C729F16C1729C7C90011EE05 /* instructionText.png in Resources */ = {isa = PBXBuildFile; fileRef = C729F16B1729C7C90011EE05 /* instructionText.png */; };
 		C729F1761729C8FF0011EE05 /* OrentationHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C729F1741729C8FF0011EE05 /* OrentationHelpViewController.m */; };
+		C72C236C172ACDFF007F45AA /* TiltSphero.png in Resources */ = {isa = PBXBuildFile; fileRef = C72C236B172ACDFF007F45AA /* TiltSphero.png */; };
+		C72C236F172ACF4A007F45AA /* TiltHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72C236E172ACF4A007F45AA /* TiltHelpViewController.m */; };
 		C72CA9A1171F0E2C00CE605A /* ValidateSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */; };
 		C73D7CA017186F8400C2A741 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D7C9F17186F8400C2A741 /* UIKit.framework */; };
 		C73D7CA217186F8400C2A741 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D7CA117186F8400C2A741 /* Foundation.framework */; };
@@ -41,7 +43,6 @@
 		C7BF3D8D17283D4C00B49BA7 /* light_wood_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C7BF3D8A17283D4C00B49BA7 /* light_wood_bg.jpg */; };
 		C7BF3D8F1728402000B49BA7 /* light_gray_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BF3D8E1728402000B49BA7 /* light_gray_bg.png */; };
 		C7D12CDA1719C5C800C9E920 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */; };
-		C7F332001727815C00416759 /* RobotUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7F331FF1727815C00416759 /* RobotUIKit.bundle */; };
 		C7F332091727820900416759 /* RobotKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F332071727820900416759 /* RobotKit.framework */; };
 		C7F3320A1727820900416759 /* RobotUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F332081727820900416759 /* RobotUIKit.framework */; };
 		C7F3320C1727822000416759 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F3320B1727822000416759 /* CoreMotion.framework */; };
@@ -55,6 +56,9 @@
 		C729F16B1729C7C90011EE05 /* instructionText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instructionText.png; sourceTree = "<group>"; };
 		C729F1731729C8FF0011EE05 /* OrentationHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrentationHelpViewController.h; sourceTree = "<group>"; };
 		C729F1741729C8FF0011EE05 /* OrentationHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrentationHelpViewController.m; sourceTree = "<group>"; };
+		C72C236B172ACDFF007F45AA /* TiltSphero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TiltSphero.png; sourceTree = "<group>"; };
+		C72C236D172ACF4A007F45AA /* TiltHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiltHelpViewController.h; sourceTree = "<group>"; };
+		C72C236E172ACF4A007F45AA /* TiltHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiltHelpViewController.m; sourceTree = "<group>"; };
 		C72CA99F171F0E2C00CE605A /* ValidateSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateSlidingViewController.h; sourceTree = "<group>"; };
 		C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateSlidingViewController.m; sourceTree = "<group>"; };
 		C73D7C9C17186F8400C2A741 /* SpheroPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpheroPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,7 +102,6 @@
 		C7BF3D8E1728402000B49BA7 /* light_gray_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_gray_bg.png; sourceTree = "<group>"; };
 		C7D12CD81719C5C800C9E920 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
-		C7F331FF1727815C00416759 /* RobotUIKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RobotUIKit.bundle; sourceTree = "<group>"; };
 		C7F332071727820900416759 /* RobotKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RobotKit.framework; path = "../Sphero-iOS-SDK/frameworks/RobotKit.framework"; sourceTree = "<group>"; };
 		C7F332081727820900416759 /* RobotUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RobotUIKit.framework; path = "../Sphero-iOS-SDK/frameworks/RobotUIKit.framework"; sourceTree = "<group>"; };
 		C7F3320B1727822000416759 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -203,7 +206,6 @@
 		C73D7CCD1718760300C2A741 /* SpheroClasses */ = {
 			isa = PBXGroup;
 			children = (
-				C7F331FF1727815C00416759 /* RobotUIKit.bundle */,
 				C76675341727624A00D4D528 /* CircularUIView.h */,
 				C76675351727624A00D4D528 /* CircularUIView.m */,
 			);
@@ -214,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				C748E8301729ECD1003A370C /* CalibrateSphero.png */,
+				C72C236B172ACDFF007F45AA /* TiltSphero.png */,
 				C729F16B1729C7C90011EE05 /* instructionText.png */,
 				C7BF3D8E1728402000B49BA7 /* light_gray_bg.png */,
 				C7BF3D8817283D4C00B49BA7 /* dark_wook_bg.jpg */,
@@ -260,6 +263,8 @@
 		C766753A17276CA100D4D528 /* ForFun */ = {
 			isa = PBXGroup;
 			children = (
+				C72C236D172ACF4A007F45AA /* TiltHelpViewController.h */,
+				C72C236E172ACF4A007F45AA /* TiltHelpViewController.m */,
 				C729F1731729C8FF0011EE05 /* OrentationHelpViewController.h */,
 				C729F1741729C8FF0011EE05 /* OrentationHelpViewController.m */,
 				C766753B17276CB500D4D528 /* ForFunViewController.h */,
@@ -335,7 +340,6 @@
 				C793AE73172709CA00B9AAED /* green_check.png in Resources */,
 				C766752B17275FDD00D4D528 /* JoystickPuck.png in Resources */,
 				C766752C17275FDD00D4D528 /* JoystickBG.png in Resources */,
-				C7F332001727815C00416759 /* RobotUIKit.bundle in Resources */,
 				C7F332141727895600416759 /* RobotUIKit.bundle in Resources */,
 				C7BF3D8B17283D4C00B49BA7 /* dark_wook_bg.jpg in Resources */,
 				C7BF3D8C17283D4C00B49BA7 /* gray_texture_bg.jpg in Resources */,
@@ -343,6 +347,7 @@
 				C7BF3D8F1728402000B49BA7 /* light_gray_bg.png in Resources */,
 				C729F16C1729C7C90011EE05 /* instructionText.png in Resources */,
 				C748E8311729ECD1003A370C /* CalibrateSphero.png in Resources */,
+				C72C236C172ACDFF007F45AA /* TiltSphero.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +368,7 @@
 				C7667539172767D300D4D528 /* ForSpendingViewController.m in Sources */,
 				C766753D17276CB500D4D528 /* ForFunViewController.m in Sources */,
 				C729F1761729C8FF0011EE05 /* OrentationHelpViewController.m in Sources */,
+				C72C236F172ACF4A007F45AA /* TiltHelpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

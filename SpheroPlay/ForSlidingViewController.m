@@ -178,13 +178,8 @@
     //            the IMU Angles roll, pitch, and yaw (in degrees)
     //            the Quaternion data q0, q1, q2, and q3 (in 1/10000) of a Q
     //RKDataStreamingMask mask =  RKDataStreamingMaskAccelerometerFilteredAll |
-    //RKDataStreamingMaskIMUAnglesFilteredAll   |
-    //RKDataStreamingMaskQuaternionAll;
-    
-    //I think I just need Roll from the Angles stream
     RKDataStreamingMask mask = RKDataStreamingMaskAccelerometerFilteredAll;
-    //RKDataStreamingMaskIMUAnglesFilteredAll | RKDataStreamingMaskGyroXFiltered | RKDataStreamingMaskGyroYFiltered;
-    
+
     // Sphero samples this data at 400 Hz.  The divisor sets the sample
     // rate you want it to store frames of data.  In this case 400Hz/40 = 10Hz
     uint16_t divisor = 40;

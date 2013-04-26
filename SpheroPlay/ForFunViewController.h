@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <RobotUIKit/RobotUIKit.h>
 #import "OrentationHelpViewController.h"
+#import "TiltHelpViewController.h"
 
-@interface ForFunViewController : UIViewController <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol, OrentationHelpViewControllerDelegate> {
+@interface ForFunViewController : UIViewController <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol, OrentationHelpViewControllerDelegate, TiltHelpViewControllerDelegate> {
     BOOL ledON;
     BOOL robotOnline;
     BOOL robotInitialized;

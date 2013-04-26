@@ -9,7 +9,7 @@
 #import "ForFunViewController.h"
 #import "RobotKit/RobotKit.h"
 #import "RobotUIKit/RobotUIKit.h"
-#include "OrentationHelpViewController.h"
+
 
 @implementation ForFunViewController
 @synthesize connectionLabel;
@@ -274,6 +274,9 @@
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"OrentationHelpSegue"]) {
         OrentationHelpViewController *destViewController = segue.destinationViewController;
+        destViewController.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"TiltHelpViewController"]) {
+        TiltHelpViewController *destViewController = segue.destinationViewController;
         destViewController.delegate = self;
     }
 }

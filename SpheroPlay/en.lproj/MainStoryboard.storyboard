@@ -281,15 +281,31 @@
                                     <segue destination="JGa-UL-6Xn" kind="modal" identifier="OrentationHelpSegue" id="unQ-aR-MGt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eZu-Fe-7eP">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Tilt">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="cMQ-XE-B7n" kind="modal" identifier="TiltHelpSegue" id="1Jh-7X-dpk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="114" id="48W-1e-e0I"/>
                             <constraint firstItem="aT2-yu-UTq" firstAttribute="baseline" secondItem="w7P-6W-Z5O" secondAttribute="baseline" type="default" id="7UU-Ww-G8g"/>
                             <constraint firstItem="rf6-T7-tW1" firstAttribute="baseline" secondItem="aT2-yu-UTq" secondAttribute="baseline" type="default" id="Jvu-zF-nus"/>
                             <constraint firstItem="a83-w2-fEp" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="K9s-wS-Eyd"/>
                             <constraint firstItem="aT2-yu-UTq" firstAttribute="centerX" secondItem="a83-w2-fEp" secondAttribute="centerX" type="default" id="ONg-UW-nqP"/>
                             <constraint firstItem="uot-c3-Epq" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="-128" id="QDB-0U-Eqc"/>
+                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="leading" secondItem="rf6-T7-tW1" secondAttribute="leading" type="default" id="Sah-Zq-YcZ"/>
                             <constraint firstItem="a83-w2-fEp" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Wc7-b2-xb9"/>
+                            <constraint firstAttribute="trailing" secondItem="eZu-Fe-7eP" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XNk-K4-4BX"/>
                             <constraint firstItem="w7P-6W-Z5O" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xax-vB-8mE"/>
                             <constraint firstAttribute="trailing" secondItem="a83-w2-fEp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="eWj-6V-Sx2"/>
                             <constraint firstAttribute="trailing" secondItem="rf6-T7-tW1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="jJd-F1-DJz"/>
@@ -316,8 +332,8 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="CalibrateSphero.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yco-hl-2L4">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="JeG-iI-nqR"/>
-                                    <constraint firstAttribute="width" constant="300" id="U50-zP-1vF"/>
+                                    <constraint firstAttribute="width" constant="250" id="5Gx-R9-JvC"/>
+                                    <constraint firstAttribute="height" constant="250" id="E3s-ho-HeX"/>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="instructionText.png" translatesAutoresizingMaskIntoConstraints="NO" id="LCq-UU-yE1"/>
@@ -340,12 +356,12 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="LCq-UU-yE1" firstAttribute="top" secondItem="Yco-hl-2L4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="1Bb-HX-WGq"/>
                             <constraint firstItem="WSU-PO-Hph" firstAttribute="centerX" secondItem="LCq-UU-yE1" secondAttribute="centerX" type="default" id="JEl-BY-Mzl"/>
-                            <constraint firstItem="LCq-UU-yE1" firstAttribute="leading" secondItem="Yco-hl-2L4" secondAttribute="leading" type="default" id="O01-x2-XGM"/>
-                            <constraint firstItem="Yco-hl-2L4" firstAttribute="top" secondItem="aZ3-5h-LRX" secondAttribute="top" constant="20" symbolic="YES" type="default" id="g7H-Aj-kh8"/>
+                            <constraint firstItem="Yco-hl-2L4" firstAttribute="top" secondItem="aZ3-5h-LRX" secondAttribute="top" constant="70" id="KDL-Ek-FlP"/>
+                            <constraint firstItem="LCq-UU-yE1" firstAttribute="top" secondItem="Yco-hl-2L4" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Zof-yn-qeK"/>
+                            <constraint firstItem="Yco-hl-2L4" firstAttribute="centerX" secondItem="LCq-UU-yE1" secondAttribute="centerX" type="default" id="fmh-2u-OMz"/>
                             <constraint firstAttribute="bottom" secondItem="WSU-PO-Hph" secondAttribute="bottom" constant="33" id="hgC-rX-Iiz"/>
-                            <constraint firstItem="WSU-PO-Hph" firstAttribute="centerX" secondItem="aZ3-5h-LRX" secondAttribute="centerX" type="default" id="lZz-IA-vao"/>
+                            <constraint firstItem="LCq-UU-yE1" firstAttribute="centerX" secondItem="aZ3-5h-LRX" secondAttribute="centerX" type="default" id="zfV-8K-mLQ"/>
                         </constraints>
                         <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                         <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -357,6 +373,63 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DjO-II-uf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2026" y="1078"/>
+        </scene>
+        <!--Tilt Help View Controller-->
+        <scene sceneID="PCa-AH-Oey">
+            <objects>
+                <viewController id="cMQ-XE-B7n" customClass="TiltHelpViewController" sceneMemberID="viewController">
+                    <view key="view" alpha="0.80000001192092896" contentMode="scaleToFill" id="8cC-yl-ijr">
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="TiltSphero.png" translatesAutoresizingMaskIntoConstraints="NO" id="kZI-2X-equ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="283" id="Iju-Xn-ytL"/>
+                                    <constraint firstAttribute="width" constant="250" id="isW-8X-qHL"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5of-gU-NNC">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="73" id="T5S-Wh-XKw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="okButtonPressed:" destination="cMQ-XE-B7n" eventType="touchUpInside" id="tKr-mh-Wxj"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="TILT SPHERO RIGHT AND LEFT TO MOVE THE SLIDER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="r1Y-Rh-sul">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="5ln-jT-r5G"/>
+                                    <constraint firstAttribute="height" constant="105" id="wqC-CC-pjk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="r1Y-Rh-sul" firstAttribute="centerX" secondItem="5of-gU-NNC" secondAttribute="centerX" type="default" id="LeD-3U-Sew"/>
+                            <constraint firstItem="kZI-2X-equ" firstAttribute="top" secondItem="8cC-yl-ijr" secondAttribute="top" constant="18" id="byJ-Dg-pXJ"/>
+                            <constraint firstAttribute="bottom" secondItem="5of-gU-NNC" secondAttribute="bottom" constant="32" id="igg-YU-JX5"/>
+                            <constraint firstItem="kZI-2X-equ" firstAttribute="centerX" secondItem="8cC-yl-ijr" secondAttribute="centerX" type="default" id="lbX-0Z-4Ah"/>
+                            <constraint firstAttribute="bottom" secondItem="r1Y-Rh-sul" secondAttribute="bottom" constant="136" id="lzP-fI-46W"/>
+                            <constraint firstItem="r1Y-Rh-sul" firstAttribute="centerX" secondItem="kZI-2X-equ" secondAttribute="centerX" type="default" id="w4t-ct-2hY"/>
+                        </constraints>
+                        <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                        <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e1a-Ka-k44" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2395" y="1079"/>
         </scene>
         <!--Validate Sliding View Controller - Validate-->
         <scene sceneID="Tam-mh-jhq">
@@ -681,77 +754,13 @@
         <image name="CalibrateSphero.png" width="504" height="501"/>
         <image name="JoystickBG.png" width="346" height="346"/>
         <image name="JoystickPuck.png" width="147" height="147"/>
+        <image name="TiltSphero.png" width="504" height="575"/>
         <image name="dollar.jpg" width="253" height="350"/>
         <image name="green_check.png" width="256" height="256"/>
         <image name="instructionText.png" width="300" height="150"/>
         <image name="light_gray_bg.png" width="640" height="960"/>
         <image name="piggy.jpg" width="400" height="420"/>
     </resources>
-    <classes>
-        <class className="CircularUIView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CircularUIView.h"/>
-        </class>
-        <class className="ConfirmationSlideViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmationSlideViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="homeButtonPressed:"/>
-            </relationships>
-        </class>
-        <class className="ForFunViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForFunViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="colorButtonPressed:"/>
-                <relationship kind="action" name="colorMacroButtonPressed:"/>
-                <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ForSlidingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForSlidingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="continueButtonPressed:"/>
-                <relationship kind="action" name="sliderValueChanged:" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="amountSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="checkingAmounLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="savingsAmountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="totalAmountLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ForSpendingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForSpendingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="passButtonPressed:"/>
-                <relationship kind="action" name="payButtonPressed:"/>
-                <relationship kind="outlet" name="calibrateAboveButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="circularView" candidateClass="CircularUIView"/>
-                <relationship kind="outlet" name="drivePuck" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="driveWheel" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="HomeTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeTableViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="OrentationHelpViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OrentationHelpViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="okButtonPressed:"/>
-            </relationships>
-        </class>
-        <class className="ValidateSlidingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ValidateSlidingViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="combinedAmountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="fromAccountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="toAccountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="transferAmountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="transferDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="updatedCheckingAmountLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="updatedSavingsAmountLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
