@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class RKDeviceAsyncData;
+@protocol ForSlidingViewControllerProtocol <NSObject>
+
+@required
+-(void)handleRobotOnline;
+-(void)handleAsyncData:(RKDeviceAsyncData *)asyncData;
+-(void)sendSetDataStreamingCommand;
+
+@end
 
 @interface ForSlidingViewController : UIViewController {
     BOOL robotOnline;
@@ -30,9 +38,6 @@
 - (IBAction)continueButtonPressed:(id)sender;
 
 -(void)setupRobotConnection;
--(void)handleRobotOnline;
--(void)handleAsyncData:(RKDeviceAsyncData *)asyncData;
--(void)sendSetDataStreamingCommand;
 
 
 

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ForSlidingViewController.h"
 
-@interface ValidateSlidingViewController : UIViewController
+@interface ValidateSlidingViewController : UIViewController <ForSlidingViewControllerProtocol> {
+    int packetCount;
+}
 
 @property double combinedAmount;
 @property double initialCheckingAmount;
@@ -19,7 +22,6 @@
 @property NSString *fromAccount;
 @property NSString *toAccounts;
 @property NSDate *transferDate;
-
 
 @property (strong, nonatomic) IBOutlet UILabel *transferAmountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *fromAccountLabel;

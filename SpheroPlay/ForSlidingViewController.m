@@ -10,9 +10,9 @@
 #import "ValidateSlidingViewController.h"
 #import "RobotKit/RobotKit.h"
 
-#define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 #define TOTAL_PACKET_COUNT 200
 #define PACKET_COUNT_THRESHOLD 50
+#define SHAKE_THRESHOLD 2
 
 @implementation ForSlidingViewController
 @synthesize totalAmountLabel, checkingAmounLabel, savingsAmountLabel, amountSlider;
@@ -103,6 +103,16 @@
         destViewController.initialSavingsAmount = initialSavingsAmount;
         destViewController.newCheckingAmount = newCheckingAmount;
         destViewController.newSavingsAmount = newSavingsAmount;
+        
+        //Stop this listening for streaming
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
+        // Turn off data streaming
+        [RKSetDataStreamingCommand sendCommandWithSampleRateDivisor:0
+                                                       packetFrames:0
+                                                         sensorMask:RKDataStreamingMaskOff
+                                                        packetCount:0];
+        // Unregister for async data packets
+        [[RKDeviceMessenger sharedMessenger] removeDataStreamingObserver:self];
     }
 }
 
@@ -135,8 +145,8 @@
     robotOnline = NO;
 }
 
+
 -(void)appDidBecomeActive:(NSNotification*)notification {
-    /*When the application becomes active after entering the background we try to connect to the robot*/
     [self setupRobotConnection];
 }
 
@@ -158,6 +168,8 @@
         [RKStabilizationCommand sendCommandWithState:RKStabilizationStateOff];
         // Turn on the Back LED for reference
         [RKBackLEDOutputCommand sendCommandWithBrightness:1.0f];
+        //Set color to Orange for fun
+        [RKRGBLEDOutputCommand sendCommandWithRed:1.0 green:0.65 blue:0.0];
         
         [self sendSetDataStreamingCommand];
         
@@ -222,7 +234,7 @@ This will give you a magnitude of the acceleration vector. It's a good value for
 "general acceleration-ness", and it's great for detecting shaking.
 */
         //General Shake ~2 - 3 is good.  
-        if ( sqrt(pow(x,2) + pow(y,2) + pow(z,2)) > 2) {
+        if ( sqrt(pow(x,2) + pow(y,2) + pow(z,2)) > SHAKE_THRESHOLD) {
             [self performSegueWithIdentifier:@"validateSlideSegue" sender:self];
         }
         

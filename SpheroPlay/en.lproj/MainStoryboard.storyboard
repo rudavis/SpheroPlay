@@ -505,7 +505,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="tc1-7C-kXI" kind="push" id="5No-Qh-ZoD"/>
+                                    <segue destination="tc1-7C-kXI" kind="push" identifier="ConfirmationSegue" id="5No-Qh-ZoD"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Transfer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tho-E5-QGf">

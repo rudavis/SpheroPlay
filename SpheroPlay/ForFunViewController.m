@@ -60,6 +60,11 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    //Close Connection to Robot
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
+    [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:0.0 blue:0.0];
+    [[RKRobotProvider sharedRobotProvider] closeRobotConnection];
+
 	[super viewDidDisappear:animated];
 }
 
@@ -70,7 +75,6 @@
 }
 
 -(void)appWillResignActive:(NSNotification*)notification {
-    /*When the application is entering the background we need to close the connection to the robot*/
     [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
     [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:0.0 blue:0.0];
     [[RKRobotProvider sharedRobotProvider] closeRobotConnection];
@@ -100,9 +104,7 @@
 -(void)setupRobotConnection {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidGainControl:) name:RKRobotDidGainControlNotification object:nil];
     
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRobotOnline) name:RKDeviceConnectionOnlineNotification object:nil];
-    
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRobotOffline) name:RKDeviceConnectionOfflineNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRobotOffline) name:RKRobotDidLossControlNotification object:nil];

@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ForSlidingViewController.h"
 
-@interface ConfirmationSlideViewController : UIViewController
+@interface ConfirmationSlideViewController : UIViewController <ForSlidingViewControllerProtocol> {
+    int packetCount;
+    float robotDelay;
+}
 - (IBAction)homeButtonPressed:(id)sender;
+- (void)successMacro;
+- (void)failureMacro;
 
 @end
