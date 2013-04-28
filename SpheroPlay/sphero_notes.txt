@@ -1,0 +1,21 @@
+For Spending:  
+	Send Ken image files and screen shots.
+
+For Spending:
+	Host drives and has a PASS button
+	Guest has color picker an a "PAY" button
+		PAY button opens a modal view to send $$ to Host.  Send button.
+	Host gets some notice that he got a payment... 
+
+
+For Fun:
+	Piggy bank:  Shake ball and play coin jingle.  Show piggy bank dumping change.
+		Color dims as you run out of coins in your piggy bank.
+	Arcade:  Person has to deposit .25 into an arcad slot to drive the ball around for a few minuntes..
+		Color brightness decreases as your time is running out.
+	Rat Race:  Person has a little bit of time to run a maze, maze start end and success is outside the app.
+
+
+Successful transaction turns ball Green.  
+	Unsuccessful turn red.  Use a static number to fail a trans
+

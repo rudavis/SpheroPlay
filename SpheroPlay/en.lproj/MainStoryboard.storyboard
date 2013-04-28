@@ -15,25 +15,40 @@
                         <sections>
                             <tableViewSection id="L3U-ef-xGE">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="fte-hO-pP7" imageView="zNR-bD-Fnz" rowHeight="98" style="IBUITableViewCellStyleDefault" id="JZv-Wc-YSv">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="98" id="JZv-Wc-YSv">
                                         <rect key="frame" x="0.0" y="10" width="320" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="10" y="1" width="280" height="97"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="For Saving" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fte-hO-pP7">
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="For Savings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mso-Cw-bqL">
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="201" id="7UR-mR-JnM"/>
+                                                        <constraint firstAttribute="height" constant="35" id="h9k-6U-DlN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="piggy.jpg" id="zNR-bD-Fnz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="97"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </imageView>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Use the Sphero to slide your way to better savings" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="181" translatesAutoresizingMaskIntoConstraints="NO" id="gkC-dk-cF7">
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="55" id="QZB-Wo-3Ox"/>
+                                                        <constraint firstAttribute="width" constant="181" id="v7m-aw-dzh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstItem="gkC-dk-cF7" firstAttribute="top" secondItem="JZv-Wc-YSv" secondAttribute="top" constant="33" id="0fm-KH-YCi"/>
+                                            <constraint firstItem="gkC-dk-cF7" firstAttribute="leading" secondItem="mso-Cw-bqL" secondAttribute="leading" type="default" id="ecW-sg-COZ"/>
+                                            <constraint firstItem="mso-Cw-bqL" firstAttribute="leading" secondItem="JZv-Wc-YSv" secondAttribute="leading" constant="89" id="sjg-bF-juu"/>
+                                            <constraint firstItem="mso-Cw-bqL" firstAttribute="top" secondItem="JZv-Wc-YSv" secondAttribute="top" constant="6" id="yYS-qE-78e"/>
+                                        </constraints>
                                         <connections>
                                             <segue destination="Oxc-ht-Pf1" kind="push" id="cAW-At-qGu"/>
                                         </connections>
@@ -104,11 +119,13 @@
                             <outlet property="delegate" destination="Wok-I5-V71" id="kej-3Y-bAp"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Ksu-6q-ejL"/>
+                    <navigationItem key="navigationItem" id="Ksu-6q-ejL">
+                        <barButtonItem key="rightBarButtonItem" id="Cu7-gD-GbD"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wea-Af-gPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1213" y="31"/>
+            <point key="canvasLocation" x="1049" y="31"/>
         </scene>
         <!--For Spending View Controller - For Spending-->
         <scene sceneID="Es5-2J-chu">
@@ -167,22 +184,6 @@
                                     <action selector="passButtonPressed:" destination="6ym-C0-1bE" eventType="touchUpInside" id="iPE-Ht-wh3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vo8-jg-cah">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="92" id="YGO-Ln-2mB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Pay">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="payButtonPressed:" destination="6ym-C0-1bE" eventType="touchUpInside" id="Rv5-28-u0j"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHs-eo-mgh">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -204,11 +205,9 @@
                             <constraint firstAttribute="trailing" secondItem="wQT-Gu-MgK" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="0DN-dq-xg4"/>
                             <constraint firstItem="Pu7-jP-dCy" firstAttribute="centerX" secondItem="2UZ-Ed-yft" secondAttribute="centerX" type="default" id="4Mu-gz-EKu"/>
                             <constraint firstItem="gxB-2o-8bO" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="-390" id="8AM-8A-el8"/>
-                            <constraint firstItem="Vo8-jg-cah" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="20" symbolic="YES" type="default" id="D6u-vt-fg7"/>
                             <constraint firstItem="wQT-Gu-MgK" firstAttribute="top" secondItem="2UZ-Ed-yft" secondAttribute="top" constant="20" symbolic="YES" type="default" id="RlE-XE-RHR"/>
                             <constraint firstAttribute="bottom" secondItem="Pu7-jP-dCy" secondAttribute="bottom" constant="133" id="UxG-uN-uYC"/>
                             <constraint firstItem="Pu7-jP-dCy" firstAttribute="leading" secondItem="2UZ-Ed-yft" secondAttribute="leading" constant="35" id="acO-v7-2fn"/>
-                            <constraint firstItem="Vo8-jg-cah" firstAttribute="leading" secondItem="2UZ-Ed-yft" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bVs-Ha-8Sf"/>
                             <constraint firstItem="gxB-2o-8bO" firstAttribute="leading" secondItem="2UZ-Ed-yft" secondAttribute="leading" constant="-140" id="o18-Fy-fAo"/>
                             <constraint firstAttribute="bottom" secondItem="GHs-eo-mgh" secondAttribute="bottom" constant="64" id="pNv-VJ-RhO"/>
                             <constraint firstItem="Pu7-jP-dCy" firstAttribute="centerX" secondItem="GHs-eo-mgh" secondAttribute="centerX" type="default" id="prB-9B-3qa"/>
@@ -226,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nmx-P0-Bcw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655" y="398"/>
+            <point key="canvasLocation" x="1637" y="382"/>
         </scene>
         <!--For Fun View Controller - For Fun-->
         <scene sceneID="CYM-z8-lpo">
@@ -239,7 +238,7 @@
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="light_gray_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="uot-c3-Epq"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7P-6W-Z5O">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Macro">
+                                <state key="normal" title="Old Macro">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -257,7 +256,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aT2-yu-UTq">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Color">
+                                <state key="normal" title="Color Picker">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -294,23 +293,58 @@
                                     <segue destination="cMQ-XE-B7n" kind="modal" identifier="TiltHelpSegue" id="1Jh-7X-dpk"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xia-7e-Peb">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Success Macro">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="successMacroButtonPressed:" destination="I10-mO-b8M" eventType="touchUpInside" id="1cs-lO-Rf5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxI-sm-RLg">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Failure Macro">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="failureMacroButtonPressed:" destination="I10-mO-b8M" eventType="touchUpInside" id="4dL-NM-yAC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="114" id="48W-1e-e0I"/>
                             <constraint firstItem="aT2-yu-UTq" firstAttribute="baseline" secondItem="w7P-6W-Z5O" secondAttribute="baseline" type="default" id="7UU-Ww-G8g"/>
+                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="baseline" secondItem="w7P-6W-Z5O" secondAttribute="baseline" type="default" id="BVp-W5-Qd2"/>
+                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="top" secondItem="rf6-T7-tW1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Bw1-ng-Td0"/>
+                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="baseline" secondItem="nxI-sm-RLg" secondAttribute="baseline" type="default" id="HRB-sl-z1T"/>
+                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="baseline" secondItem="xia-7e-Peb" secondAttribute="baseline" type="default" id="IPY-hP-e7p"/>
                             <constraint firstItem="rf6-T7-tW1" firstAttribute="baseline" secondItem="aT2-yu-UTq" secondAttribute="baseline" type="default" id="Jvu-zF-nus"/>
                             <constraint firstItem="a83-w2-fEp" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="K9s-wS-Eyd"/>
-                            <constraint firstItem="aT2-yu-UTq" firstAttribute="centerX" secondItem="a83-w2-fEp" secondAttribute="centerX" type="default" id="ONg-UW-nqP"/>
+                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Md2-Q9-Z7v"/>
                             <constraint firstItem="uot-c3-Epq" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="-128" id="QDB-0U-Eqc"/>
-                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="leading" secondItem="rf6-T7-tW1" secondAttribute="leading" type="default" id="Sah-Zq-YcZ"/>
+                            <constraint firstAttribute="bottom" secondItem="w7P-6W-Z5O" secondAttribute="bottom" constant="61" id="SYj-Mh-8aI"/>
+                            <constraint firstItem="nxI-sm-RLg" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UjN-he-JHl"/>
+                            <constraint firstAttribute="trailing" secondItem="rf6-T7-tW1" secondAttribute="trailing" constant="43" id="Vik-Z7-KNM"/>
                             <constraint firstItem="a83-w2-fEp" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Wc7-b2-xb9"/>
-                            <constraint firstAttribute="trailing" secondItem="eZu-Fe-7eP" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="XNk-K4-4BX"/>
-                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Xax-vB-8mE"/>
+                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="top" secondItem="aT2-yu-UTq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="XB3-Uu-6BC"/>
+                            <constraint firstItem="xia-7e-Peb" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bLZ-oP-d7X"/>
                             <constraint firstAttribute="trailing" secondItem="a83-w2-fEp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="eWj-6V-Sx2"/>
-                            <constraint firstAttribute="trailing" secondItem="rf6-T7-tW1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="jJd-F1-DJz"/>
-                            <constraint firstItem="w7P-6W-Z5O" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="56" id="nqK-GQ-I1k"/>
+                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="bottom" secondItem="nxI-sm-RLg" secondAttribute="bottom" type="default" id="iIU-bV-Xdr"/>
+                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="trailing" secondItem="rf6-T7-tW1" secondAttribute="trailing" type="default" id="kED-Ef-5zj"/>
+                            <constraint firstItem="nxI-sm-RLg" firstAttribute="top" secondItem="xia-7e-Peb" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="kKt-i8-bWw"/>
+                            <constraint firstItem="aT2-yu-UTq" firstAttribute="top" secondItem="nxI-sm-RLg" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="tbS-9e-XTk"/>
+                            <constraint firstItem="eZu-Fe-7eP" firstAttribute="leading" secondItem="rf6-T7-tW1" secondAttribute="leading" type="default" id="v0j-vL-G28"/>
                             <constraint firstItem="uot-c3-Epq" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="-355" id="vrR-Hh-tbJ"/>
+                            <constraint firstItem="aT2-yu-UTq" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="yjd-c6-9GC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="For Fun" id="O1W-Xd-NYb"/>
@@ -320,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uby-Qx-uQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1655" y="1080"/>
+            <point key="canvasLocation" x="1637" y="1052"/>
         </scene>
         <!--Orentation Help View Controller-->
         <scene sceneID="4Cz-nz-6Fx">
@@ -372,7 +406,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DjO-II-uf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2026" y="1078"/>
+            <point key="canvasLocation" x="2106" y="864"/>
         </scene>
         <!--Tilt Help View Controller-->
         <scene sceneID="PCa-AH-Oey">
@@ -404,13 +438,34 @@
                                     <action selector="okButtonPressed:" destination="cMQ-XE-B7n" eventType="touchUpInside" id="tKr-mh-Wxj"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="TILT SPHERO RIGHT AND LEFT TO MOVE THE SLIDER" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="r1Y-Rh-sul">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="r1Y-Rh-sul">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="5ln-jT-r5G"/>
                                     <constraint firstAttribute="height" constant="105" id="wqC-CC-pjk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="TILT SPHERO ">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="25" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="RIGHT">
+                                        <attributes>
+                                            <color key="NSColor" red="0.30083827554744524" green="0.57590100364963381" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="25" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" AND LEFT TO MOVE THE SLIDER">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="25" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -429,7 +484,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1a-Ka-k44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2395" y="1079"/>
+            <point key="canvasLocation" x="2124" y="1541"/>
         </scene>
         <!--Validate Sliding View Controller - Validate-->
         <scene sceneID="Tam-mh-jhq">
@@ -454,7 +509,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Transfer:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tho-E5-QGf">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -761,6 +816,79 @@
         <image name="light_gray_bg.png" width="640" height="960"/>
         <image name="piggy.jpg" width="400" height="420"/>
     </resources>
+    <classes>
+        <class className="CircularUIView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CircularUIView.h"/>
+        </class>
+        <class className="ConfirmationSlideViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmationSlideViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="homeButtonPressed:"/>
+            </relationships>
+        </class>
+        <class className="ForFunViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForFunViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="colorButtonPressed:"/>
+                <relationship kind="action" name="colorMacroButtonPressed:"/>
+                <relationship kind="action" name="failureMacroButtonPressed:"/>
+                <relationship kind="action" name="successMacroButtonPressed:"/>
+                <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ForSlidingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForSlidingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="continueButtonPressed:"/>
+                <relationship kind="action" name="sliderValueChanged:" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="amountSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="checkingAmounLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="savingsAmountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="totalAmountLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ForSpendingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ForSpendingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="passButtonPressed:"/>
+                <relationship kind="action" name="payButtonPressed:"/>
+                <relationship kind="outlet" name="calibrateAboveButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="circularView" candidateClass="CircularUIView"/>
+                <relationship kind="outlet" name="drivePuck" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="driveWheel" candidateClass="UIView"/>
+            </relationships>
+        </class>
+        <class className="HomeTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HomeTableViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="OrentationHelpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OrentationHelpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="okButtonPressed:"/>
+            </relationships>
+        </class>
+        <class className="TiltHelpViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TiltHelpViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="okButtonPressed:"/>
+            </relationships>
+        </class>
+        <class className="ValidateSlidingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ValidateSlidingViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="combinedAmountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="fromAccountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="toAccountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="transferAmountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="transferDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="updatedCheckingAmountLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="updatedSavingsAmountLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

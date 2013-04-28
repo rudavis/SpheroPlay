@@ -12,7 +12,6 @@
 #import "TiltHelpViewController.h"
 
 @interface ForFunViewController : UIViewController <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol, OrentationHelpViewControllerDelegate, TiltHelpViewControllerDelegate> {
-    BOOL ledON;
     BOOL robotOnline;
     BOOL robotInitialized;
     BOOL noSpheroViewShowing;
@@ -25,10 +24,11 @@
 
 -(void)setupRobotConnection;
 -(void)handleRobotOnline;
--(void)toggleLED;
+
 
 - (IBAction)colorMacroButtonPressed:(id)sender;
 - (IBAction)colorButtonPressed:(id)sender;
-
+- (IBAction)successMacroButtonPressed:(id)sender;
+- (IBAction)failureMacroButtonPressed:(id)sender;
 
 @end

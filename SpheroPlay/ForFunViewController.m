@@ -17,7 +17,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -25,17 +24,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
+    robotOnline = NO;
+    noSpheroViewShowing = NO;
+    robotDelay = 400.0;
+
     /*Register for application lifecycle notifications so we known when to connect and disconnect from the robot*/
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     
-    /*Only start the blinking loop when the view loads*/
-    robotOnline = NO;
-    noSpheroViewShowing = NO;
-    robotDelay = 900.0;
-    
+    ///  Connet to Sphero
     [self setupRobotConnection];
 }
 
@@ -43,8 +41,6 @@
 {
     connectionLabel = nil;
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -70,14 +66,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
-/*
-    // Return YES for supported orientations
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
-*/
+
 }
 
 -(void)appWillResignActive:(NSNotification*)notification {
@@ -88,7 +77,6 @@
 }
 
 -(void)appDidBecomeActive:(NSNotification*)notification {
-    /*When the application becomes active after entering the background we try to connect to the robot*/
     [self setupRobotConnection];
 }
 
@@ -100,8 +88,6 @@
     
     if(!robotOnline) {
         robotOnline = YES;
-        /*Only start the blinking loop once*/
-        //[self toggleLED];
     }
     // Hide No Sphero Connected View
     if( noSpheroViewShowing ) {
@@ -122,10 +108,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRobotOffline) name:RKRobotDidLossControlNotification object:nil];
     
     //Attempt to control the connected robot so we get the notification if one is connected
-    
     robotInitialized = NO;
-    
-    
     if ([[RKRobotProvider sharedRobotProvider] isRobotUnderControl]) {
         robotInitialized = YES;
         [[RKRobotProvider sharedRobotProvider] openRobotConnection];
@@ -154,19 +137,6 @@
     }
 }
 
-- (void)toggleLED {
-    /*Toggle the LED on and off*/
-    if (ledON) {
-        ledON = NO;
-        [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:0.0 blue:0.0];
-    } else {
-        ledON = YES;
-        [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:0.0 blue:1.0];
-    }
-    // Only continue funciton if we are connect to robot
-    if( robotOnline ) [self performSelector:@selector(toggleLED) withObject:nil afterDelay:0.5];
-}
-
 -(void)showNoSpheroConnectedView {
     if( robotOnline ) return;
 
@@ -189,7 +159,6 @@
 */
 }
 
-//Create a macro that changes the ball colors from:
 //ING Orange -> CapOne Blue -> Cap One Red -> Loop between Cap one Red/Blue
 //NOTE:  You have to divide the RGB values below by 255 when using UIColor colorWithRGB...
 /*******
@@ -214,13 +183,6 @@
  Border: #003A6F
 *********/
 - (IBAction)colorMacroButtonPressed:(id)sender {
-    
-    //Colors Fade during action (Circle)
-    //Slew(Fade) is a parrelell command
-    //When Slew action is performed, either have it run parrallel to a roll command or a delay.
-    //If the user was to include a blink color it would then end the slew abrutly.
-        //Create a new macro object to send to Sphero
-    
         RKMacroObject *macro = [RKMacroObject new];
         //Sets loop from slider value
         [macro addCommand:[RKMCLoopFor commandWithRepeats:5]];
@@ -240,30 +202,87 @@
         [macro addCommand:[RKMCLoopEnd command]];
         //Send full command dowm to Sphero to play
         [macro playMacro];
-        //Release Macro
 }
 
 - (IBAction)colorButtonPressed:(id)sender {
+    /*******  Color Picker view   ******////
     //Pull color picker nib from RobotUIKit Bundle
     NSString* rootpath = [[NSBundle mainBundle] bundlePath];
     NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
     NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
-    
     //Present the color picker and set the starting color to white
-    RUIColorPickerViewController *colorPicker = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:ruiBundle];
+        RUIColorPickerViewController *colorPicker = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:ruiBundle];
+    colorPicker.view.bounds = self.view.bounds;
 
     [colorPicker setCurrentRed:1.0 green:1.0 blue:1.0];
+    [colorPicker layoutPortrait];
     colorPicker.delegate = self;
     
     [self presentModalLayerViewController:colorPicker animated:YES];
 }
+
+
+- (IBAction)successMacroButtonPressed:(id)sender {
+    RKMacroObject *macro = [RKMacroObject new];
+    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:0]];
+    
+    //Fade to white, pause, blue, pause
+    //White
+    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+    //Blue
+    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:1.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+    //White
+    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+    //Blue
+    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:1.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+    
+    //Green
+    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:1.0 blue:0.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+    [macro addCommand:[RKMCRGB commandWithRed:0.0 green:1.0 blue:0.0 delay:0]];
+        
+    //Send full command dowm to Sphero to play
+    [macro playMacro];
+    [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:1.0 blue:0.0];
+}
+
+- (IBAction)failureMacroButtonPressed:(id)sender {
+    RKMacroObject *macro = [RKMacroObject new];
+    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:0]];
+    
+    //Fade to white, pause, blue, pause
+    //White
+    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+    //Blue
+    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:1.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+    //White
+    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+    //Blue
+    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:1.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
+
+    
+    //Red
+    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:0.0 blue:0.0 delay:robotDelay]];
+    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay]];
+    [macro addCommand:[RKMCRGB commandWithRed:1.0 green:0.0 blue:0.0 delay:0]];
+    [macro playMacro];
+    [RKRGBLEDOutputCommand sendCommandWithRed:1.0 green:0.0 blue:0.0];
+}
+
 //Color Picker Delegates
 //Color picker delegate callbacks
 -(void) colorPickerDidChange:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
     //Send the color to Sphero when the user picks a new color in the picker
     [RKRGBLEDOutputCommand sendCommandWithRed:r green:g blue:b];
 }
-
 
 -(void) colorPickerDidFinish:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
     //Use this callback to dismiss the color picker, since we are presenting it as a modalLayerViewController it will dismiss itself

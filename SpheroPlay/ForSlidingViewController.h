@@ -29,8 +29,6 @@
 - (IBAction)sliderValueChanged:(UISlider *)sender;
 - (IBAction)continueButtonPressed:(id)sender;
 
-//Adding concepts from:  https://github.com/orbotix/Sphero-iOS-SDK/tree/master/samples/SensorStreaming
-
 -(void)setupRobotConnection;
 -(void)handleRobotOnline;
 -(void)handleAsyncData:(RKDeviceAsyncData *)asyncData;

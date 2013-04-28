@@ -119,7 +119,6 @@
 -(void)appWillResignActive:(NSNotification*)notification {
     /*When the application is entering the background we need to close the connection to the robot*/
     [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
-    
     // Turn off data streaming
     [RKSetDataStreamingCommand sendCommandWithSampleRateDivisor:0
                                                    packetFrames:0
@@ -127,16 +126,12 @@
                                                     packetCount:0];
     // Unregister for async data packets
     [[RKDeviceMessenger sharedMessenger] removeDataStreamingObserver:self];
-    
     // Restore stabilization (the control unit)
     [RKStabilizationCommand sendCommandWithState:RKStabilizationStateOn];
-    
     // Turn off Back LED
     [RKBackLEDOutputCommand sendCommandWithBrightness:0.0f];
-    
     // Close the connection
     [[RKRobotProvider sharedRobotProvider] closeRobotConnection];
-    
     robotOnline = NO;
 }
 
@@ -177,8 +172,7 @@
     // Requesting the Accelerometer X, Y, and Z filtered (in Gs)
     //            the IMU Angles roll, pitch, and yaw (in degrees)
     //            the Quaternion data q0, q1, q2, and q3 (in 1/10000) of a Q
-    //RKDataStreamingMask mask =  RKDataStreamingMaskAccelerometerFilteredAll |
-    RKDataStreamingMask mask = RKDataStreamingMaskAccelerometerFilteredAll;
+    RKDataStreamingMask mask = RKDataStreamingMaskAccelerometerFilteredAll | RKDataStreamingMaskIMUAnglesFilteredAll;
 
     // Sphero samples this data at 400 Hz.  The divisor sets the sample
     // rate you want it to store frames of data.  In this case 400Hz/40 = 10Hz
@@ -212,19 +206,36 @@
             [self sendSetDataStreamingCommand];
         }
         
-        // Received sensor data, so display it to the user.
+        // Received sensor data
         RKDeviceSensorsAsyncData *sensorsAsyncData = (RKDeviceSensorsAsyncData *)asyncData;
         RKDeviceSensorsData *sensorsData = [sensorsAsyncData.dataFrames lastObject];
+        
+        //We use Accelerometer for SHAKE
         RKAccelerometerData *accelerometerData = sensorsData.accelerometerData;
-
         float x = accelerometerData.acceleration.x;
-        float xOffset = x * 25.0;
-        NSLog([NSString stringWithFormat:@"%1.2f", xOffset]);
+        float y = accelerometerData.acceleration.y;
+        float z = accelerometerData.acceleration.z;
+/*
+If you don't care on which axis it is shaken, then normalize the axis' by getting a
+square of the sum of their squares: sqrt(x^2 + y^2 + z^2) > 2000.
+This will give you a magnitude of the acceleration vector. It's a good value for
+"general acceleration-ness", and it's great for detecting shaking.
+*/
+        //General Shake ~2 - 3 is good.  
+        if ( sqrt(pow(x,2) + pow(y,2) + pow(z,2)) > 2) {
+            [self performSegueWithIdentifier:@"validateSlideSegue" sender:self];
+        }
         
-
-        if (xOffset > 4 || xOffset < -4) {
-            [amountSlider setValue:amountSlider.value + xOffset animated:YES];
+        //Slide slider with Roll Data (Roll data: +/- 90 degrees)
+        RKAttitudeData *attitudeData = sensorsData.attitudeData;
+        float roll = attitudeData.roll;
         
+        //Signifiant tilt
+        if (roll > 15 || roll < -15) {
+            //I used 3 * ceilf(roll/10) to make the slider move faster the more you tilt
+            //divide by 10, Round up to next int, times 3
+            [amountSlider setValue:amountSlider.value + 3 * ceilf(roll/10) animated:YES];
+            
             double savingsAmount = [amountSlider maximumValue] - [amountSlider value];
             checkingAmounLabel.text = [NSString stringWithFormat:@"Checking: %.0f", [amountSlider value]];
             savingsAmountLabel.text = [NSString stringWithFormat:@"Savings: %.0f", savingsAmount];
