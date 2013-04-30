@@ -207,20 +207,18 @@
 }
 
 - (IBAction)colorButtonPressed:(id)sender {
-    /*******  Color Picker view   ******////
-    //Pull color picker nib from RobotUIKit Bundle
     NSString* rootpath = [[NSBundle mainBundle] bundlePath];
     NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
-    NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
-    //Present the color picker and set the starting color to white
-        RUIColorPickerViewController *colorPicker = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:ruiBundle];
-    colorPicker.view.bounds = self.view.bounds;
+    RUIColorPickerViewController *cpc = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:[NSBundle bundleWithPath:ruirespath]];
+    cpc.delegate = self;
+    cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [cpc layoutPortrait];
+    [cpc setRed:1.0 green:1.0 blue:1.0];
 
-    [colorPicker setCurrentRed:1.0 green:1.0 blue:1.0];
-    [colorPicker layoutPortrait];
-    colorPicker.delegate = self;
+    [cpc showBackButton:YES];
+    [cpc setBackButtonTarget:self action:@selector(colorPickerDidPressBack)];
     
-    [self presentModalLayerViewController:colorPicker animated:YES];
+    [self presentModalViewController:cpc animated:YES];
 }
 
 
@@ -287,8 +285,17 @@
 }
 
 -(void) colorPickerDidFinish:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
-    //Use this callback to dismiss the color picker, since we are presenting it as a modalLayerViewController it will dismiss itself
+    [controller dismissModalViewControllerAnimated:YES];
 }
+
+-(void) colorPickerDidPressBack {
+    NSLog(@"Pressed Back");
+}
+
+-(void) customButtonPressed {
+    NSLog(@"Custom Pressed Back");
+}
+
 
 
 //Open the Orentation Help view as a modal.  

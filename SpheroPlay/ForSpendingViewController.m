@@ -67,8 +67,12 @@ static NSString * const TwoPhonesGameType = @"twophones";
 
 /********** Start Here ***********/
 -(void)controlLoop {
-
+    NSLog(@"does the non host get here?");
     robotOnline = YES;
+/*  Ask about [remotePlayer.robot sendCommand:command] 
+& RKDeviceMessenger & RKDriveControll */
+/*  I think these commands only apply for the Host  */
+/*  Not sure why the puck doesn't move for the guest */
     //Setup joystick driving
     [RKDriveControl sharedDriveControl].joyStickSize = circularView.bounds.size;
     [RKDriveControl sharedDriveControl].driveTarget = self;
