@@ -1,106 +1,74 @@
 //
-//  ForSpendingViewController.m
-//  SpheroPlay
+//  MainViewController.m
+//  TwoPhonesOneBall
 //
-//  Created by Russ Davis on 4/23/13.
-//  Copyright (c) 2013 RTB. All rights reserved.
+//  Created by Jon Carroll on 8/12/11.
+//  Copyright 2011 Orbotix, Inc. All rights reserved.
 //
 
 #import "ForSpendingViewController.h"
 #import "RobotKit/RobotKit.h"
 #import "RobotUIKit/RobotUIKit.h"
 
+
+static NSString * const TwoPhonesGameType = @"twophones";
+
 @implementation ForSpendingViewController
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
+
+#pragma mark -
+#pragma mark Memory Management
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - View lifecycle
+#pragma mark -
+#pragma mark Robot Online Notification
+
+-(void)handleConnectionOnline:(NSNotification*)notification {
+    //This is the notificaiton we get when we find out the robot is online
+    //Robot will not respond to commands until this notification is recieved
+    connectionMessage.text = @"Waiting for other player to join...";
+    [[RKMultiplayer sharedMultiplayer] stopGettingAvailableMultiplayerGames];
+    [[RKMultiplayer sharedMultiplayer] hostGameOfType:TwoPhonesGameType playerName:@"TwoPhonesOneBall"];
+}
+
+#pragma mark -
+#pragma mark View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
     
-    /*Register for application lifecycle notifications so we known when to connect and disconnect from the robot*/
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appDidBecomeActive:)
-                                                 name:UIApplicationDidBecomeActiveNotification
-                                               object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(appWillResignActive:)
-                                                 name:UIApplicationWillResignActiveNotification
-                                               object:nil];
-    
-    /*Only start the blinking loop when the view loads*/
+    //Hide dirve controls until game starts
+    driveWheel.hidden = YES;
+    passButton.hidden = YES;
     robotOnline = NO;
     
-    // Setup a calibration gesture handler on our view to handle button
-    // gestures and give visual feeback to the user.  Defaults to above
-    calibrateAboveHandler = [[RUICalibrateButtonGestureHandler alloc]
-                             initWithView:self.view
-                             button:calibrateAboveButton];
-    calibrateAboveHandler.calibrationRadius = 120;
+    //Set the multiplayer delegate to this controller (RKMultiplayer can only have one delegate at a time)
+    [[RKMultiplayer sharedMultiplayer] setDelegate:self];
     
-    // Open the circle widget above the button, can switch to pop out and cardinal direction
-    calibrateAboveHandler.calibrationCircleLocation = RUICalibrationCircleLocationBelow;
-    // Change color of the button
-    [calibrateAboveHandler setBackgroundWithColor:[UIColor colorWithRed:0.1 green:0.5 blue:1 alpha:1]];
-    [calibrateAboveHandler setForegroundWithColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
+    connectionMessage.text = @"Looking for players with robots...";
+    [[RKMultiplayer sharedMultiplayer] getAvailableMultiplayerGamesOfType:TwoPhonesGameType];
     
-    // Setup two finger two calibration method
-    calibrateTwoFingerHandler = [[RUICalibrateGestureHandler alloc] initWithView:self.view];
+    // Watch for online notification to start driving
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleConnectionOnline:) name:RKDeviceConnectionOnlineNotification object:nil];
     
-    //I think this needs to go here...
-    [self setupRobotConnection];
+    
+    //Attempt to control the connected robot so we get the notification if one is connected
+	[[RKRobotProvider sharedRobotProvider] controlConnectedRobot];
+	
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
+#pragma mark -
+#pragma mark RCDrive Controls
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
 
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
+/********** Start Here ***********/
+-(void)controlLoop {
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return UIInterfaceOrientationIsPortrait(interfaceOrientation);
-}
-
--(void)appWillResignActive:(NSNotification*)notification {
-    /*When the application is entering the background we need to close the connection to the robot*/
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
-    [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:0.0 blue:0.0];
-    [[RKRobotProvider sharedRobotProvider] closeRobotConnection];
-}
-
--(void)appDidBecomeActive:(NSNotification*)notification {
-    /*When the application becomes active after entering the background we try to connect to the robot*/
-    [self setupRobotConnection];
-}
-
-- (void)handleRobotOnline {
-    /*The robot is now online, we can begin sending commands*/
     robotOnline = YES;
-    
     //Setup joystick driving
     [RKDriveControl sharedDriveControl].joyStickSize = circularView.bounds.size;
     [RKDriveControl sharedDriveControl].driveTarget = self;
@@ -112,14 +80,39 @@
     // start processing the puck's movements
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoystickMotion:)];
     [drivePuck addGestureRecognizer:panGesture];
-}
 
--(void)setupRobotConnection {
-    /*Try to connect to the robot*/
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRobotOnline) name:RKDeviceConnectionOnlineNotification object:nil];
-    if ([[RKRobotProvider sharedRobotProvider] isRobotUnderControl]) {
-        [[RKRobotProvider sharedRobotProvider] openRobotConnection];
+/*
+    //Fires every 0.2 seconds on a timer to get readings from the sliders and send roll commands to the ball
+    
+    float speed = speedSlider.value*speedSlider.value; //RCDrive controls work best if speed is on exponential curve
+    
+    float headingAdjustment = 30.0 * headingSlider.value; //Only adjust heading by up to 30 degrees every 0.2 seconds
+    heading += headingAdjustment;
+    if(heading < 0.0) heading += 359.0;
+    if(heading > 359.0) heading -= 359.0;
+    
+    if(speed == lastSpeed && heading == lastHeading) {
+        [self performSelector:@selector(controlLoop) withObject:nil afterDelay:0.2];
+        return;
     }
+    lastSpeed = speed;
+    lastHeading = heading;
+    
+    if(!self.modalViewController) { //Be sure that we have control of the robot
+        RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:heading velocity:speed];
+        //This is the important part where we decide if we send the command to the local robot or the remote robot
+        if([[RKMultiplayer sharedMultiplayer] isHost]) {
+            //If we are the host we send it to our local robot
+            [[RKDeviceMessenger sharedMessenger] postCommand:command];
+        } else {
+            //If we aren't the host we send it to the host's robot like this...
+            [remotePlayer.robot sendCommand:command];
+        }
+        [command release];
+    }
+    
+    [self performSelector:@selector(controlLoop) withObject:nil afterDelay:0.2];
+*/
 }
 
 #pragma mark -
@@ -128,8 +121,8 @@
 - (void)handleJoystickMotion:(id)sender
 {
     //Don't handle the gesture if we aren't connected to and driving a robot
-    if (![RKDriveControl sharedDriveControl].driving) return;
-    
+    //if (![RKDriveControl sharedDriveControl].driving) return;
+    NSLog(@"got into joystick");
     //Handle the pan gesture and pass the results into the drive control
     UIPanGestureRecognizer *pan_recognizer = (UIPanGestureRecognizer *)sender;
     CGRect parent_bounds = circularView.bounds;
@@ -153,8 +146,8 @@
 
 - (void)updateMotionIndicator:(RKDriveAlgorithm*)driveAlgorithm {
     //Don't update the puck position if we aren't driving
-    if ( ![RKDriveControl sharedDriveControl].driving || !ballMoving) return;
-    
+    //if ( ![RKDriveControl sharedDriveControl].driving || !ballMoving) return;
+
     //Update the joystick puck position based on the data from the drive algorithm
     CGRect bounds = circularView.bounds;
     
@@ -186,59 +179,127 @@
     }
 }
 
-/*
+
 #pragma mark -
-#pragma mark UI Interaction
+#pragma mark Pass Button Pressed
 
--(IBAction)colorPressed:(id)sender {
-    //RobotUIKit resources like images and nib files stored in an external bundle and the path must be specified
+- (IBAction)passPressed
+{
+    //Send the message to our opponent indicating we are passing control of the robot to them
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:@"ur turn" forKey:@"PASS"];
+    [[RKMultiplayer sharedMultiplayer] sendDataToAll:dict];
+    
+    //Hide the robot controls and present the color picker since we don't have control
     NSString* rootpath = [[NSBundle mainBundle] bundlePath];
     NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
-    NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
+    RUIColorPickerViewController *cpc = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:[NSBundle bundleWithPath:ruirespath]];
+    cpc.delegate = self;
+    cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [cpc layoutPortrait];
+    [cpc setRed:1.0 green:1.0 blue:1.0];
+    [self presentViewController:cpc animated:YES completion:nil];
     
-    //Present the color picker and set the starting color to white
-    RUIColorPickerViewController *colorPicker = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:ruiBundle];
-    [colorPicker setCurrentRed:1.0 green:1.0 blue:1.0];
-    colorPicker.delegate = self;
-    [self presentModalLayerViewController:colorPicker animated:YES];
 }
 
-//Color picker delegate callbacks
+#pragma mark -
+#pragma mark RUIColorPickerDelegate methods
+
 -(void) colorPickerDidChange:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
-    //Send the color to Sphero when the user picks a new color in the picker
-    [RKRGBLEDOutputCommand sendCommandWithRed:r green:g blue:b];
+    RKRGBLEDOutputCommand *command = [[RKRGBLEDOutputCommand alloc] initWithRed:r green:g blue:b];
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
 }
 
+#pragma mark -
+#pragma mark RKMultiplayer Delegate Methods
 
--(void) colorPickerDidFinish:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
-    //Use this callback to dismiss the color picker, since we are presenting it as a modalLayerViewController it will dismiss itself
-}
-*/
-
-/*
--(IBAction)sleepPressed:(id)sender {
-    //RobotUIKit resources like images and nib files stored in an external bundle and the path must be specified
-    NSString* rootpath = [[NSBundle mainBundle] bundlePath];
-    NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
-    NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
+//This is the callback when multiplayer games for your app are found.  You might use this callback to display the available games in a tableview or autmatically join the first game found such as in this case
+-(void)multiplayerDidUpdateAvailableGames:(NSArray*)games {
+    NSLog(@"did update available games");
     
-    //Present the slide to sleep view controller
-    RUISlideToSleepViewController *sleep = [[RUISlideToSleepViewController alloc] initWithNibName:@"RUISlideToSleepViewController" bundle:ruiBundle];
-    sleep.view.frame = self.view.bounds;
-    [self presentModalLayerViewController:sleep animated:YES];
-    [sleep release];
-}
-*/
-
--(BOOL)calibrateGestureHandlerShouldAllowCalibration:(RUICalibrateButtonGestureHandler*)sender {
-    return YES;
-}
-
-
-- (IBAction)passButtonPressed:(id)sender {
+    //If there is at least one available game to join
+    if([games count] > 0) {
+        RKMultiplayerGame *game = [games objectAtIndex:0];
+        //We want to stop updating the list of available multiplayer games now that we found one
+        [[RKMultiplayer sharedMultiplayer] stopGettingAvailableMultiplayerGames];
+        
+        //We want to join the advertised game we found
+        [[RKMultiplayer sharedMultiplayer] joinAdvertisedGame:game];
+    }
 }
 
-- (IBAction)payButtonPressed:(id)sender {
+//Sent to all clients in a game when another joins for updating UI
+-(void)multiplayerPlayerDidJoinGame:(RKRemotePlayer*)player {
+    //Save an ivar to the remote player
+    remotePlayer = player;
+    
+    //If we are the host (device with robot connected) we need to start the game at this point
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKMultiplayer sharedMultiplayer] startGame];
+    }
 }
+
+
+//Sent on game state change for updating UI
+-(void)multiplayerGameStateDidChangeToState:(RKMultiplayerGameState)newState {
+    if(newState==RKMultiplayerGameStateStarted) {
+
+        connectionMessage.hidden = YES;
+        driveWheel.hidden = NO;
+        passButton.hidden = NO;
+        //If we aren't the host we want to go to the flipside view until control is passed to us
+        if(![[RKMultiplayer sharedMultiplayer] isHost]) {
+            NSString* rootpath = [[NSBundle mainBundle] bundlePath];
+            NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
+            RUIColorPickerViewController *cpc = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:[NSBundle bundleWithPath:ruirespath]];
+            cpc.delegate = self;
+            cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [cpc layoutPortrait];
+            [cpc setRed:1.0 green:1.0 blue:1.0];
+            [self presentViewController:cpc animated:YES completion:nil];
+        }
+        //Start the RCDrive control loop
+        [self controlLoop];
+    } else if(newState==RKMultiplayerGameStateEnded) {
+        //If a the other user disconnects the game is over
+        [[RKMultiplayer sharedMultiplayer] leaveCurrentGame];
+        
+        //Reset the UI
+        connectionMessage.hidden = NO;
+        passButton.hidden = YES;
+        driveWheel.hidden = YES;
+        
+        //Dismiss the color picker if it is on screen
+        if(self.modalViewController) {
+            [self dismissModalViewControllerAnimated:NO];
+        }
+        
+        //Look for other games or host a new one depending on if we had a ball
+        if([[RKMultiplayer sharedMultiplayer] isHost]) {
+            [[RKMultiplayer sharedMultiplayer] hostGameOfType:TwoPhonesGameType playerName:@"TwoPhonesOneBall"];
+        } else {
+            [[RKMultiplayer sharedMultiplayer] getAvailableMultiplayerGamesOfType:TwoPhonesGameType];
+        }
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"The other player has disconnected, the game is over" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+}
+
+//Called when game data is recieved from another player
+-(void)multiplayerDidRecieveGameData:(NSDictionary*)data {
+    //The responses recieved here have the payload we passed in wrapped in routing information about the sender and reciever
+    //What we passed in is stored in a dictionary with the key payload, we will need to pull it out
+    NSDictionary *payload = [data objectForKey:@"PAYLOAD"];
+    if([[payload valueForKey:@"PASS"] isEqualToString:@"ur turn"]) {
+        //The other player has sent us the message indicating control of the robot has been passed to us, dismiss the modal view
+        [self dismissModalViewControllerAnimated:YES];
+    }
+}
+
 
 @end
