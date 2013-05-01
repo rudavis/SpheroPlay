@@ -10,11 +10,9 @@
 #import "RobotKit/RobotKit.h"
 #import "RobotUIKit/RobotUIKit.h"
 
-
 static NSString * const TwoPhonesGameType = @"twophones";
 
 @implementation ForSpendingViewController
-
 
 #pragma mark -
 #pragma mark Memory Management
@@ -48,6 +46,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
     
     //Set the multiplayer delegate to this controller (RKMultiplayer can only have one delegate at a time)
     [[RKMultiplayer sharedMultiplayer] setDelegate:self];
+    [RKMultiplayer setMultiplayerDebug:YES];
     
     connectionMessage.text = @"Looking for players with robots...";
     [[RKMultiplayer sharedMultiplayer] getAvailableMultiplayerGamesOfType:TwoPhonesGameType];
@@ -137,6 +136,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
         [[RKDriveControl sharedDriveControl].robotControl stopMoving];
         drivePuck.center = parent_center;
     } else if (pan_recognizer.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"Guest got here");
         ballMoving = YES;
         CGPoint translate = [pan_recognizer translationInView:circularView];
         CGPoint drag_point = parent_center;
@@ -144,7 +144,13 @@ static NSString * const TwoPhonesGameType = @"twophones";
         drag_point.y += translate.y;
         drag_point.x = [self clampWithValue:drag_point.x min:CGRectGetMinX(parent_bounds) max:CGRectGetMaxX(parent_bounds)];
         drag_point.y = [self clampWithValue:drag_point.y min:CGRectGetMinY(parent_bounds) max:CGRectGetMaxY(parent_bounds)];
-        [[RKDriveControl sharedDriveControl] driveWithJoyStickPosition:drag_point];
+        
+        //Host send command
+        //if([[RKMultiplayer sharedMultiplayer] isHost]) {
+            [[RKDriveControl sharedDriveControl] driveWithJoyStickPosition:drag_point];
+        //} else {
+        //    [remotePlayer.robot sendCommand:[RKDriveControl sharedDriveControl]];
+        //}
     }
 }
 
@@ -202,8 +208,27 @@ static NSString * const TwoPhonesGameType = @"twophones";
     cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [cpc layoutPortrait];
     [cpc setRed:1.0 green:1.0 blue:1.0];
+    
+    //Add a custom PAY button
+    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [customButton addTarget:self action:@selector(customButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [customButton setTitle:@"Pay" forState:UIControlStateNormal];
+    customButton.frame = CGRectMake(10, 10, 40, 40);
+
     [self presentViewController:cpc animated:YES completion:nil];
     
+    [cpc.view addSubview:customButton];
+    
+}
+
+-(void) customButtonPressed {
+    //First we need to pop a view on the Guest and let them enter an amount.
+    //Then they submit and we pass a message to 
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    [dict setValue:@"Pay" forKey:@"PAY"];
+    NSString *payAmount = @"1.00";
+    [dict setValue:payAmount forKey:@"AMOUNT"];
+    [[RKMultiplayer sharedMultiplayer] sendDataToAll:dict];
 }
 
 #pragma mark -
@@ -264,7 +289,16 @@ static NSString * const TwoPhonesGameType = @"twophones";
             cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             [cpc layoutPortrait];
             [cpc setRed:1.0 green:1.0 blue:1.0];
+            
+            //Add custom Pay Button
+            UIButton *customButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            [customButton addTarget:self action:@selector(customButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+            [customButton setTitle:@"Pay" forState:UIControlStateNormal];
+            customButton.frame = CGRectMake(10, 10, 40, 40);
+            
             [self presentViewController:cpc animated:YES completion:nil];
+            
+            [cpc.view addSubview:customButton];
         }
         //Start the RCDrive control loop
         [self controlLoop];
@@ -294,6 +328,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
     }
 }
 
+
 //Called when game data is recieved from another player
 -(void)multiplayerDidRecieveGameData:(NSDictionary*)data {
     //The responses recieved here have the payload we passed in wrapped in routing information about the sender and reciever
@@ -302,8 +337,15 @@ static NSString * const TwoPhonesGameType = @"twophones";
     if([[payload valueForKey:@"PASS"] isEqualToString:@"ur turn"]) {
         //The other player has sent us the message indicating control of the robot has been passed to us, dismiss the modal view
         [self dismissModalViewControllerAnimated:YES];
+    } else if ([[payload valueForKey:@"PAY"] isEqualToString:@"Pay"]) {
+        NSString *amountPaid = [payload valueForKey:@"AMOUNT"];
+        NSLog(@"Trying to is trying to pay you: %@", amountPaid);
+        //Need to pop something on the Host's screen....
+        //...
     }
+
 }
 
+ 
 
 @end

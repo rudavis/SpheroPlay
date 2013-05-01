@@ -98,7 +98,6 @@
         
         ValidateSlidingViewController *destViewController = segue.destinationViewController;
 
-        destViewController.combinedAmount = combinedAmount;
         destViewController.initialCheckingAmount = initialCheckingAmount;
         destViewController.initialSavingsAmount = initialSavingsAmount;
         destViewController.newCheckingAmount = newCheckingAmount;

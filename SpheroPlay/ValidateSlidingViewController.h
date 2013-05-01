@@ -26,10 +26,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *transferAmountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *fromAccountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *toAccountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *transferDateLabel;
 @property (strong, nonatomic) IBOutlet UILabel *updatedCheckingAmountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *updatedSavingsAmountLabel;
-@property (strong, nonatomic) IBOutlet UILabel *combinedAmountLabel;
 
 
 @end

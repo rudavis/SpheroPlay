@@ -215,10 +215,17 @@
     [cpc layoutPortrait];
     [cpc setRed:1.0 green:1.0 blue:1.0];
 
-    [cpc showBackButton:YES];
-    [cpc setBackButtonTarget:self action:@selector(colorPickerDidPressBack)];
+    //[cpc showBackButton:YES];
+    //[cpc setBackButtonTarget:self action:@selector(colorPickerDidPressBack)];
+    
+    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [customButton addTarget:self action:@selector(customButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [customButton setTitle:@"Pay" forState:UIControlStateNormal];
+    customButton.frame = CGRectMake(10, 10, 40, 40);
     
     [self presentModalViewController:cpc animated:YES];
+    
+    [cpc.view addSubview:customButton];
 }
 
 

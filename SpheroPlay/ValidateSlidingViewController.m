@@ -20,7 +20,7 @@
 #define SHAKE_THRESHOLD 2
 
 @implementation ValidateSlidingViewController
-@synthesize combinedAmount, initialCheckingAmount, initialSavingsAmount, newCheckingAmount, newSavingsAmount, transferAmount, transferAmountLabel, transferDate,transferDateLabel, fromAccountLabel,toAccountLabel, combinedAmountLabel, updatedSavingsAmountLabel,updatedCheckingAmountLabel;
+@synthesize combinedAmount, initialCheckingAmount, initialSavingsAmount, newCheckingAmount, newSavingsAmount, transferAmount, transferAmountLabel, fromAccountLabel,toAccountLabel, updatedSavingsAmountLabel,updatedCheckingAmountLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,7 +66,6 @@
     // Always set the new Savings & Checking amounts
     self.updatedSavingsAmountLabel.text = [NSString stringWithFormat:@"$%.0f", self.newSavingsAmount];
     self.updatedCheckingAmountLabel.text = [NSString stringWithFormat:@"$%.0f", self.newCheckingAmount];
-    self.combinedAmountLabel.text = [NSString stringWithFormat:@"$%.0f", self.combinedAmount];
     //We are assuming the Robot is online from sliding view controller
     [self handleRobotOnline];
     

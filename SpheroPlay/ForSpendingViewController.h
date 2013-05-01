@@ -11,6 +11,7 @@
     IBOutlet UIButton   *passButton;
     IBOutlet UILabel    *connectionMessage;
     RKRemotePlayer      *remotePlayer;
+    RKRemotePlayer  *localPlayer;
     
     
     BOOL robotOnline;
@@ -44,6 +45,5 @@
 
 //Called when game data is recieved from another player
 -(void)multiplayerDidRecieveGameData:(NSDictionary*)data;
-
 
 @end

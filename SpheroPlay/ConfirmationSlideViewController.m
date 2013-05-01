@@ -34,9 +34,8 @@
     robotDelay = 400.0;
     //Hide back button
     self.navigationItem.hidesBackButton = YES;
-    
-    //[self successMacro];
-    [self failureMacro];
+    [self successMacro];
+    //[self failureMacro];
     
     [self handleRobotOnline];
     
@@ -118,6 +117,7 @@
 
 - (void) successMacro {
     RKMacroObject *macro = [RKMacroObject new];
+//    [macro addCommand:[RKMCLoopFor commandWithRepeats:3]];
     [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:0]];
     //White
     [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
