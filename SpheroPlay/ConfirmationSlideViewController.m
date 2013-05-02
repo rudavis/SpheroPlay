@@ -34,8 +34,9 @@
     robotDelay = 400.0;
     //Hide back button
     self.navigationItem.hidesBackButton = YES;
+    
     [self successMacro];
-    //[self failureMacro];
+    [self failureMacro];
     
     [self handleRobotOnline];
     
@@ -116,41 +117,24 @@
 }
 
 - (void) successMacro {
-    RKMacroObject *macro = [RKMacroObject new];
-//    [macro addCommand:[RKMCLoopFor commandWithRepeats:3]];
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:0]];
-    //White
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //Black
-    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:0.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //Green
-    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:1.0 blue:0.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    [macro addCommand:[RKMCRGB commandWithRed:0.0 green:1.0 blue:0.0 delay:0]];
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"success" ofType:@"sphero"];
+    NSData *data = [NSData dataWithContentsOfFile:file];
     
-    //Send full command dowm to Sphero to play
-    [macro playMacro];
+    //saves a temporary macro command thats includes the data packet
+    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+    //Run temporary macro 255
+    [RKRunMacroCommand sendCommandWithId:255];
     [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:1.0 blue:0.0];
 }
 
 - (void) failureMacro {
-    RKMacroObject *macro = [RKMacroObject new];
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:0]];
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"fail" ofType:@"sphero"];
+    NSData *data = [NSData dataWithContentsOfFile:file];
     
-    //Fade to white, pause, blue, pause
-    //White
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //Black
-    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:0.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];    
-    //Red
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:0.0 blue:0.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay]];
-    [macro addCommand:[RKMCRGB commandWithRed:1.0 green:0.0 blue:0.0 delay:0]];
-    [macro playMacro];
+    //saves a temporary macro command thats includes the data packet
+    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+    //Run temporary macro 255
+    [RKRunMacroCommand sendCommandWithId:255];
     [RKRGBLEDOutputCommand sendCommandWithRed:1.0 green:0.0 blue:0.0];
 }
 

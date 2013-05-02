@@ -13,6 +13,7 @@
 static NSString * const TwoPhonesGameType = @"twophones";
 
 @implementation ForSpendingViewController
+@synthesize speedSlider;
 
 #pragma mark -
 #pragma mark Memory Management
@@ -40,7 +41,6 @@ static NSString * const TwoPhonesGameType = @"twophones";
     [super viewDidLoad];
     
     //Hide dirve controls until game starts
-    driveWheel.hidden = YES;
     passButton.hidden = YES;
     robotOnline = NO;
     
@@ -54,7 +54,6 @@ static NSString * const TwoPhonesGameType = @"twophones";
     // Watch for online notification to start driving
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleConnectionOnline:) name:RKDeviceConnectionOnlineNotification object:nil];
     
-    
     //Attempt to control the connected robot so we get the notification if one is connected
 	[[RKRobotProvider sharedRobotProvider] controlConnectedRobot];
 	
@@ -66,24 +65,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
 
 /********** Start Here ***********/
 -(void)controlLoop {
-    NSLog(@"does the non host get here?");
     robotOnline = YES;
-/*  Ask about [remotePlayer.robot sendCommand:command] 
-& RKDeviceMessenger & RKDriveControll */
-/*  I think these commands only apply for the Host  */
-/*  Not sure why the puck doesn't move for the guest */
-    //Setup joystick driving
-    [RKDriveControl sharedDriveControl].joyStickSize = circularView.bounds.size;
-    [RKDriveControl sharedDriveControl].driveTarget = self;
-    [RKDriveControl sharedDriveControl].driveConversionAction = @selector(updateMotionIndicator:);
-    [[RKDriveControl sharedDriveControl] startDriving:RKDriveControlJoyStick];
-    //Set max speed
-    [RKDriveControl sharedDriveControl].velocityScale = 0.6;
-    
-    // start processing the puck's movements
-    UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoystickMotion:)];
-    [drivePuck addGestureRecognizer:panGesture];
-
 /*
     //Fires every 0.2 seconds on a timer to get readings from the sliders and send roll commands to the ball
     
@@ -116,77 +98,6 @@ static NSString * const TwoPhonesGameType = @"twophones";
     
     [self performSelector:@selector(controlLoop) withObject:nil afterDelay:0.2];
 */
-}
-
-#pragma mark -
-#pragma mark Joystick related methods
-
-- (void)handleJoystickMotion:(id)sender
-{
-    //Don't handle the gesture if we aren't connected to and driving a robot
-    //if (![RKDriveControl sharedDriveControl].driving) return;
-    NSLog(@"got into joystick");
-    //Handle the pan gesture and pass the results into the drive control
-    UIPanGestureRecognizer *pan_recognizer = (UIPanGestureRecognizer *)sender;
-    CGRect parent_bounds = circularView.bounds;
-    CGPoint parent_center = [circularView convertPoint:circularView.center fromView:circularView.superview] ;
-    
-    if (pan_recognizer.state == UIGestureRecognizerStateEnded || pan_recognizer.state == UIGestureRecognizerStateCancelled || pan_recognizer.state == UIGestureRecognizerStateFailed || pan_recognizer.state == UIGestureRecognizerStateBegan) {
-        ballMoving = NO;
-        [[RKDriveControl sharedDriveControl].robotControl stopMoving];
-        drivePuck.center = parent_center;
-    } else if (pan_recognizer.state == UIGestureRecognizerStateChanged) {
-        NSLog(@"Guest got here");
-        ballMoving = YES;
-        CGPoint translate = [pan_recognizer translationInView:circularView];
-        CGPoint drag_point = parent_center;
-        drag_point.x += translate.x;
-        drag_point.y += translate.y;
-        drag_point.x = [self clampWithValue:drag_point.x min:CGRectGetMinX(parent_bounds) max:CGRectGetMaxX(parent_bounds)];
-        drag_point.y = [self clampWithValue:drag_point.y min:CGRectGetMinY(parent_bounds) max:CGRectGetMaxY(parent_bounds)];
-        
-        //Host send command
-        //if([[RKMultiplayer sharedMultiplayer] isHost]) {
-            [[RKDriveControl sharedDriveControl] driveWithJoyStickPosition:drag_point];
-        //} else {
-        //    [remotePlayer.robot sendCommand:[RKDriveControl sharedDriveControl]];
-        //}
-    }
-}
-
-- (void)updateMotionIndicator:(RKDriveAlgorithm*)driveAlgorithm {
-    //Don't update the puck position if we aren't driving
-    //if ( ![RKDriveControl sharedDriveControl].driving || !ballMoving) return;
-
-    //Update the joystick puck position based on the data from the drive algorithm
-    CGRect bounds = circularView.bounds;
-    
-    double velocity = driveAlgorithm.velocity/driveAlgorithm.velocityScale;
-	double angle = driveAlgorithm.angle + (driveAlgorithm.correctionAngle * 180.0/M_PI);
-	if (angle > 360.0) {
-		angle -= 360.0;
-	}
-    double x = ((CGRectGetMaxX(bounds) - CGRectGetMinX(bounds))/2.0) *
-    (1.0 + velocity * sin(angle * M_PI/180.0));
-    double y = ((CGRectGetMaxY(bounds) - CGRectGetMinY(bounds))/2.0) *
-    (1.0 - velocity * cos(angle * M_PI/180.0));
-	
-    CGPoint center = CGPointMake(floor(x), floor(y));
-    
-    [UIView setAnimationsEnabled:NO];
-    drivePuck.center = center;
-    [UIView setAnimationsEnabled:YES];
-}
-
-- (float)clampWithValue:(float)value min:(float)min max:(float)max {
-    //A standard clamp function
-    if (value < min) {
-        return min;
-    } else if (value > max) {
-        return max;
-    } else {
-        return value;
-    }
 }
 
 
@@ -278,7 +189,6 @@ static NSString * const TwoPhonesGameType = @"twophones";
     if(newState==RKMultiplayerGameStateStarted) {
 
         connectionMessage.hidden = YES;
-        driveWheel.hidden = NO;
         passButton.hidden = NO;
         //If we aren't the host we want to go to the flipside view until control is passed to us
         if(![[RKMultiplayer sharedMultiplayer] isHost]) {
@@ -309,7 +219,6 @@ static NSString * const TwoPhonesGameType = @"twophones";
         //Reset the UI
         connectionMessage.hidden = NO;
         passButton.hidden = YES;
-        driveWheel.hidden = YES;
         
         //Dismiss the color picker if it is on screen
         if(self.modalViewController) {
@@ -346,6 +255,93 @@ static NSString * const TwoPhonesGameType = @"twophones";
 
 }
 
- 
 
+//Button Driving Methods
+- (IBAction)zeroPressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:0.0 velocity:speedSlider.value];
+    //Important, determine if we're the host or the guest and post the command.
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
+
+- (IBAction)fortyFivePressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:45.0 velocity:speedSlider.value];
+    //Important, determine if we're the host or the guest and post the command.
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
+
+- (IBAction)ninetyPressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:90.0 velocity:speedSlider.value];
+    //Important, determine if we're the host or the guest and post the command.
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
+
+- (IBAction)oneThirtyFivePressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:135.0 velocity:speedSlider.value];
+    //Important, determine if we're the host or the guest and post the command.
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
+
+- (IBAction)oneEightyPressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:180.0 velocity:speedSlider.value];
+    //Important, determine if we're the host or the guest and post the command.
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
+
+- (IBAction)twoThirtyFivePressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:235.0 velocity:speedSlider.value];
+    //Important, determine if we're the host or the guest and post the command.
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
+
+- (IBAction)twoSeventyPressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:270.0 velocity:speedSlider.value];
+    //Important, determine if we're the host or the guest and post the command.
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
+- (IBAction)threeFifteenPressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:315.0 velocity:speedSlider.value];
+    //Important, determine if we're the host or the guest and post the command.
+    if([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
+
+- (IBAction)stopPressed:(id)sender {
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:0.0 velocity:0.0];    
+    if ([[RKMultiplayer sharedMultiplayer] isHost]) {
+        [[RKDeviceMessenger sharedMessenger] postCommand:command];
+    } else {
+        [remotePlayer.robot sendCommand:command];
+    }
+}
 @end

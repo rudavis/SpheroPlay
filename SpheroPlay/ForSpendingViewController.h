@@ -11,27 +11,30 @@
     IBOutlet UIButton   *passButton;
     IBOutlet UILabel    *connectionMessage;
     RKRemotePlayer      *remotePlayer;
-    RKRemotePlayer  *localPlayer;
-    
     
     BOOL robotOnline;
     BOOL ballMoving;
-    IBOutlet CircularUIView *circularView;
-    IBOutlet UIImageView *drivePuck;
-    IBOutlet UIView *driveWheel;
-    
 }
 
-//Joystick drive related methods
--(float)clampWithValue:(float)value min:(float)min max:(float)max;
--(void)updateMotionIndicator:(RKDriveAlgorithm*)driveAlgorithm;
--(void)handleJoystickMotion:(id)sender;
+
+-(void)controlLoop;
+
+//Driving Methods
+- (IBAction)zeroPressed:(id)sender;
+- (IBAction)fortyFivePressed:(id)sender;
+- (IBAction)ninetyPressed:(id)sender;
+- (IBAction)oneThirtyFivePressed:(id)sender;
+- (IBAction)oneEightyPressed:(id)sender;
+- (IBAction)twoThirtyFivePressed:(id)sender;
+- (IBAction)twoSeventyPressed:(id)sender;
+- (IBAction)threeFifteenPressed:(id)sender;
+- (IBAction)stopPressed:(id)sender;
+@property (strong, nonatomic) IBOutlet UISlider *speedSlider;
+
 
 
 //Multiplayer Methods
 -(IBAction)passPressed;
-
--(void)controlLoop;
 
 //Called when the available list of multiplayer games has updated
 //array contains RKMultiplayerGame objects representing available games

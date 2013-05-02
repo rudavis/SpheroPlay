@@ -52,6 +52,11 @@
 		C7F332101727823700416759 /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F3320F1727823700416759 /* ExternalAccessory.framework */; };
 		C7F332141727895600416759 /* RobotUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C7F332131727895600416759 /* RobotUIKit.bundle */; };
 		C7F7DDCF171DF01A00BD4A77 /* colors.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7F7DDCE171DF01A00BD4A77 /* colors.txt */; };
+		C7F7F4691732DF3500ED007E /* fail.sphero in Resources */ = {isa = PBXBuildFile; fileRef = C7F7F4681732DF3500ED007E /* fail.sphero */; };
+		C7F7F46B1732E0BC00ED007E /* coins.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C7F7F46A1732E0BC00ED007E /* coins.mp3 */; };
+		C7F7F46E1732E11500ED007E /* PiggyBankViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7F7F46D1732E11500ED007E /* PiggyBankViewController.m */; };
+		C7F7F4741732E6DB00ED007E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F7F4731732E6DB00ED007E /* AVFoundation.framework */; };
+		C7F7F4761732EAC100ED007E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F7F4751732EAC100ED007E /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -113,6 +118,12 @@
 		C7F3320F1727823700416759 /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
 		C7F332131727895600416759 /* RobotUIKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RobotUIKit.bundle; path = SpheroPlay/RobotUIKit.bundle; sourceTree = "<group>"; };
 		C7F7DDCE171DF01A00BD4A77 /* colors.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = colors.txt; path = SpheroPlay/colors.txt; sourceTree = "<group>"; };
+		C7F7F4681732DF3500ED007E /* fail.sphero */ = {isa = PBXFileReference; lastKnownFileType = file; path = fail.sphero; sourceTree = "<group>"; };
+		C7F7F46A1732E0BC00ED007E /* coins.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = coins.mp3; sourceTree = "<group>"; };
+		C7F7F46C1732E11500ED007E /* PiggyBankViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PiggyBankViewController.h; sourceTree = "<group>"; };
+		C7F7F46D1732E11500ED007E /* PiggyBankViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PiggyBankViewController.m; sourceTree = "<group>"; };
+		C7F7F4731732E6DB00ED007E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C7F7F4751732EAC100ED007E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +131,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7F7F4761732EAC100ED007E /* AudioToolbox.framework in Frameworks */,
+				C7F7F4741732E6DB00ED007E /* AVFoundation.framework in Frameworks */,
 				C7F332091727820900416759 /* RobotKit.framework in Frameworks */,
 				C7F3320A1727820900416759 /* RobotUIKit.framework in Frameworks */,
 				C7F3320C1727822000416759 /* CoreMotion.framework in Frameworks */,
@@ -156,6 +169,8 @@
 		C73D7C9E17186F8400C2A741 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7F7F4751732EAC100ED007E /* AudioToolbox.framework */,
+				C7F7F4731732E6DB00ED007E /* AVFoundation.framework */,
 				C7F332131727895600416759 /* RobotUIKit.bundle */,
 				C7F3320F1727823700416759 /* ExternalAccessory.framework */,
 				C7F3320D1727822A00416759 /* GameKit.framework */,
@@ -186,6 +201,7 @@
 		C73D7CA617186F8400C2A741 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C7F7F46A1732E0BC00ED007E /* coins.mp3 */,
 				C73D7CCE1718763400C2A741 /* Images */,
 				C73D7CA717186F8400C2A741 /* SpheroPlay-Info.plist */,
 				C73D7CA817186F8400C2A741 /* InfoPlist.strings */,
@@ -212,6 +228,7 @@
 			children = (
 				C79F0E5117308FF9001168AF /* Flip.sphero */,
 				C79F0E5217308FF9001168AF /* success.sphero */,
+				C7F7F4681732DF3500ED007E /* fail.sphero */,
 				C76675341727624A00D4D528 /* CircularUIView.h */,
 				C76675351727624A00D4D528 /* CircularUIView.m */,
 			);
@@ -269,6 +286,8 @@
 		C766753A17276CA100D4D528 /* ForFun */ = {
 			isa = PBXGroup;
 			children = (
+				C7F7F46C1732E11500ED007E /* PiggyBankViewController.h */,
+				C7F7F46D1732E11500ED007E /* PiggyBankViewController.m */,
 				C72C236D172ACF4A007F45AA /* TiltHelpViewController.h */,
 				C72C236E172ACF4A007F45AA /* TiltHelpViewController.m */,
 				C729F1731729C8FF0011EE05 /* OrentationHelpViewController.h */,
@@ -356,6 +375,8 @@
 				C72C236C172ACDFF007F45AA /* TiltSphero.png in Resources */,
 				C79F0E5317308FF9001168AF /* Flip.sphero in Resources */,
 				C79F0E5417308FF9001168AF /* success.sphero in Resources */,
+				C7F7F4691732DF3500ED007E /* fail.sphero in Resources */,
+				C7F7F46B1732E0BC00ED007E /* coins.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +398,7 @@
 				C766753D17276CB500D4D528 /* ForFunViewController.m in Sources */,
 				C729F1761729C8FF0011EE05 /* OrentationHelpViewController.m in Sources */,
 				C72C236F172ACF4A007F45AA /* TiltHelpViewController.m in Sources */,
+				C7F7F46E1732E11500ED007E /* PiggyBankViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

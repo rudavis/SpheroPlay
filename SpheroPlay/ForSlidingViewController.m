@@ -51,9 +51,9 @@
     UIImage *minImage = [[UIImage imageNamed:@"red_slider.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
     UIImage *maxImage = [[UIImage imageNamed:@"blue_slider.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 5)];
     UIImage *thumbImage = [UIImage imageNamed:@"dollar_sign.gif"];
-    [[UISlider appearance] setMaximumTrackImage:maxImage forState:UIControlStateNormal];
-    [[UISlider appearance] setMinimumTrackImage:minImage forState:UIControlStateNormal];
-    [[UISlider appearance] setThumbImage:thumbImage forState:UIControlStateNormal];
+    [amountSlider setMaximumTrackImage:maxImage forState:UIControlStateNormal];
+    [amountSlider setMinimumTrackImage:minImage forState:UIControlStateNormal];
+    [amountSlider setThumbImage:thumbImage forState:UIControlStateNormal];
     
     
     /*Register for application lifecycle notifications so we known when to connect and disconnect from the robot*/

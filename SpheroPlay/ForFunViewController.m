@@ -9,6 +9,7 @@
 #import "ForFunViewController.h"
 #import "RobotKit/RobotKit.h"
 #import "RobotUIKit/RobotUIKit.h"
+#import "PiggyBankViewController.h"
 
 
 @implementation ForFunViewController
@@ -29,59 +30,14 @@
     noSpheroViewShowing = NO;
     robotDelay = 400.0;
 
-    /*Register for application lifecycle notifications so we known when to connect and disconnect from the robot*/
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appDidBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
-    
     ///  Connet to Sphero
     [self setupRobotConnection];
-}
-
-- (void)viewDidUnload
-{
-    connectionLabel = nil;
-    [super viewDidUnload];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    //Close Connection to Robot
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
-    [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:0.0 blue:0.0];
-    [[RKRobotProvider sharedRobotProvider] closeRobotConnection];
-
-	[super viewDidDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return NO;
 
-}
-
--(void)appWillResignActive:(NSNotification*)notification {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
-    [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:0.0 blue:0.0];
-    [[RKRobotProvider sharedRobotProvider] closeRobotConnection];
-}
-
--(void)appDidBecomeActive:(NSNotification*)notification {
-    [self setupRobotConnection];
 }
 
 #pragma mark- Sphero Connections
@@ -313,7 +269,7 @@
     } else if ([segue.identifier isEqualToString:@"TiltHelpViewController"]) {
         TiltHelpViewController *destViewController = segue.destinationViewController;
         destViewController.delegate = self;
-    }
+    } 
 }
 
 @end
