@@ -1,19 +1,18 @@
 //
-//  TiltHelpViewController.m
+//  ArcadeModeViewController.m
 //  SpheroPlay
 //
-//  Created by Russ Davis on 4/26/13.
+//  Created by Russ Davis on 5/3/13.
 //  Copyright (c) 2013 RTB. All rights reserved.
 //
 
-#import "TiltHelpViewController.h"
+#import "ArcadeModeViewController.h"
 
-@interface TiltHelpViewController ()
+@interface ArcadeModeViewController ()
 
 @end
 
-@implementation TiltHelpViewController
-@synthesize delegate;
+@implementation ArcadeModeViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,10 +33,6 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)okButtonPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
