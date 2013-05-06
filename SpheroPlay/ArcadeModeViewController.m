@@ -7,26 +7,52 @@
 //
 
 #import "ArcadeModeViewController.h"
-
-@interface ArcadeModeViewController ()
-
-@end
+#import "RobotKit/RobotKit.h"
 
 @implementation ArcadeModeViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize quarterImage,slotImage;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [RKStabilizationCommand sendCommandWithState:RKStabilizationStateOn];
+    [RKBackLEDOutputCommand sendCommandWithBrightness:0.0f];
+    [[RKRobotProvider sharedRobotProvider] openRobotConnection];
+    [[RKRobotProvider sharedRobotProvider] controlConnectedRobot];
+    [RKRGBLEDOutputCommand sendCommandWithRed:.5 green:.5 blue:.5];
+}
+
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
+    
+    //Move Quarter
+    CGPoint translation = [recognizer translationInView:self.view];
+    recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, recognizer.view.center.y + translation.y);
+    [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
+    
+    //Drop quarter
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        //Bounds of coin slot
+        //quarter x >= 170
+        //quarter y <= 90
+        if (recognizer.view.center.x >= 170.0 && recognizer.view.center.y <=90){
+            //They dropped the quarter in the slot!!
+            NSLog(@"Dropped in the slot");
+            [self coinDroppedInSlot];
+        } else {
+            NSLog(@"Missed the slot");
+        }
+    }
+}
+
+- (void) coinDroppedInSlot {
+    [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:1.0 blue:0.0];
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"spin" ofType:@"sphero"];
+    NSData *data = [NSData dataWithContentsOfFile:file];
+    
+    //saves a temporary macro command thats includes the data packet
+    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+    //Run temporary macro 255
+    [RKRunMacroCommand sendCommandWithId:255];
 }
 
 - (void)didReceiveMemoryWarning

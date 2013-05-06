@@ -8,10 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <RobotUIKit/RobotUIKit.h>
-#import "OrentationHelpViewController.h"
-#import "TiltHelpViewController.h"
 
-@interface ForFunViewController : UIViewController <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol, OrentationHelpViewControllerDelegate, TiltHelpViewControllerDelegate> {
+@interface ForFunViewController : UIViewController <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol> {
     BOOL robotOnline;
     BOOL robotInitialized;
     BOOL noSpheroViewShowing;

@@ -36,7 +36,7 @@
     self.navigationItem.hidesBackButton = YES;
     
     [self successMacro];
-    [self failureMacro];
+    //[self failureMacro];
     
     [self handleRobotOnline];
     
@@ -117,6 +117,10 @@
 }
 
 - (void) successMacro {
+
+    [RKSetDataStreamingCommand sendCommandStopStreaming];
+    [RKStabilizationCommand sendCommandWithState:RKStabilizationStateOn];
+    
     NSString *file = [[NSBundle mainBundle] pathForResource:@"success" ofType:@"sphero"];
     NSData *data = [NSData dataWithContentsOfFile:file];
     

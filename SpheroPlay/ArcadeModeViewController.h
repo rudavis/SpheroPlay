@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ArcadeModeViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIImageView *quarterImage;
+@property (strong, nonatomic) IBOutlet UIImageView *slotImage;
+
+-(IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
+- (void) coinDroppedInSlot;
 
 @end

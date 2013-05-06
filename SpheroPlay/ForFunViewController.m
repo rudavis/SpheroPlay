@@ -263,13 +263,6 @@
 
 //Open the Orentation Help view as a modal.  
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"OrentationHelpSegue"]) {
-        OrentationHelpViewController *destViewController = segue.destinationViewController;
-        destViewController.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"TiltHelpViewController"]) {
-        TiltHelpViewController *destViewController = segue.destinationViewController;
-        destViewController.delegate = self;
-    } 
 }
 
 @end
