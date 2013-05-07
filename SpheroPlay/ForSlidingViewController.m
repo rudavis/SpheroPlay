@@ -48,9 +48,9 @@
     amountSlider.value = initialCheckingAmount;
     
     //Customize Slider
-    UIImage *minImage = [[UIImage imageNamed:@"red_slider.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
-    UIImage *maxImage = [[UIImage imageNamed:@"blue_slider.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 5)];
-    UIImage *thumbImage = [UIImage imageNamed:@"dollar_sign.gif"];
+    UIImage *minImage = [[UIImage imageNamed:@"slider_left.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
+    UIImage *maxImage = [[UIImage imageNamed:@"slider_right.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 5)];
+    UIImage *thumbImage = [UIImage imageNamed:@"slider_indicator.png"];
     [amountSlider setMaximumTrackImage:maxImage forState:UIControlStateNormal];
     [amountSlider setMinimumTrackImage:minImage forState:UIControlStateNormal];
     [amountSlider setThumbImage:thumbImage forState:UIControlStateNormal];

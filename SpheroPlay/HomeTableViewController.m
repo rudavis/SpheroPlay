@@ -29,7 +29,7 @@
     [super viewDidLoad];
     //Set the tableView background image
     self.tableView.backgroundColor=[UIColor clearColor];
-    UIImage *backgroundImage = [UIImage imageNamed:@"light_gray_bg.png"];
+    UIImage *backgroundImage = [UIImage imageNamed:@"cloud_background.jpg"];
     UIImageView *backgroundImageView = [[UIImageView alloc]initWithImage:backgroundImage];
     self.tableView.backgroundView=backgroundImageView;
 }
