@@ -18,19 +18,13 @@
 #define SHAKE_THRESHOLD 2
 
 @implementation ConfirmationSlideViewController
+@synthesize shakeLeftImage, shakeRightImage;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     robotDelay = 400.0;
     //Hide back button
     self.navigationItem.hidesBackButton = YES;
@@ -103,9 +97,19 @@
             [RKBackLEDOutputCommand sendCommandWithBrightness:0.0f];
             // Close the connection
             [[RKRobotProvider sharedRobotProvider] closeRobotConnection];
+
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.1];
+            shakeLeftImage.alpha = 1.0;
+            shakeRightImage.alpha = 1.0;
+            [UIView commitAnimations];
             
-            //Pop to home
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            double delayInSeconds = 0.5;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                //Pop to home
+                [self.navigationController popToRootViewControllerAnimated:YES];
+            });
         }
     }
 }
@@ -118,7 +122,7 @@
 
 - (void) successMacro {
 
-    [RKSetDataStreamingCommand sendCommandStopStreaming];
+    //[RKSetDataStreamingCommand sendCommandStopStreaming];
     [RKStabilizationCommand sendCommandWithState:RKStabilizationStateOn];
     
     NSString *file = [[NSBundle mainBundle] pathForResource:@"success" ofType:@"sphero"];

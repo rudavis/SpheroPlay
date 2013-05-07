@@ -28,6 +28,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *toAccountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *updatedCheckingAmountLabel;
 @property (strong, nonatomic) IBOutlet UILabel *updatedSavingsAmountLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *shakeRightImage;
+@property (strong, nonatomic) IBOutlet UIImageView *shakeLeftImage;
 
 
 @end

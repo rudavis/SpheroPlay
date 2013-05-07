@@ -17,11 +17,17 @@
 #define SHAKE_THRESHOLD 2
 
 @implementation PiggyBankViewController
+@synthesize delegate;
+@synthesize creditsLabel, numberOfShakesLabel;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     packetCount = 0;
+    numberOfShakes = 0;
+    credits = 0.0;
+    
     [RKSetDataStreamingCommand sendCommandStopStreaming];
     // Start streaming sensor data
     ////First turn off stabilization so the drive mechanism does not move.
@@ -93,8 +99,11 @@
          */
         //General Shake ~2 - 3 is good.
         if ( sqrt(pow(x,2) + pow(y,2) + pow(z,2)) > SHAKE_THRESHOLD) {
-            NSLog(@"SHAKEN!!");
             [self playSound];
+            numberOfShakes++;
+            numberOfShakesLabel.text = [NSString stringWithFormat:@"%i", numberOfShakes];
+            credits = numberOfShakes * 0.25;
+            creditsLabel.text = [NSString stringWithFormat:@"%.2f", credits];
         }
     }
 }
@@ -105,6 +114,44 @@
     CFURLRef soundURL = (__bridge CFURLRef)[NSURL fileURLWithPath:soundPath];
     AudioServicesCreateSystemSoundID(soundURL, &sounds[0]);
     AudioServicesPlaySystemSound(sounds[0]);
+}
+
+
+-(IBAction)cancel:(id)sender {
+    //Stop this listening for streaming
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
+    // Turn off data streaming
+    [RKSetDataStreamingCommand sendCommandWithSampleRateDivisor:0
+                                                   packetFrames:0
+                                                     sensorMask:RKDataStreamingMaskOff
+                                                    packetCount:0];
+    // Unregister for async data packets
+    [[RKDeviceMessenger sharedMessenger] removeDataStreamingObserver:self];
+    // Restore stabilization (the control unit)
+    [RKStabilizationCommand sendCommandWithState:RKStabilizationStateOn];
+    // Turn off Back LED
+    [RKBackLEDOutputCommand sendCommandWithBrightness:0.0f];
+    [RKRGBLEDOutputCommand sendCommandWithRed:1.0 green:1.0 blue:1.0];
+
+    [self.delegate piggyBankViewControllerDidPressCancel:self];
+}
+- (IBAction)done:(id)sender {
+    //Stop this listening for streaming
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
+    // Turn off data streaming
+    [RKSetDataStreamingCommand sendCommandWithSampleRateDivisor:0
+                                                   packetFrames:0
+                                                     sensorMask:RKDataStreamingMaskOff
+                                                    packetCount:0];
+    // Unregister for async data packets
+    [[RKDeviceMessenger sharedMessenger] removeDataStreamingObserver:self];
+    // Restore stabilization (the control unit)
+    [RKStabilizationCommand sendCommandWithState:RKStabilizationStateOn];
+    // Turn off Back LED
+    [RKBackLEDOutputCommand sendCommandWithBrightness:0.0f];
+    [RKRGBLEDOutputCommand sendCommandWithRed:1.0 green:1.0 blue:1.0];
+
+    [self.delegate piggyBankViewController:self DidPressDone:credits];
 }
 
 - (void)didReceiveMemoryWarning

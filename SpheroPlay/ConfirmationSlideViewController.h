@@ -16,5 +16,7 @@
 - (IBAction)homeButtonPressed:(id)sender;
 - (void)successMacro;
 - (void)failureMacro;
+@property (strong, nonatomic) IBOutlet UIImageView *shakeRightImage;
+@property (strong, nonatomic) IBOutlet UIImageView *shakeLeftImage;
 
 @end

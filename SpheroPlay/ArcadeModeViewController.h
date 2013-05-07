@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PiggyBankViewController.h"
 
-@interface ArcadeModeViewController : UIViewController
+@interface ArcadeModeViewController : UIViewController <PiggyBankViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIImageView *quarterImage;
 @property (strong, nonatomic) IBOutlet UIImageView *slotImage;
+@property (strong, nonatomic) IBOutlet UILabel *creditsLabel;
 
 -(IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 - (void) coinDroppedInSlot;

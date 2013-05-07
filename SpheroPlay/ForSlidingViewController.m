@@ -17,6 +17,7 @@
 @implementation ForSlidingViewController
 @synthesize totalAmountLabel, checkingAmounLabel, savingsAmountLabel, amountSlider;
 @synthesize combinedAmount, initialCheckingAmount, initialSavingsAmount, newCheckingAmount, newSavingsAmount;
+@synthesize tiltLeftArrow, tiltRightArrow, shakeLeftImage, shakeRightImage;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,13 +49,18 @@
     amountSlider.value = initialCheckingAmount;
     
     //Customize Slider
-    UIImage *minImage = [[UIImage imageNamed:@"slider_left.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
-    UIImage *maxImage = [[UIImage imageNamed:@"slider_right.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 5)];
+    UIImage *minImage = [[UIImage imageNamed:@"slider_left.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 15, 0, 0)];
+    UIImage *maxImage = [[UIImage imageNamed:@"slider_right.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 15)];
     UIImage *thumbImage = [UIImage imageNamed:@"slider_indicator.png"];
     [amountSlider setMaximumTrackImage:maxImage forState:UIControlStateNormal];
     [amountSlider setMinimumTrackImage:minImage forState:UIControlStateNormal];
     [amountSlider setThumbImage:thumbImage forState:UIControlStateNormal];
     
+    //Customize images
+    //shakeLeftImage.hidden = YES;
+    //shakeRightImage.hidden = YES;
+    //tiltLeftArrow.hidden = YES;
+    //tiltRightArrow.hidden = YES;
     
     /*Register for application lifecycle notifications so we known when to connect and disconnect from the robot*/
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -92,7 +98,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"validateSlideSegue"]) {
-
+        
         newCheckingAmount = amountSlider.value;
         newSavingsAmount = combinedAmount - newCheckingAmount;
         
@@ -234,7 +240,17 @@ This will give you a magnitude of the acceleration vector. It's a good value for
 */
         //General Shake ~2 - 3 is good.  
         if ( sqrt(pow(x,2) + pow(y,2) + pow(z,2)) > SHAKE_THRESHOLD) {
-            [self performSegueWithIdentifier:@"validateSlideSegue" sender:self];
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.1];
+            shakeLeftImage.alpha = 1.0;
+            shakeRightImage.alpha = 1.0;
+            [UIView commitAnimations];
+            
+            double delayInSeconds = 0.5;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self performSegueWithIdentifier:@"validateSlideSegue" sender:self];
+            });
         }
         
         //Slide slider with Roll Data (Roll data: +/- 90 degrees)
@@ -243,6 +259,18 @@ This will give you a magnitude of the acceleration vector. It's a good value for
         
         //Signifiant tilt
         if (roll > 15 || roll < -15) {
+            if (roll > 15) {
+                [UIView beginAnimations:nil context:NULL];
+                [UIView setAnimationDuration:0.1];
+                tiltRightArrow.alpha = 1.0;
+                [UIView commitAnimations];
+            } else {
+                [UIView beginAnimations:nil context:NULL];
+                [UIView setAnimationDuration:0.1];
+                tiltLeftArrow.alpha = 1.0;
+                [UIView commitAnimations];
+
+            }
             //I used 3 * ceilf(roll/10) to make the slider move faster the more you tilt
             //divide by 10, Round up to next int, times 3
             [amountSlider setValue:amountSlider.value + 3 * ceilf(roll/10) animated:YES];
@@ -251,6 +279,11 @@ This will give you a magnitude of the acceleration vector. It's a good value for
             checkingAmounLabel.text = [NSString stringWithFormat:@"Checking: %.0f", [amountSlider value]];
             savingsAmountLabel.text = [NSString stringWithFormat:@"Savings: %.0f", savingsAmount];
         }
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+        tiltLeftArrow.alpha = 0.4;
+        tiltRightArrow.alpha = 0.4;
+        [UIView commitAnimations];
     }
 }
 

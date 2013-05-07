@@ -21,6 +21,7 @@
 
 @implementation ValidateSlidingViewController
 @synthesize combinedAmount, initialCheckingAmount, initialSavingsAmount, newCheckingAmount, newSavingsAmount, transferAmount, transferAmountLabel, fromAccountLabel,toAccountLabel, updatedSavingsAmountLabel,updatedCheckingAmountLabel;
+@synthesize shakeRightImage, shakeLeftImage;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
     if (self.newSavingsAmount > self.initialSavingsAmount) {
         //They transfered money into savings.
@@ -116,7 +118,17 @@
         float z = accelerometerData.acceleration.z;
         //General Shake ~2 - 3 is good.
         if ( sqrt(pow(x,2) + pow(y,2) + pow(z,2)) > SHAKE_THRESHOLD) {
-            [self performSegueWithIdentifier:@"ConfirmationSegue" sender:self];
+            [UIView beginAnimations:nil context:NULL];
+            [UIView setAnimationDuration:0.1];
+            shakeLeftImage.alpha = 1.0;
+            shakeRightImage.alpha = 1.0;
+            [UIView commitAnimations];
+            
+            double delayInSeconds = 0.5;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self performSegueWithIdentifier:@"ConfirmationSegue" sender:self];
+            });
         }
     }
 }

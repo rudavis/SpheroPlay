@@ -33,6 +33,10 @@
 @property (strong, nonatomic) IBOutlet UILabel *checkingAmounLabel;
 @property (strong, nonatomic) IBOutlet UILabel *savingsAmountLabel;
 @property (strong, nonatomic) IBOutlet UISlider *amountSlider;
+@property (strong, nonatomic) IBOutlet UIImageView *tiltRightArrow;
+@property (strong, nonatomic) IBOutlet UIImageView *tiltLeftArrow;
+@property (strong, nonatomic) IBOutlet UIImageView *shakeRightImage;
+@property (strong, nonatomic) IBOutlet UIImageView *shakeLeftImage;
 
 - (IBAction)sliderValueChanged:(UISlider *)sender;
 - (IBAction)continueButtonPressed:(id)sender;
