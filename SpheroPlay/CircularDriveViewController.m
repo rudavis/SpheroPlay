@@ -7,6 +7,8 @@
 //
 
 #import "CircularDriveViewController.h"
+#import "RobotKit/RobotKit.h"
+#import "RobotUIKit/RobotUIKit.h"
 
 
 @implementation CircularDriveViewController
@@ -30,9 +32,7 @@
         timer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
         [timeRemainingLabel setText:@"Time Remaining:"];
     });
-    
-    [self handleRobotOnline];
-
+    [self setupRobotConnection];
 }
 
 -(void)timerFired
@@ -71,15 +71,10 @@
     });
 
 }
-
 - (void)handleRobotOnline {
-    
-	if (![[RKRobotProvider sharedRobotProvider] controlConnectedRobot] ) {
-        [[RKRobotProvider sharedRobotProvider] openRobotConnection];
-    }
-
     /*The robot is now online, we can begin sending commands*/
     robotOnline = YES;
+    [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:1.0 blue:0.0];
     
     //Setup joystick driving
     [RKDriveControl sharedDriveControl].joyStickSize = circularView.bounds.size;
@@ -87,12 +82,21 @@
     [RKDriveControl sharedDriveControl].driveConversionAction = @selector(updateMotionIndicator:);
     [[RKDriveControl sharedDriveControl] startDriving:RKDriveControlJoyStick];
     //Set max speed
-    [RKDriveControl sharedDriveControl].velocityScale = 0.8;
+    [RKDriveControl sharedDriveControl].velocityScale = 0.6;
     
     // start processing the puck's movements
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoystickMotion:)];
     [drivePuck addGestureRecognizer:panGesture];
 }
+
+-(void)setupRobotConnection {
+    /*Try to connect to the robot*/
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleRobotOnline) name:RKDeviceConnectionOnlineNotification object:nil];
+    if ([[RKRobotProvider sharedRobotProvider] isRobotUnderControl]) {
+        [[RKRobotProvider sharedRobotProvider] openRobotConnection];
+    }
+}
+
 
 #pragma mark -
 #pragma mark Joystick related methods
@@ -100,7 +104,7 @@
 - (void)handleJoystickMotion:(id)sender
 {
     //Don't handle the gesture if we aren't connected to and driving a robot
-    //if (![RKDriveControl sharedDriveControl].driving) return;
+    if (![RKDriveControl sharedDriveControl].driving) return;
     
     //Handle the pan gesture and pass the results into the drive control
     UIPanGestureRecognizer *pan_recognizer = (UIPanGestureRecognizer *)sender;
@@ -125,7 +129,7 @@
 
 - (void)updateMotionIndicator:(RKDriveAlgorithm*)driveAlgorithm {
     //Don't update the puck position if we aren't driving
-    //if ( ![RKDriveControl sharedDriveControl].driving || !ballMoving) return;
+    if ( ![RKDriveControl sharedDriveControl].driving || !ballMoving) return;
     
     //Update the joystick puck position based on the data from the drive algorithm
     CGRect bounds = circularView.bounds;
@@ -157,7 +161,6 @@
         return value;
     }
 }
-
 #pragma mark -
 #pragma mark UI Interaction
 
@@ -184,7 +187,6 @@
     [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
     //Run temporary macro 255
     [RKRunMacroCommand sendCommandWithId:255];
-
 }
 
 //Color picker delegate callbacks

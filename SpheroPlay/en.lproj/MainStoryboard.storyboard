@@ -533,38 +533,6 @@
                                     <action selector="spinButtonPressed:" destination="I10-mO-b8M" eventType="touchUpInside" id="P0k-tL-SPW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfS-nW-KEO">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="v3J-yR-Oxt"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Figure 8" backgroundImage="button_large.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="figureEightButtonPressed:" destination="I10-mO-b8M" eventType="touchUpInside" id="lJQ-Lq-DWu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iLE-lW-Mty">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="604-hV-tvR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Flip" backgroundImage="button_large.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="flipButtonPressed:" destination="I10-mO-b8M" eventType="touchUpInside" id="mPy-vi-kJe"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -572,24 +540,18 @@
                             <constraint firstItem="DfH-ls-gKS" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="73" id="3UJ-Jz-pot"/>
                             <constraint firstItem="wsz-jH-6WN" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="8uZ-6p-81P"/>
                             <constraint firstItem="aT2-yu-UTq" firstAttribute="top" secondItem="DfH-ls-gKS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ELA-Wv-3vf"/>
-                            <constraint firstAttribute="trailing" secondItem="iLE-lW-Mty" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="HRz-WA-btq"/>
                             <constraint firstAttribute="bottom" secondItem="2E8-It-Sp9" secondAttribute="bottom" constant="30" id="Jdv-ps-0u3"/>
                             <constraint firstItem="a83-w2-fEp" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="20" symbolic="YES" type="default" id="K9s-wS-Eyd"/>
                             <constraint firstItem="2E8-It-Sp9" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="M3a-y1-nrd"/>
-                            <constraint firstItem="iLE-lW-Mty" firstAttribute="top" secondItem="wsz-jH-6WN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="MA5-Ik-WTQ"/>
                             <constraint firstItem="uot-c3-Epq" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="-128" id="QDB-0U-Eqc"/>
                             <constraint firstItem="DfH-ls-gKS" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="T6H-vh-ouw"/>
-                            <constraint firstItem="PfS-nW-KEO" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="TFO-07-kLf"/>
                             <constraint firstItem="a83-w2-fEp" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Wc7-b2-xb9"/>
                             <constraint firstItem="wsz-jH-6WN" firstAttribute="top" secondItem="sjz-xv-SBK" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="X07-bK-07w"/>
                             <constraint firstAttribute="trailing" secondItem="aT2-yu-UTq" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Xcl-UP-0Bn"/>
+                            <constraint firstItem="sjz-xv-SBK" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="229" id="a63-7z-mvw"/>
                             <constraint firstAttribute="trailing" secondItem="2E8-It-Sp9" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="bqQ-gR-b3e"/>
-                            <constraint firstItem="iLE-lW-Mty" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="c9u-S1-EM6"/>
                             <constraint firstAttribute="trailing" secondItem="a83-w2-fEp" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="eWj-6V-Sx2"/>
                             <constraint firstItem="sjz-xv-SBK" firstAttribute="leading" secondItem="Kuz-No-Nsl" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="f7E-9p-HS5"/>
-                            <constraint firstAttribute="trailing" secondItem="PfS-nW-KEO" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="oDb-cp-W5i"/>
-                            <constraint firstItem="sjz-xv-SBK" firstAttribute="top" secondItem="PfS-nW-KEO" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="qbg-nM-vDY"/>
-                            <constraint firstItem="PfS-nW-KEO" firstAttribute="top" secondItem="aT2-yu-UTq" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="qfE-hm-wKN"/>
                             <constraint firstAttribute="trailing" secondItem="wsz-jH-6WN" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="tdj-LC-oVL"/>
                             <constraint firstAttribute="trailing" secondItem="DfH-ls-gKS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="uPF-Th-q5v"/>
                             <constraint firstItem="uot-c3-Epq" firstAttribute="top" secondItem="Kuz-No-Nsl" secondAttribute="top" constant="-355" id="vrR-Hh-tbJ"/>
@@ -1563,10 +1525,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ForFunViewController.h"/>
             <relationships>
                 <relationship kind="action" name="colorButtonPressed:"/>
-                <relationship kind="action" name="figureEightButtonPressed:"/>
                 <relationship kind="action" name="rainbowButtonPressed:"/>
                 <relationship kind="action" name="sleepButtonPressed:"/>
-                <relationship kind="action" name="spinButtonPressed:"/>
                 <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1608,6 +1568,14 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PaymentViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PaymentViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelAction:"/>
+                <relationship kind="action" name="submitAction:"/>
+                <relationship kind="outlet" name="amount" candidateClass="UITextField"/>
+            </relationships>
         </class>
         <class className="PiggyBankViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PiggyBankViewController.h"/>

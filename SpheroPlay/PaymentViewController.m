@@ -37,7 +37,7 @@
 }
 
 - (IBAction)submitAction:(id)sender {
-   [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     NSString *dataStr = [NSString stringWithFormat:@"Payment of $%@ recieved", self.amount.text];

@@ -26,9 +26,11 @@
 
 - (IBAction)colorButtonPressed:(id)sender;
 - (IBAction)sleepButtonPressed:(id)sender;
-- (IBAction)figureEightButtonPressed:(id)sender;
+//- (IBAction)figureEightButtonPressed:(id)sender;
 - (IBAction)rainbowButtonPressed:(id)sender;
-- (IBAction)spinButtonPressed:(id)sender;
-//- (IBAction)flipButtonPressed:(id)sender;
+
+//- (IBAction)spinButtonPressed:(id)sender;
+//- (IBAction)squareButtonPressed:(id)sender;
+
 
 @end

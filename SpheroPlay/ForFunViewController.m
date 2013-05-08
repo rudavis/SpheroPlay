@@ -141,6 +141,7 @@
     [self presentModalLayerViewController:sleep animated:YES];
 }
 
+/*
 - (IBAction)figureEightButtonPressed:(id)sender {
     NSString *file = [[NSBundle mainBundle] pathForResource:@"Figure8" ofType:@"sphero"];
     NSData *data = [NSData dataWithContentsOfFile:file];
@@ -150,7 +151,7 @@
     //Run temporary macro 255
     [RKRunMacroCommand sendCommandWithId:255];
 }
-
+*/
 - (IBAction)rainbowButtonPressed:(id)sender {
     NSString *file = [[NSBundle mainBundle] pathForResource:@"rainbow" ofType:@"sphero"];
     NSData *data = [NSData dataWithContentsOfFile:file];
@@ -162,6 +163,7 @@
 
 }
 
+/*
 - (IBAction)spinButtonPressed:(id)sender {
     NSString *file = [[NSBundle mainBundle] pathForResource:@"spin" ofType:@"sphero"];
     NSData *data = [NSData dataWithContentsOfFile:file];
@@ -172,6 +174,17 @@
     [RKRunMacroCommand sendCommandWithId:255];
 
 }
+
+- (IBAction)squareButtonPressed:(id)sender {
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"Square" ofType:@"sphero"];
+    NSData *data = [NSData dataWithContentsOfFile:file];
+    
+    //saves a temporary macro command thats includes the data packet
+    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+    //Run temporary macro 255
+    [RKRunMacroCommand sendCommandWithId:255];
+}
+*/
 
 //- (IBAction)flipButtonPressed:(id)sender {
 //    NSString *file = [[NSBundle mainBundle] pathForResource:@"Flip" ofType:@"sphero"];

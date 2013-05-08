@@ -70,38 +70,38 @@ static NSString * const TwoPhonesGameType = @"twophones";
 /********** Start Here ***********/
 -(void)controlLoop {
     robotOnline = YES;
-/*
-    //Fires every 0.2 seconds on a timer to get readings from the sliders and send roll commands to the ball
-    
-    float speed = speedSlider.value*speedSlider.value; //RCDrive controls work best if speed is on exponential curve
-    
-    float headingAdjustment = 30.0 * headingSlider.value; //Only adjust heading by up to 30 degrees every 0.2 seconds
-    heading += headingAdjustment;
-    if(heading < 0.0) heading += 359.0;
-    if(heading > 359.0) heading -= 359.0;
-    
-    if(speed == lastSpeed && heading == lastHeading) {
-        [self performSelector:@selector(controlLoop) withObject:nil afterDelay:0.2];
-        return;
-    }
-    lastSpeed = speed;
-    lastHeading = heading;
-    
-    if(!self.modalViewController) { //Be sure that we have control of the robot
-        RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:heading velocity:speed];
-        //This is the important part where we decide if we send the command to the local robot or the remote robot
-        if([[RKMultiplayer sharedMultiplayer] isHost]) {
-            //If we are the host we send it to our local robot
-            [[RKDeviceMessenger sharedMessenger] postCommand:command];
-        } else {
-            //If we aren't the host we send it to the host's robot like this...
-            [remotePlayer.robot sendCommand:command];
-        }
-        [command release];
-    }
-    
-    [self performSelector:@selector(controlLoop) withObject:nil afterDelay:0.2];
-*/
+    /*
+     //Fires every 0.2 seconds on a timer to get readings from the sliders and send roll commands to the ball
+     
+     float speed = speedSlider.value*speedSlider.value; //RCDrive controls work best if speed is on exponential curve
+     
+     float headingAdjustment = 30.0 * headingSlider.value; //Only adjust heading by up to 30 degrees every 0.2 seconds
+     heading += headingAdjustment;
+     if(heading < 0.0) heading += 359.0;
+     if(heading > 359.0) heading -= 359.0;
+     
+     if(speed == lastSpeed && heading == lastHeading) {
+     [self performSelector:@selector(controlLoop) withObject:nil afterDelay:0.2];
+     return;
+     }
+     lastSpeed = speed;
+     lastHeading = heading;
+     
+     if(!self.modalViewController) { //Be sure that we have control of the robot
+     RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:heading velocity:speed];
+     //This is the important part where we decide if we send the command to the local robot or the remote robot
+     if([[RKMultiplayer sharedMultiplayer] isHost]) {
+     //If we are the host we send it to our local robot
+     [[RKDeviceMessenger sharedMessenger] postCommand:command];
+     } else {
+     //If we aren't the host we send it to the host's robot like this...
+     [remotePlayer.robot sendCommand:command];
+     }
+     [command release];
+     }
+     
+     [self performSelector:@selector(controlLoop) withObject:nil afterDelay:0.2];
+     */
 }
 
 
@@ -123,7 +123,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
     //cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [cpc layoutPortrait];
     [cpc setRed:1.0 green:1.0 blue:1.0];
-
+    
     //[self presentViewController:cpc animated:YES completion:nil];
     
     [self.navigationController pushViewController:cpc animated:YES];
@@ -132,7 +132,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
 
 -(void) customButtonPressed {
     //First we need to pop a view on the Guest and let them enter an amount.
-    //Then they submit and we pass a message to 
+    //Then they submit and we pass a message to
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     [dict setValue:@"Pay" forKey:@"PAY"];
     NSString *payAmount = @"1.00";
@@ -185,7 +185,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
 //Sent on game state change for updating UI
 -(void)multiplayerGameStateDidChangeToState:(RKMultiplayerGameState)newState {
     if(newState==RKMultiplayerGameStateStarted) {
-
+        
         connectionMessage.hidden = YES;
         passButton.hidden = NO;
         //If we aren't the host we want to go to the flipside view until control is passed to us
@@ -243,7 +243,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
         //Need to pop something on the Host's screen....
         //...
     }
-
+    
 }
 
 
@@ -328,7 +328,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
 }
 
 - (IBAction)stopPressed:(id)sender {
-    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:0.0 velocity:0.0];    
+    RKRollCommand *command = [[RKRollCommand alloc] initWithHeading:0.0 velocity:0.0];
     if ([[RKMultiplayer sharedMultiplayer] isHost]) {
         [[RKDeviceMessenger sharedMessenger] postCommand:command];
     } else {

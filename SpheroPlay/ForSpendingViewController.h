@@ -3,7 +3,6 @@
 #import <RobotKit/RobotKit.h>
 #import <RobotUIKit/RobotUIKit.h>
 #import <RobotKit/RKMultiplayer.h>
-#import "CircularUIView.h"
 
 @class RKRemotePlayer;
 

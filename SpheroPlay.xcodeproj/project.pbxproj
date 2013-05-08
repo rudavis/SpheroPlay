@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C705AC2B173AAA21000F92AB /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C705AC2A173AAA21000F92AB /* PaymentViewController.m */; };
+		C705AC2F173AB4BB000F92AB /* Figure8.sphero in Resources */ = {isa = PBXBuildFile; fileRef = C705AC2C173AB4BB000F92AB /* Figure8.sphero */; };
+		C705AC30173AB4BB000F92AB /* rainbow.sphero in Resources */ = {isa = PBXBuildFile; fileRef = C705AC2D173AB4BB000F92AB /* rainbow.sphero */; };
+		C705AC31173AB4BB000F92AB /* Square.sphero in Resources */ = {isa = PBXBuildFile; fileRef = C705AC2E173AB4BB000F92AB /* Square.sphero */; };
 		C7097D82173963CE00F504D8 /* slider_left.png in Resources */ = {isa = PBXBuildFile; fileRef = C7097D81173963CE00F504D8 /* slider_left.png */; };
 		C72CA9A1171F0E2C00CE605A /* ValidateSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */; };
 		C73BD91A1739C99F00D0D11F /* CircularDriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73BD9191739C99F00D0D11F /* CircularDriveViewController.m */; };
@@ -81,6 +85,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C705AC29173AAA21000F92AB /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
+		C705AC2A173AAA21000F92AB /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
+		C705AC2C173AB4BB000F92AB /* Figure8.sphero */ = {isa = PBXFileReference; lastKnownFileType = file; path = Figure8.sphero; sourceTree = "<group>"; };
+		C705AC2D173AB4BB000F92AB /* rainbow.sphero */ = {isa = PBXFileReference; lastKnownFileType = file; path = rainbow.sphero; sourceTree = "<group>"; };
+		C705AC2E173AB4BB000F92AB /* Square.sphero */ = {isa = PBXFileReference; lastKnownFileType = file; path = Square.sphero; sourceTree = "<group>"; };
 		C7097D81173963CE00F504D8 /* slider_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider_left.png; sourceTree = "<group>"; };
 		C72CA99F171F0E2C00CE605A /* ValidateSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateSlidingViewController.h; sourceTree = "<group>"; };
 		C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateSlidingViewController.m; sourceTree = "<group>"; };
@@ -268,6 +277,9 @@
 		C73D7CCD1718760300C2A741 /* SpheroClasses */ = {
 			isa = PBXGroup;
 			children = (
+				C705AC2C173AB4BB000F92AB /* Figure8.sphero */,
+				C705AC2D173AB4BB000F92AB /* rainbow.sphero */,
+				C705AC2E173AB4BB000F92AB /* Square.sphero */,
 				C7D46C1C1734521500771934 /* spin.sphero */,
 				C7D46C1A17344E7900771934 /* Flip.sphero */,
 				C79F0E5217308FF9001168AF /* success.sphero */,
@@ -342,6 +354,8 @@
 			children = (
 				C7667537172767D300D4D528 /* ForSpendingViewController.h */,
 				C7667538172767D300D4D528 /* ForSpendingViewController.m */,
+				C705AC29173AAA21000F92AB /* PaymentViewController.h */,
+				C705AC2A173AAA21000F92AB /* PaymentViewController.m */,
 			);
 			name = ForSpending;
 			sourceTree = "<group>";
@@ -461,6 +475,9 @@
 				C7E83FF2173981370018850D /* textbox_full.png in Resources */,
 				C7E83FF3173981370018850D /* textbox_half.png in Resources */,
 				C7E83FF4173981370018850D /* textbox_third.png in Resources */,
+				C705AC2F173AB4BB000F92AB /* Figure8.sphero in Resources */,
+				C705AC30173AB4BB000F92AB /* rainbow.sphero in Resources */,
+				C705AC31173AB4BB000F92AB /* Square.sphero in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +500,7 @@
 				C7F7F46E1732E11500ED007E /* PiggyBankViewController.m in Sources */,
 				C7D46C15173440E500771934 /* ArcadeModeViewController.m in Sources */,
 				C73BD91A1739C99F00D0D11F /* CircularDriveViewController.m in Sources */,
+				C705AC2B173AAA21000F92AB /* PaymentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
