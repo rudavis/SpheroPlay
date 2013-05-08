@@ -17,6 +17,7 @@
 
 
 -(void)controlLoop;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundControlHider;
 
 //Driving Methods
 - (IBAction)zeroPressed:(id)sender;
@@ -34,6 +35,7 @@
 
 //Multiplayer Methods
 -(IBAction)passPressed;
+- (IBAction)endPressed:(id)sender;
 
 //Called when the available list of multiplayer games has updated
 //array contains RKMultiplayerGame objects representing available games

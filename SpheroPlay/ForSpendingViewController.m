@@ -13,7 +13,7 @@
 static NSString * const TwoPhonesGameType = @"twophones";
 
 @implementation ForSpendingViewController
-@synthesize speedSlider;
+@synthesize speedSlider, backgroundControlHider;
 
 #pragma mark -
 #pragma mark Memory Management
@@ -42,15 +42,18 @@ static NSString * const TwoPhonesGameType = @"twophones";
 {
     [super viewDidLoad];
     
+    [RKMultiplayer setMultiplayerDebug:YES];
+    
+    self.navigationItem.hidesBackButton = YES;
+    
     //Hide dirve controls until game starts
-    passButton.hidden = YES;
+    backgroundControlHider.hidden = NO;
     robotOnline = NO;
     
     [RKRemotePlayer setMaxPingTimeouts:50];
     [RKRemotePlayer setPingTimeout:50.0];
     //Set the multiplayer delegate to this controller (RKMultiplayer can only have one delegate at a time)
     [[RKMultiplayer sharedMultiplayer] setDelegate:self];
-    [RKMultiplayer setMultiplayerDebug:YES];
     
     connectionMessage.text = @"Looking for players with robots...";
     [[RKMultiplayer sharedMultiplayer] getAvailableMultiplayerGamesOfType:TwoPhonesGameType];
@@ -123,23 +126,16 @@ static NSString * const TwoPhonesGameType = @"twophones";
     //cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [cpc layoutPortrait];
     [cpc setRed:1.0 green:1.0 blue:1.0];
+    [cpc showRollButton:NO];
     
     //[self presentViewController:cpc animated:YES completion:nil];
-    
+    cpc.navigationItem.hidesBackButton = YES;
     [self.navigationController pushViewController:cpc animated:YES];
-    
+
 }
 
--(void) customButtonPressed {
-    //First we need to pop a view on the Guest and let them enter an amount.
-    //Then they submit and we pass a message to
-    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-    [dict setValue:@"Pay" forKey:@"PAY"];
-    NSString *payAmount = @"1.00";
-    [dict setValue:payAmount forKey:@"AMOUNT"];
-    [[RKMultiplayer sharedMultiplayer] sendDataToAll:dict];
+- (IBAction)endPressed:(id)sender {
 }
-
 #pragma mark -
 #pragma mark RUIColorPickerDelegate methods
 
@@ -187,7 +183,9 @@ static NSString * const TwoPhonesGameType = @"twophones";
     if(newState==RKMultiplayerGameStateStarted) {
         
         connectionMessage.hidden = YES;
-        passButton.hidden = NO;
+        backgroundControlHider.hidden = YES;
+        
+        
         //If we aren't the host we want to go to the flipside view until control is passed to us
         if(![[RKMultiplayer sharedMultiplayer] isHost]) {
             NSString* rootpath = [[NSBundle mainBundle] bundlePath];
@@ -197,9 +195,11 @@ static NSString * const TwoPhonesGameType = @"twophones";
             //cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             [cpc layoutPortrait];
             [cpc setRed:1.0 green:1.0 blue:1.0];
-            
-            //[self presentViewController:cpc animated:YES completion:nil];
+            [cpc showRollButton:NO];
+
+            cpc.navigationItem.hidesBackButton = YES;
             [self.navigationController pushViewController:cpc animated:YES];
+       
         }
         //Start the RCDrive control loop
         [self controlLoop];
@@ -209,11 +209,11 @@ static NSString * const TwoPhonesGameType = @"twophones";
         
         //Reset the UI
         connectionMessage.hidden = NO;
-        passButton.hidden = YES;
+        backgroundControlHider.hidden = NO;
         
         //Dismiss the color picker if it is on screen
-        if(self.modalViewController) {
-            [self dismissModalViewControllerAnimated:NO];
+        if([self.title isEqualToString: @"Color Picker"]) {
+            [self.navigationController popViewControllerAnimated:YES];
         }
         
         //Look for other games or host a new one depending on if we had a ball
@@ -231,17 +231,20 @@ static NSString * const TwoPhonesGameType = @"twophones";
 
 //Called when game data is recieved from another player
 -(void)multiplayerDidRecieveGameData:(NSDictionary*)data {
-    //The responses recieved here have the payload we passed in wrapped in routing information about the sender and reciever
-    //What we passed in is stored in a dictionary with the key payload, we will need to pull it out
     NSDictionary *payload = [data objectForKey:@"PAYLOAD"];
+
     if([[payload valueForKey:@"PASS"] isEqualToString:@"ur turn"]) {
-        //The other player has sent us the message indicating control of the robot has been passed to us, dismiss the modal view
         [self.navigationController popViewControllerAnimated:YES];
-    } else if ([[payload valueForKey:@"PAY"] isEqualToString:@"Pay"]) {
-        NSString *amountPaid = [payload valueForKey:@"AMOUNT"];
-        NSLog(@"Trying to is trying to pay you: %@", amountPaid);
-        //Need to pop something on the Host's screen....
-        //...
+    } else if ([payload objectForKey:@"PAY"]) {
+        //NSString *amountPaid = [payload valueForKey:@"AMOUNT"];
+        NSString *payString = [payload valueForKey:@"PAY"];
+        //NSLog(@"Trying to is trying to pay you: %@", payString);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"You got $$$"
+                                                        message:payString
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }
     
 }
