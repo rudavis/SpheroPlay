@@ -29,6 +29,8 @@ static NSString * const TwoPhonesGameType = @"twophones";
     //This is the notificaiton we get when we find out the robot is online
     //Robot will not respond to commands until this notification is recieved
     connectionMessage.text = @"Waiting for other player to join...";
+    [RKRemotePlayer setMaxPingTimeouts:50];
+    [RKRemotePlayer setPingTimeout:50.0];
     [[RKMultiplayer sharedMultiplayer] stopGettingAvailableMultiplayerGames];
     [[RKMultiplayer sharedMultiplayer] hostGameOfType:TwoPhonesGameType playerName:@"TwoPhonesOneBall"];
 }
@@ -44,6 +46,8 @@ static NSString * const TwoPhonesGameType = @"twophones";
     passButton.hidden = YES;
     robotOnline = NO;
     
+    [RKRemotePlayer setMaxPingTimeouts:50];
+    [RKRemotePlayer setPingTimeout:50.0];
     //Set the multiplayer delegate to this controller (RKMultiplayer can only have one delegate at a time)
     [[RKMultiplayer sharedMultiplayer] setDelegate:self];
     [RKMultiplayer setMultiplayerDebug:YES];
@@ -116,19 +120,13 @@ static NSString * const TwoPhonesGameType = @"twophones";
     NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
     RUIColorPickerViewController *cpc = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:[NSBundle bundleWithPath:ruirespath]];
     cpc.delegate = self;
-    cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    //cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [cpc layoutPortrait];
     [cpc setRed:1.0 green:1.0 blue:1.0];
-    
-    //Add a custom PAY button
-    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [customButton addTarget:self action:@selector(customButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [customButton setTitle:@"Pay" forState:UIControlStateNormal];
-    customButton.frame = CGRectMake(10, 10, 40, 40);
 
-    [self presentViewController:cpc animated:YES completion:nil];
+    //[self presentViewController:cpc animated:YES completion:nil];
     
-    [cpc.view addSubview:customButton];
+    [self.navigationController pushViewController:cpc animated:YES];
     
 }
 
@@ -196,19 +194,12 @@ static NSString * const TwoPhonesGameType = @"twophones";
             NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
             RUIColorPickerViewController *cpc = [[RUIColorPickerViewController alloc] initWithNibName:@"RUIColorPickerViewController" bundle:[NSBundle bundleWithPath:ruirespath]];
             cpc.delegate = self;
-            cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            //cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
             [cpc layoutPortrait];
             [cpc setRed:1.0 green:1.0 blue:1.0];
             
-            //Add custom Pay Button
-            UIButton *customButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            [customButton addTarget:self action:@selector(customButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-            [customButton setTitle:@"Pay" forState:UIControlStateNormal];
-            customButton.frame = CGRectMake(10, 10, 40, 40);
-            
-            [self presentViewController:cpc animated:YES completion:nil];
-            
-            [cpc.view addSubview:customButton];
+            //[self presentViewController:cpc animated:YES completion:nil];
+            [self.navigationController pushViewController:cpc animated:YES];
         }
         //Start the RCDrive control loop
         [self controlLoop];
@@ -245,7 +236,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
     NSDictionary *payload = [data objectForKey:@"PAYLOAD"];
     if([[payload valueForKey:@"PASS"] isEqualToString:@"ur turn"]) {
         //The other player has sent us the message indicating control of the robot has been passed to us, dismiss the modal view
-        [self dismissModalViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
     } else if ([[payload valueForKey:@"PAY"] isEqualToString:@"Pay"]) {
         NSString *amountPaid = [payload valueForKey:@"AMOUNT"];
         NSLog(@"Trying to is trying to pay you: %@", amountPaid);

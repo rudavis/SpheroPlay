@@ -24,9 +24,11 @@
 -(void)handleRobotOnline;
 
 
-- (IBAction)colorMacroButtonPressed:(id)sender;
 - (IBAction)colorButtonPressed:(id)sender;
-- (IBAction)successMacroButtonPressed:(id)sender;
-- (IBAction)failureMacroButtonPressed:(id)sender;
+- (IBAction)sleepButtonPressed:(id)sender;
+- (IBAction)figureEightButtonPressed:(id)sender;
+- (IBAction)rainbowButtonPressed:(id)sender;
+- (IBAction)spinButtonPressed:(id)sender;
+//- (IBAction)flipButtonPressed:(id)sender;
 
 @end

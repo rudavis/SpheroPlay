@@ -11,26 +11,17 @@
 #import <RobotKit/RobotKit.h>
 #import "CircularUIView.h"
 
-@interface CircularDriveViewController : UIViewController <RUIColorPickerDelegate, RUICalibrateButtonGestureHandlerProtocol> {
+@interface CircularDriveViewController : UIViewController <RUIColorPickerDelegate> {
     
     // Sphero state variables
     BOOL robotOnline;
     BOOL ballMoving;
-    BOOL allowCalibrating;
-    
-    // Controls calibration gestures
-    RUICalibrateButtonGestureHandler *calibrateAboveHandler;
-    
-    // Controls two finger calibration gestures
-    RUICalibrateGestureHandler *calibrateTwoFingerHandler;
     
     //Views that make up the drive joystick
     IBOutlet UIView *driveWheel;
     IBOutlet UIImageView *drivePuck;
     IBOutlet CircularUIView *circularView;
     
-    // Buttons from NIB that link to a calibration gesture handler
-    IBOutlet UIButton *calibrateAboveButton;
     //Game Timers
     int currMin;
     int currSec;
@@ -51,6 +42,6 @@
 
 //UI Interaction
 -(IBAction)colorPressed:(id)sender;
--(IBAction)sleepPressed:(id)sender;
+- (IBAction)rainbowButtonPressed:(id)sender;
 
 @end

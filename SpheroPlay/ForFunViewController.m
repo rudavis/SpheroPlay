@@ -117,51 +117,6 @@
 */
 }
 
-//ING Orange -> CapOne Blue -> Cap One Red -> Loop between Cap one Red/Blue
-//NOTE:  You have to divide the RGB values below by 255 when using UIColor colorWithRGB...
-/*******
- ING Orange:  #F86000
- R: 248
- G: 96
- B: 0
- 
- Cap Blue:  #003A6F
- R: 0
- G: 57
- B: 110
- 
- Cap Red:  #A12830
- R: 160 / 255
- G: 40
- B: 47
- 
- Blue Button:
- Gradient Top:  #156599
- Gradient Bottom:  #003A6F
- Border: #003A6F
-*********/
-- (IBAction)colorMacroButtonPressed:(id)sender {
-        RKMacroObject *macro = [RKMacroObject new];
-        //Sets loop from slider value
-        [macro addCommand:[RKMCLoopFor commandWithRepeats:5]];
-        //Fade color to Orange
-        [macro addCommand:[RKMCSlew commandWithRed:0.97 green:0.37 blue:0.0 delay:robotDelay]];
-        //Add delay to allow Fade to complete before playing next fade
-        [macro addCommand:[RKMCDelay commandWithDelay:robotDelay]];
-        //Fade color to Blue
-        [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.22 blue:0.43 delay:robotDelay]];
-        //Add delay to allow Fade to complete before playing next fade
-        [macro addCommand:[RKMCDelay commandWithDelay:robotDelay]];
-        //Fade color to Red
-        [macro addCommand:[RKMCSlew commandWithRed:0.62 green:0.16 blue:0.18 delay:robotDelay]];
-        //Add delay to allow Fade to complete before playing next fade
-        [macro addCommand:[RKMCDelay commandWithDelay:robotDelay]];
-        //Loop End
-        [macro addCommand:[RKMCLoopEnd command]];
-        //Send full command dowm to Sphero to play
-        [macro playMacro];
-}
-
 - (IBAction)colorButtonPressed:(id)sender {
     NSString* rootpath = [[NSBundle mainBundle] bundlePath];
     NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
@@ -170,75 +125,64 @@
     cpc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [cpc layoutPortrait];
     [cpc setRed:1.0 green:1.0 blue:1.0];
-
-    //[cpc showBackButton:YES];
-    //[cpc setBackButtonTarget:self action:@selector(colorPickerDidPressBack)];
     
-    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [customButton addTarget:self action:@selector(customButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    [customButton setTitle:@"Pay" forState:UIControlStateNormal];
-    customButton.frame = CGRectMake(10, 10, 40, 40);
-    
-    [self presentModalViewController:cpc animated:YES];
-    
-    [cpc.view addSubview:customButton];
+    [self presentViewController:cpc animated:YES completion:nil];
 }
 
-
-- (IBAction)successMacroButtonPressed:(id)sender {
-    RKMacroObject *macro = [RKMacroObject new];
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:0]];
+- (IBAction)sleepButtonPressed:(id)sender {
+    //RobotUIKit resources like images and nib files stored in an external bundle and the path must be specified
+    NSString* rootpath = [[NSBundle mainBundle] bundlePath];
+    NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
+    NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
     
-    //Fade to white, pause, blue, pause
-    //White
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //Blue
-    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //White
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //Blue
-    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    
-    //Green
-    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:1.0 blue:0.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    [macro addCommand:[RKMCRGB commandWithRed:0.0 green:1.0 blue:0.0 delay:0]];
-        
-    //Send full command dowm to Sphero to play
-    [macro playMacro];
-    [RKRGBLEDOutputCommand sendCommandWithRed:0.0 green:1.0 blue:0.0];
+    //Present the slide to sleep view controller
+    RUISlideToSleepViewController *sleep = [[RUISlideToSleepViewController alloc] initWithNibName:@"RUISlideToSleepViewController" bundle:ruiBundle];
+    sleep.view.frame = self.view.bounds;
+    [self presentModalLayerViewController:sleep animated:YES];
 }
 
-- (IBAction)failureMacroButtonPressed:(id)sender {
-    RKMacroObject *macro = [RKMacroObject new];
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:0]];
+- (IBAction)figureEightButtonPressed:(id)sender {
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"Figure8" ofType:@"sphero"];
+    NSData *data = [NSData dataWithContentsOfFile:file];
     
-    //Fade to white, pause, blue, pause
-    //White
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //Blue
-    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //White
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:1.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-    //Blue
-    [macro addCommand:[RKMCSlew commandWithRed:0.0 green:0.0 blue:1.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay*2]];
-
-    
-    //Red
-    [macro addCommand:[RKMCSlew commandWithRed:1.0 green:0.0 blue:0.0 delay:robotDelay]];
-    [macro addCommand:[RKMCDelay commandWithDelay:robotDelay]];
-    [macro addCommand:[RKMCRGB commandWithRed:1.0 green:0.0 blue:0.0 delay:0]];
-    [macro playMacro];
-    [RKRGBLEDOutputCommand sendCommandWithRed:1.0 green:0.0 blue:0.0];
+    //saves a temporary macro command thats includes the data packet
+    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+    //Run temporary macro 255
+    [RKRunMacroCommand sendCommandWithId:255];
 }
+
+- (IBAction)rainbowButtonPressed:(id)sender {
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"rainbow" ofType:@"sphero"];
+    NSData *data = [NSData dataWithContentsOfFile:file];
+    
+    //saves a temporary macro command thats includes the data packet
+    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+    //Run temporary macro 255
+    [RKRunMacroCommand sendCommandWithId:255];
+
+}
+
+- (IBAction)spinButtonPressed:(id)sender {
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"spin" ofType:@"sphero"];
+    NSData *data = [NSData dataWithContentsOfFile:file];
+    
+    //saves a temporary macro command thats includes the data packet
+    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+    //Run temporary macro 255
+    [RKRunMacroCommand sendCommandWithId:255];
+
+}
+
+//- (IBAction)flipButtonPressed:(id)sender {
+//    NSString *file = [[NSBundle mainBundle] pathForResource:@"Flip" ofType:@"sphero"];
+//    NSData *data = [NSData dataWithContentsOfFile:file];
+//    
+//    //saves a temporary macro command thats includes the data packet
+//    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+//    //Run temporary macro 255
+//    [RKRunMacroCommand sendCommandWithId:255];
+//    [RKRollCommand sendCommandWithHeading:0.0 velocity:0.0];
+//}
 
 //Color Picker Delegates
 //Color picker delegate callbacks
@@ -250,16 +194,6 @@
 -(void) colorPickerDidFinish:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
     [controller dismissModalViewControllerAnimated:YES];
 }
-
--(void) colorPickerDidPressBack {
-    NSLog(@"Pressed Back");
-}
-
--(void) customButtonPressed {
-    NSLog(@"Custom Pressed Back");
-}
-
-
 
 //Open the Orentation Help view as a modal.  
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

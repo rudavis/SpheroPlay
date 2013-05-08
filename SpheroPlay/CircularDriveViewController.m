@@ -18,31 +18,6 @@
     /*Only start the blinking loop when the view loads*/
     robotOnline = NO;
     
-    // Setup a calibration gesture handler on our view to handle button
-    // gestures and give visual feeback to the user.  Defaults to above
-    calibrateAboveHandler = [[RUICalibrateButtonGestureHandler alloc]
-                             initWithView:self.view
-                             button:calibrateAboveButton];
-    
-    // Make the size of the calibration widget smaller for phones
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        calibrateAboveHandler.calibrationRadius = 200;
-    }
-    // Larger for iPads
-    else {
-        calibrateAboveHandler.calibrationRadius = 500;
-    }
-    // Open the circle widget above the button, can switch to pop out and cardinal direction
-    calibrateAboveHandler.calibrationCircleLocation = RUICalibrationCircleLocationAbove;
-    // Change color of the button
-    [calibrateAboveHandler setBackgroundWithColor:[UIColor colorWithRed:0.1 green:0.5 blue:1 alpha:1]];
-    [calibrateAboveHandler setForegroundWithColor:[UIColor colorWithRed:1 green:1 blue:1 alpha:1]];
-    
-    // Setup two finger two calibration method
-    calibrateTwoFingerHandler = [[RUICalibrateGestureHandler alloc] initWithView:self.view];
-    
-    [self handleRobotOnline];
-    
     //Start the timer
     currMin = 2;
     currSec = 60;
@@ -55,6 +30,9 @@
         timer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
         [timeRemainingLabel setText:@"Time Remaining:"];
     });
+    
+    [self handleRobotOnline];
+
 }
 
 -(void)timerFired
@@ -95,6 +73,11 @@
 }
 
 - (void)handleRobotOnline {
+    
+	if (![[RKRobotProvider sharedRobotProvider] controlConnectedRobot] ) {
+        [[RKRobotProvider sharedRobotProvider] openRobotConnection];
+    }
+
     /*The robot is now online, we can begin sending commands*/
     robotOnline = YES;
     
@@ -104,7 +87,7 @@
     [RKDriveControl sharedDriveControl].driveConversionAction = @selector(updateMotionIndicator:);
     [[RKDriveControl sharedDriveControl] startDriving:RKDriveControlJoyStick];
     //Set max speed
-    [RKDriveControl sharedDriveControl].velocityScale = 0.6;
+    [RKDriveControl sharedDriveControl].velocityScale = 0.8;
     
     // start processing the puck's movements
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleJoystickMotion:)];
@@ -117,7 +100,7 @@
 - (void)handleJoystickMotion:(id)sender
 {
     //Don't handle the gesture if we aren't connected to and driving a robot
-    if (![RKDriveControl sharedDriveControl].driving) return;
+    //if (![RKDriveControl sharedDriveControl].driving) return;
     
     //Handle the pan gesture and pass the results into the drive control
     UIPanGestureRecognizer *pan_recognizer = (UIPanGestureRecognizer *)sender;
@@ -142,7 +125,7 @@
 
 - (void)updateMotionIndicator:(RKDriveAlgorithm*)driveAlgorithm {
     //Don't update the puck position if we aren't driving
-    if ( ![RKDriveControl sharedDriveControl].driving || !ballMoving) return;
+    //if ( ![RKDriveControl sharedDriveControl].driving || !ballMoving) return;
     
     //Update the joystick puck position based on the data from the drive algorithm
     CGRect bounds = circularView.bounds;
@@ -193,6 +176,17 @@
     [self presentViewController:colorPicker animated:YES completion:nil];
 }
 
+- (IBAction)rainbowButtonPressed:(id)sender {
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"rainbow" ofType:@"sphero"];
+    NSData *data = [NSData dataWithContentsOfFile:file];
+    
+    //saves a temporary macro command thats includes the data packet
+    [RKSaveTemporaryMacroCommand sendCommandWithMacro:data flags:RKMacroFlagMotorControl];
+    //Run temporary macro 255
+    [RKRunMacroCommand sendCommandWithId:255];
+
+}
+
 //Color picker delegate callbacks
 -(void) colorPickerDidChange:(UIViewController*)controller withRed:(CGFloat)r green:(CGFloat)g blue:(CGFloat)b {
     //Send the color to Sphero when the user picks a new color in the picker
@@ -204,23 +198,6 @@
     [RKRGBLEDOutputCommand sendCommandWithRed:r green:g blue:b];
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
-
--(IBAction)sleepPressed:(id)sender {
-    //RobotUIKit resources like images and nib files stored in an external bundle and the path must be specified
-    NSString* rootpath = [[NSBundle mainBundle] bundlePath];
-    NSString* ruirespath = [NSBundle pathForResource:@"RobotUIKit" ofType:@"bundle" inDirectory:rootpath];
-    NSBundle* ruiBundle = [NSBundle bundleWithPath:ruirespath];
-    
-    //Present the slide to sleep view controller
-    RUISlideToSleepViewController *sleep = [[RUISlideToSleepViewController alloc] initWithNibName:@"RUISlideToSleepViewController" bundle:ruiBundle];
-    sleep.view.frame = self.view.bounds;
-    [self presentModalLayerViewController:sleep animated:YES];
-}
-
--(BOOL)calibrateGestureHandlerShouldAllowCalibration:(RUICalibrateButtonGestureHandler*)sender {
-    return YES;
-}
-
 
 - (void)didReceiveMemoryWarning
 {
