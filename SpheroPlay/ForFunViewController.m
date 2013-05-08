@@ -163,7 +163,7 @@
 
 }
 
-/*
+
 - (IBAction)spinButtonPressed:(id)sender {
     NSString *file = [[NSBundle mainBundle] pathForResource:@"spin" ofType:@"sphero"];
     NSData *data = [NSData dataWithContentsOfFile:file];
@@ -174,7 +174,7 @@
     [RKRunMacroCommand sendCommandWithId:255];
 
 }
-
+/*
 - (IBAction)squareButtonPressed:(id)sender {
     NSString *file = [[NSBundle mainBundle] pathForResource:@"Square" ofType:@"sphero"];
     NSData *data = [NSData dataWithContentsOfFile:file];

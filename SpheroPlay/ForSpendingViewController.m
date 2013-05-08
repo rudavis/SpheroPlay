@@ -44,8 +44,6 @@ static NSString * const TwoPhonesGameType = @"twophones";
     
     [RKMultiplayer setMultiplayerDebug:YES];
     
-    self.navigationItem.hidesBackButton = YES;
-    
     //Hide dirve controls until game starts
     backgroundControlHider.hidden = NO;
     robotOnline = NO;
@@ -70,9 +68,8 @@ static NSString * const TwoPhonesGameType = @"twophones";
 #pragma mark RCDrive Controls
 
 
-/********** Start Here ***********/
+
 -(void)controlLoop {
-    robotOnline = YES;
     /*
      //Fires every 0.2 seconds on a timer to get readings from the sliders and send roll commands to the ball
      
@@ -135,6 +132,8 @@ static NSString * const TwoPhonesGameType = @"twophones";
 }
 
 - (IBAction)endPressed:(id)sender {
+    [[RKMultiplayer sharedMultiplayer] endGame];
+    
 }
 #pragma mark -
 #pragma mark RUIColorPickerDelegate methods
@@ -184,8 +183,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
         
         connectionMessage.hidden = YES;
         backgroundControlHider.hidden = YES;
-        
-        
+
         //If we aren't the host we want to go to the flipside view until control is passed to us
         if(![[RKMultiplayer sharedMultiplayer] isHost]) {
             NSString* rootpath = [[NSBundle mainBundle] bundlePath];
@@ -201,8 +199,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
             [self.navigationController pushViewController:cpc animated:YES];
        
         }
-        //Start the RCDrive control loop
-        [self controlLoop];
+        robotOnline = YES;
     } else if(newState==RKMultiplayerGameStateEnded) {
         //If a the other user disconnects the game is over
         [[RKMultiplayer sharedMultiplayer] leaveCurrentGame];
@@ -212,9 +209,9 @@ static NSString * const TwoPhonesGameType = @"twophones";
         backgroundControlHider.hidden = NO;
         
         //Dismiss the color picker if it is on screen
-        if([self.title isEqualToString: @"Color Picker"]) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
+        //if([self.title isEqualToString: @"Color Picker"]) {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        //}
         
         //Look for other games or host a new one depending on if we had a ball
         if([[RKMultiplayer sharedMultiplayer] isHost]) {
@@ -222,6 +219,7 @@ static NSString * const TwoPhonesGameType = @"twophones";
         } else {
             [[RKMultiplayer sharedMultiplayer] getAvailableMultiplayerGamesOfType:TwoPhonesGameType];
         }
+
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"The other player has disconnected, the game is over" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];

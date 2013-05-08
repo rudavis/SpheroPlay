@@ -64,6 +64,7 @@
 		C7ADEB2A173AC607007D80DB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C7ADEB29173AC607007D80DB /* Default.png */; };
 		C7ADEB2B173AC60E007D80DB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C7ADEB27173AC5E5007D80DB /* Default@2x.png */; };
 		C7BF3D8F1728402000B49BA7 /* light_gray_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C7BF3D8E1728402000B49BA7 /* light_gray_bg.png */; };
+		C7CE7884173AE90E0007D25F /* myIcon114.png in Resources */ = {isa = PBXBuildFile; fileRef = C7CE7883173AE90E0007D25F /* myIcon114.png */; };
 		C7D12CDA1719C5C800C9E920 /* HomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */; };
 		C7D46C15173440E500771934 /* ArcadeModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C7D46C14173440E500771934 /* ArcadeModeViewController.m */; };
 		C7D46C181734458500771934 /* arcade_slot.png in Resources */ = {isa = PBXBuildFile; fileRef = C7D46C161734458500771934 /* arcade_slot.png */; };
@@ -158,6 +159,7 @@
 		C7ADEB27173AC5E5007D80DB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		C7ADEB29173AC607007D80DB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
 		C7BF3D8E1728402000B49BA7 /* light_gray_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_gray_bg.png; sourceTree = "<group>"; };
+		C7CE7883173AE90E0007D25F /* myIcon114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = myIcon114.png; path = ../myIcon114.png; sourceTree = "<group>"; };
 		C7D12CD81719C5C800C9E920 /* HomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeTableViewController.h; sourceTree = "<group>"; };
 		C7D12CD91719C5C800C9E920 /* HomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewController.m; sourceTree = "<group>"; };
 		C7D46C13173440E500771934 /* ArcadeModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArcadeModeViewController.h; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 		C73D7CCE1718763400C2A741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C7CE7883173AE90E0007D25F /* myIcon114.png */,
 				C7ADEB29173AC607007D80DB /* Default.png */,
 				C7ADEB27173AC5E5007D80DB /* Default@2x.png */,
 				C7ADEB25173AC5DA007D80DB /* Default-568h@2x.png */,
@@ -494,6 +497,7 @@
 				C7ADEB26173AC5DA007D80DB /* Default-568h@2x.png in Resources */,
 				C7ADEB2A173AC607007D80DB /* Default.png in Resources */,
 				C7ADEB2B173AC60E007D80DB /* Default@2x.png in Resources */,
+				C7CE7884173AE90E0007D25F /* myIcon114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
