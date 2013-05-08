@@ -10,6 +10,9 @@
 #import "PiggyBankViewController.h"
 
 @interface ArcadeModeViewController : UIViewController <PiggyBankViewControllerDelegate>
+{
+    float creditsRemaining; 
+}
 @property (strong, nonatomic) IBOutlet UIImageView *quarterImage;
 @property (strong, nonatomic) IBOutlet UIImageView *slotImage;
 @property (strong, nonatomic) IBOutlet UILabel *creditsLabel;

@@ -21,6 +21,16 @@
     [[RKRobotProvider sharedRobotProvider] openRobotConnection];
     [[RKRobotProvider sharedRobotProvider] controlConnectedRobot];
     [RKRGBLEDOutputCommand sendCommandWithRed:.5 green:.5 blue:.5];
+    
+    creditsRemaining = 0.75;
+
+    creditsLabel.text = [NSString stringWithFormat:@"%.2f", creditsRemaining];
+    if (creditsRemaining <= 0) {
+        quarterImage.hidden = YES;
+        //TODO:
+        //Add a message saying go add credits
+    }
+
 }
 
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer {
@@ -37,10 +47,7 @@
         //quarter y <= 90
         if (recognizer.view.center.x >= 170.0 && recognizer.view.center.y <=90){
             //They dropped the quarter in the slot!!
-            NSLog(@"Dropped in the slot");
             [self coinDroppedInSlot];
-        } else {
-            NSLog(@"Missed the slot");
         }
     }
 }
@@ -55,7 +62,15 @@
     //Run temporary macro 255
     [RKRunMacroCommand sendCommandWithId:255];
     
-    //Segue to an arcade games....
+    //Deduct a quarter
+    creditsRemaining = creditsRemaining - 0.25;
+    creditsLabel.text = [NSString stringWithFormat:@"%.2f", creditsRemaining];
+    if (creditsRemaining <= 0) {
+        quarterImage.hidden = YES;
+        //TODO:
+        //Add a message saying go add credits
+    }
+    [self performSegueWithIdentifier:@"ArcadeDriveSegue" sender:self];
     
 }
 
@@ -76,7 +91,9 @@
 }
 -(void) piggyBankViewController: (PiggyBankViewController *)controller DidPressDone:(float)credits{
     [self dismissViewControllerAnimated:YES completion:nil];
+    
     creditsLabel.text = [NSString stringWithFormat:@"%.2f", credits];
+    creditsRemaining = credits;
 }
 
 

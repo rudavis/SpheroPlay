@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C7097D82173963CE00F504D8 /* slider_left.png in Resources */ = {isa = PBXBuildFile; fileRef = C7097D81173963CE00F504D8 /* slider_left.png */; };
 		C72CA9A1171F0E2C00CE605A /* ValidateSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */; };
+		C73BD91A1739C99F00D0D11F /* CircularDriveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C73BD9191739C99F00D0D11F /* CircularDriveViewController.m */; };
 		C73D7CA017186F8400C2A741 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D7C9F17186F8400C2A741 /* UIKit.framework */; };
 		C73D7CA217186F8400C2A741 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D7CA117186F8400C2A741 /* Foundation.framework */; };
 		C73D7CA417186F8400C2A741 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73D7CA317186F8400C2A741 /* CoreGraphics.framework */; };
@@ -83,6 +84,8 @@
 		C7097D81173963CE00F504D8 /* slider_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider_left.png; sourceTree = "<group>"; };
 		C72CA99F171F0E2C00CE605A /* ValidateSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateSlidingViewController.h; sourceTree = "<group>"; };
 		C72CA9A0171F0E2C00CE605A /* ValidateSlidingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateSlidingViewController.m; sourceTree = "<group>"; };
+		C73BD9181739C99F00D0D11F /* CircularDriveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircularDriveViewController.h; sourceTree = "<group>"; };
+		C73BD9191739C99F00D0D11F /* CircularDriveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircularDriveViewController.m; sourceTree = "<group>"; };
 		C73D7C9C17186F8400C2A741 /* SpheroPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpheroPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C73D7C9F17186F8400C2A741 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C73D7CA117186F8400C2A741 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -346,6 +349,8 @@
 		C766753A17276CA100D4D528 /* ForFun */ = {
 			isa = PBXGroup;
 			children = (
+				C73BD9181739C99F00D0D11F /* CircularDriveViewController.h */,
+				C73BD9191739C99F00D0D11F /* CircularDriveViewController.m */,
 				C7D46C13173440E500771934 /* ArcadeModeViewController.h */,
 				C7D46C14173440E500771934 /* ArcadeModeViewController.m */,
 				C7F7F46C1732E11500ED007E /* PiggyBankViewController.h */,
@@ -477,6 +482,7 @@
 				C766753D17276CB500D4D528 /* ForFunViewController.m in Sources */,
 				C7F7F46E1732E11500ED007E /* PiggyBankViewController.m in Sources */,
 				C7D46C15173440E500771934 /* ArcadeModeViewController.m in Sources */,
+				C73BD91A1739C99F00D0D11F /* CircularDriveViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
