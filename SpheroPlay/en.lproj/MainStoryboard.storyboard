@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="11G63" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5YY-PS-Nfh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="5YY-PS-Nfh">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -1536,11 +1536,11 @@
                 <relationship kind="outlet" name="slotImage" candidateClass="UIImageView"/>
             </relationships>
         </class>
-<<<<<<< HEAD
         <class className="CircularDriveViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CircularDriveViewController.h"/>
             <relationships>
                 <relationship kind="action" name="colorPressed:"/>
+                <relationship kind="action" name="rainbowButtonPressed:"/>
                 <relationship kind="outlet" name="circularView" candidateClass="CircularUIView"/>
                 <relationship kind="outlet" name="counterRemaingLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="drivePuck" candidateClass="UIImageView"/>
@@ -1551,8 +1551,6 @@
         <class className="CircularUIView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CircularUIView.h"/>
         </class>
-=======
->>>>>>> dfed3d5881ac822ccedd576641e8454028d38774
         <class className="ConfirmationSlideViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ConfirmationSlideViewController.h"/>
             <relationships>
@@ -1565,17 +1563,10 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ForFunViewController.h"/>
             <relationships>
                 <relationship kind="action" name="colorButtonPressed:"/>
-<<<<<<< HEAD
                 <relationship kind="action" name="figureEightButtonPressed:"/>
-                <relationship kind="action" name="flipButtonPressed:"/>
                 <relationship kind="action" name="rainbowButtonPressed:"/>
                 <relationship kind="action" name="sleepButtonPressed:"/>
                 <relationship kind="action" name="spinButtonPressed:"/>
-=======
-                <relationship kind="action" name="colorMacroButtonPressed:"/>
-                <relationship kind="action" name="failureMacroButtonPressed:"/>
-                <relationship kind="action" name="successMacroButtonPressed:"/>
->>>>>>> dfed3d5881ac822ccedd576641e8454028d38774
                 <relationship kind="outlet" name="connectionLabel" candidateClass="UILabel"/>
             </relationships>
         </class>
@@ -1618,17 +1609,6 @@
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
         </class>
-<<<<<<< HEAD
-=======
-        <class className="PaymentViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PaymentViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelAction:"/>
-                <relationship kind="action" name="submitAction:"/>
-                <relationship kind="outlet" name="amount" candidateClass="UITextField"/>
-            </relationships>
-        </class>
->>>>>>> dfed3d5881ac822ccedd576641e8454028d38774
         <class className="PiggyBankViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PiggyBankViewController.h"/>
             <relationships>
