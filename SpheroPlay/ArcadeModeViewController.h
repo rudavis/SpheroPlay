@@ -16,8 +16,10 @@
 @property (strong, nonatomic) IBOutlet UIImageView *quarterImage;
 @property (strong, nonatomic) IBOutlet UIImageView *slotImage;
 @property (strong, nonatomic) IBOutlet UILabel *creditsLabel;
+@property (strong, nonatomic) IBOutlet UIButton *addCreditsButton;
 
 -(IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 - (void) coinDroppedInSlot;
+- (IBAction)addCreditsButtonPressed:(id)sender;
 
 @end

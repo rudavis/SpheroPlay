@@ -35,7 +35,7 @@
 
     //Set initial Amounts
     combinedAmount = 1000.0;
-    initialCheckingAmount = 550.00;
+    initialCheckingAmount = 750.00;
     initialSavingsAmount = combinedAmount - initialCheckingAmount;
     
     //Set label values from initial amounts
@@ -163,10 +163,7 @@
     }
 }
 
-- (void)handleRobotOnline {
-    /*The robot is now online, we can begin sending commands*/
-    if(!robotOnline) {
-        
+- (void)handleRobotOnline {        
         [RKSetDataStreamingCommand sendCommandStopStreaming];
         // Start streaming sensor data
         ////First turn off stabilization so the drive mechanism does not move.
@@ -180,7 +177,6 @@
         
         ////Register for asynchronise data streaming packets
         [[RKDeviceMessenger sharedMessenger] addDataStreamingObserver:self selector:@selector(handleAsyncData:)];
-    }
     robotOnline = YES;
 }
 

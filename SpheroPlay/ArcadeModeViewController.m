@@ -11,7 +11,7 @@
 
 @implementation ArcadeModeViewController
 @synthesize quarterImage,slotImage;
-@synthesize creditsLabel;
+@synthesize creditsLabel, addCreditsButton;
 
 - (void)viewDidLoad
 {
@@ -22,11 +22,12 @@
     [[RKRobotProvider sharedRobotProvider] controlConnectedRobot];
     [RKRGBLEDOutputCommand sendCommandWithRed:.5 green:.5 blue:.5];
     
-    creditsRemaining = 0.75;
-
+    creditsRemaining = 0.25;
+    addCreditsButton.hidden = YES;
     creditsLabel.text = [NSString stringWithFormat:@"%.2f", creditsRemaining];
     if (creditsRemaining <= 0) {
         quarterImage.hidden = YES;
+        addCreditsButton.hidden = NO;
         //TODO:
         //Add a message saying go add credits
     }
@@ -68,8 +69,7 @@
     creditsLabel.text = [NSString stringWithFormat:@"%.2f", creditsRemaining];
     if (creditsRemaining <= 0) {
         quarterImage.hidden = YES;
-        //TODO:
-        //Add a message saying go add credits
+        addCreditsButton.hidden = NO;
     }
     
     
@@ -93,6 +93,10 @@
     
     [self performSegueWithIdentifier:@"ArcadeDriveSegue" sender:self];
     
+}
+
+- (IBAction)addCreditsButtonPressed:(id)sender {
+    [self performSegueWithIdentifier:@"PiggyBankModal" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

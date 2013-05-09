@@ -23,6 +23,7 @@
 		C73D7CB917186F8400C2A741 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CB717186F8400C2A741 /* MainStoryboard.storyboard */; };
 		C73D7CC31718704B00C2A741 /* piggy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CC21718704B00C2A741 /* piggy.jpg */; };
 		C73D7CC5171870B200C2A741 /* dollar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C73D7CC4171870B200C2A741 /* dollar.jpg */; };
+		C7467FDB173B2DB900CB4A07 /* piggybankshake.png in Resources */ = {isa = PBXBuildFile; fileRef = C7467FDA173B2DB900CB4A07 /* piggybankshake.png */; };
 		C747CC26171E13E20034FD8F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C747CC25171E13E20034FD8F /* QuartzCore.framework */; };
 		C748E8311729ECD1003A370C /* CalibrateSphero.png in Resources */ = {isa = PBXBuildFile; fileRef = C748E8301729ECD1003A370C /* CalibrateSphero.png */; };
 		C74B7C25171EB1B000E19FCD /* ForSlidingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C74B7C24171EB1B000E19FCD /* ForSlidingViewController.m */; };
@@ -113,6 +114,7 @@
 		C73D7CB817186F8400C2A741 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		C73D7CC21718704B00C2A741 /* piggy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = piggy.jpg; sourceTree = "<group>"; };
 		C73D7CC4171870B200C2A741 /* dollar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = dollar.jpg; sourceTree = "<group>"; };
+		C7467FDA173B2DB900CB4A07 /* piggybankshake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = piggybankshake.png; sourceTree = "<group>"; };
 		C747CC25171E13E20034FD8F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C748E8301729ECD1003A370C /* CalibrateSphero.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = CalibrateSphero.png; path = RobotUIKit.bundle/CalibrateSphero.png; sourceTree = "<group>"; };
 		C74B7C23171EB1B000E19FCD /* ForSlidingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForSlidingViewController.h; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		C73D7CCE1718763400C2A741 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C7467FDA173B2DB900CB4A07 /* piggybankshake.png */,
 				C7CE7883173AE90E0007D25F /* myIcon114.png */,
 				C7ADEB29173AC607007D80DB /* Default.png */,
 				C7ADEB27173AC5E5007D80DB /* Default@2x.png */,
@@ -498,6 +501,7 @@
 				C7ADEB2A173AC607007D80DB /* Default.png in Resources */,
 				C7ADEB2B173AC60E007D80DB /* Default@2x.png in Resources */,
 				C7CE7884173AE90E0007D25F /* myIcon114.png in Resources */,
+				C7467FDB173B2DB900CB4A07 /* piggybankshake.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

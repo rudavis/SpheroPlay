@@ -16,13 +16,6 @@ static NSString * const TwoPhonesGameType = @"twophones";
 @synthesize speedSlider, backgroundControlHider;
 
 #pragma mark -
-#pragma mark Memory Management
-
--(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark -
 #pragma mark Robot Online Notification
 
 -(void)handleConnectionOnline:(NSNotification*)notification {
@@ -58,17 +51,13 @@ static NSString * const TwoPhonesGameType = @"twophones";
     
     // Watch for online notification to start driving
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleConnectionOnline:) name:RKDeviceConnectionOnlineNotification object:nil];
-    
+
+    if ([[RKRobotProvider sharedRobotProvider] isRobotUnderControl]) {
+        [[RKRobotProvider sharedRobotProvider] openRobotConnection];
+    }
     //Attempt to control the connected robot so we get the notification if one is connected
-	[[RKRobotProvider sharedRobotProvider] controlConnectedRobot];
-	
+	//[[RKRobotProvider sharedRobotProvider] controlConnectedRobot];
 }
-
-#pragma mark -
-#pragma mark RCDrive Controls
-
-
-
 -(void)controlLoop {
     /*
      //Fires every 0.2 seconds on a timer to get readings from the sliders and send roll commands to the ball
@@ -211,15 +200,17 @@ static NSString * const TwoPhonesGameType = @"twophones";
         //Dismiss the color picker if it is on screen
         //if([self.title isEqualToString: @"Color Picker"]) {
             [self.navigationController popToRootViewControllerAnimated:YES];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:RKDeviceConnectionOnlineNotification object:nil];
+            [[RKRobotProvider sharedRobotProvider] closeRobotConnection];
         //}
         
-        //Look for other games or host a new one depending on if we had a ball
-        if([[RKMultiplayer sharedMultiplayer] isHost]) {
-            [[RKMultiplayer sharedMultiplayer] hostGameOfType:TwoPhonesGameType playerName:@"TwoPhonesOneBall"];
-        } else {
-            [[RKMultiplayer sharedMultiplayer] getAvailableMultiplayerGamesOfType:TwoPhonesGameType];
-        }
-
+        
+//        //Look for other games or host a new one depending on if we had a ball
+//        if([[RKMultiplayer sharedMultiplayer] isHost]) {
+//            [[RKMultiplayer sharedMultiplayer] hostGameOfType:TwoPhonesGameType playerName:@"TwoPhonesOneBall"];
+//        } else {
+//            [[RKMultiplayer sharedMultiplayer] getAvailableMultiplayerGamesOfType:TwoPhonesGameType];
+//        }
         
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over" message:@"The other player has disconnected, the game is over" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
