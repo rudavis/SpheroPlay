@@ -744,23 +744,26 @@
                                     <action selector="done:" destination="KrC-pr-7ky" eventType="touchUpInside" id="0RJ-1y-1fj"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="piggybankshake.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Es-ks-clX"/>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KCU-5p-mSn" firstAttribute="leading" secondItem="yoL-zL-zJi" secondAttribute="leading" type="default" id="1NE-mQ-ff7"/>
+                            <constraint firstItem="0Es-ks-clX" firstAttribute="centerX" secondItem="UrP-PM-bja" secondAttribute="centerX" type="default" id="2bT-ej-ayv"/>
                             <constraint firstItem="a4m-ez-gUV" firstAttribute="centerX" secondItem="UrP-PM-bja" secondAttribute="centerX" type="default" id="3wB-pv-4H6"/>
+                            <constraint firstItem="0Es-ks-clX" firstAttribute="centerX" secondItem="Wh4-qK-va6" secondAttribute="centerX" type="default" id="4Vw-M7-Uay"/>
+                            <constraint firstItem="0Es-ks-clX" firstAttribute="top" secondItem="Wh4-qK-va6" secondAttribute="top" constant="184" id="558-Vj-EVu"/>
                             <constraint firstItem="KCU-5p-mSn" firstAttribute="top" secondItem="yoL-zL-zJi" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5iM-IB-HZd"/>
                             <constraint firstItem="UrP-PM-bja" firstAttribute="top" secondItem="Wh4-qK-va6" secondAttribute="top" constant="61" id="7kT-gU-b4x"/>
                             <constraint firstItem="Xba-eZ-DjE" firstAttribute="baseline" secondItem="yoL-zL-zJi" secondAttribute="baseline" type="default" id="Ayc-0T-Oha"/>
                             <constraint firstItem="Xba-eZ-DjE" firstAttribute="trailing" secondItem="UrP-PM-bja" secondAttribute="trailing" type="default" id="M5g-Gq-S1l"/>
                             <constraint firstItem="a4m-ez-gUV" firstAttribute="leading" secondItem="Wh4-qK-va6" secondAttribute="leading" type="default" id="UWv-Yw-5R1"/>
-                            <constraint firstItem="a4m-ez-gUV" firstAttribute="centerX" secondItem="Wh4-qK-va6" secondAttribute="centerX" type="default" id="VJ1-vv-oiV"/>
                             <constraint firstAttribute="bottom" secondItem="6jG-Sh-sJz" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="a4C-jf-20Z"/>
                             <constraint firstItem="a4m-ez-gUV" firstAttribute="top" secondItem="Wh4-qK-va6" secondAttribute="top" type="default" id="byG-34-R2b"/>
                             <constraint firstItem="udc-tE-JI1" firstAttribute="baseline" secondItem="KCU-5p-mSn" secondAttribute="baseline" type="default" id="ci2-ZX-94P"/>
+                            <constraint firstItem="0Es-ks-clX" firstAttribute="centerX" secondItem="6jG-Sh-sJz" secondAttribute="centerX" type="default" id="hJT-NG-2Hd"/>
                             <constraint firstItem="udc-tE-JI1" firstAttribute="trailing" secondItem="Xba-eZ-DjE" secondAttribute="trailing" type="default" id="raq-Cu-oCQ"/>
                             <constraint firstItem="yoL-zL-zJi" firstAttribute="leading" secondItem="UrP-PM-bja" secondAttribute="leading" type="default" id="sZv-eg-xxR"/>
-                            <constraint firstItem="6jG-Sh-sJz" firstAttribute="centerX" secondItem="UrP-PM-bja" secondAttribute="centerX" type="default" id="xAG-LN-H7q"/>
                             <constraint firstItem="yoL-zL-zJi" firstAttribute="top" secondItem="UrP-PM-bja" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ysy-Hv-Gwy"/>
                         </constraints>
                     </view>
@@ -1161,7 +1164,6 @@
                             <constraint firstItem="Lb4-Z2-BHn" firstAttribute="top" secondItem="xGd-pb-RIs" secondAttribute="top" constant="-53" id="cI7-VQ-gLt"/>
                             <constraint firstItem="Lb4-Z2-BHn" firstAttribute="leading" secondItem="xGd-pb-RIs" secondAttribute="leading" type="default" id="epL-8z-XT3"/>
                             <constraint firstItem="ZG4-wk-qUi" firstAttribute="top" secondItem="xGd-pb-RIs" secondAttribute="top" constant="24" id="mId-dd-X4p"/>
-                            <constraint firstItem="YSk-Gb-Ovy" firstAttribute="baseline" secondItem="3oF-x5-L6t" secondAttribute="baseline" type="default" id="owa-0U-PrM"/>
                             <constraint firstItem="YSk-Gb-Ovy" firstAttribute="top" secondItem="yet-bT-MJu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="pCr-2y-VVg"/>
                             <constraint firstItem="3oF-x5-L6t" firstAttribute="leading" secondItem="yet-bT-MJu" secondAttribute="leading" type="default" id="r37-cc-1TC"/>
                             <constraint firstItem="YSk-Gb-Ovy" firstAttribute="trailing" secondItem="yet-bT-MJu" secondAttribute="trailing" type="default" id="yX1-BT-5Uy"/>
@@ -1537,6 +1539,7 @@
         <image name="icon_save.png" width="184" height="182"/>
         <image name="icon_spend.png" width="184" height="182"/>
         <image name="left_arrow.png" width="131" height="138"/>
+        <image name="piggybankshake.png" width="203" height="230"/>
         <image name="quarter.png" width="220" height="217"/>
         <image name="right_arrow.png" width="131" height="138"/>
         <image name="shake_left.png" width="47" height="137"/>
@@ -1549,6 +1552,7 @@
             <relationships>
                 <relationship kind="action" name="addCreditsButtonPressed:"/>
                 <relationship kind="action" name="handlePan:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="addCreditsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="creditsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="quarterImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="slotImage" candidateClass="UIImageView"/>
