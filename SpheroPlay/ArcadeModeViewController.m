@@ -119,6 +119,12 @@
     
     creditsLabel.text = [NSString stringWithFormat:@"%.2f", credits];
     creditsRemaining = credits;
+    
+    if (creditsRemaining > 0) {
+        quarterImage.hidden = NO;
+        addCreditsButton.hidden = YES;
+
+    }
 }
 
 

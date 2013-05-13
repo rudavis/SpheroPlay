@@ -12,7 +12,7 @@
 
 #define TOTAL_PACKET_COUNT 200
 #define PACKET_COUNT_THRESHOLD 50
-#define SHAKE_THRESHOLD 2
+#define SHAKE_THRESHOLD 5
 
 @implementation ForSlidingViewController
 @synthesize totalAmountLabel, checkingAmounLabel, savingsAmountLabel, amountSlider;

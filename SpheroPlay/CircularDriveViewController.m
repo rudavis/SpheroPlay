@@ -21,7 +21,7 @@
     robotOnline = NO;
     
     //Start the timer
-    currMin = 2;
+    currMin = 0;
     currSec = 60;
     
     [timeRemainingLabel setText:@"Get Ready...Set.."];
